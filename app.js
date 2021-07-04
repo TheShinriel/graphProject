@@ -10,25 +10,27 @@ let context = document.querySelector('.graph');
 
 
 let graph = new Chart(context, {
-    type: 'line',
     data: {
-        labels: [0,4,5,8,12,16,20,24],
         datasets: [{
+            type: 'line',
             label: 'Ligne de tox',
             data: [,200,100,50,25,12.5,6.25]
-        },
-        {
+        }, {
+            type: 'line',
             label: 'Ligne de traitement',
-            data: [,150,75,37.5,18.75,9.375,4.6875]
-        }, 
-        {
-            label: 'Result',
+            data: [,150,75,37.5,18.75,9.375,4.6875],
+        }, {
+            type: 'bubble',
+            label: 'calcul',
             data: [{
-                x: testData1, // temps
-                y: testData2 // concentration
+                x: 11,
+                y: 33,
+                r: 5
             }]
-        } 
-    ]
+        }
+    ],
+        labels: [0,4,8,12,16,20,24]
+    
     },
     options: {
         responsive: true,
@@ -42,7 +44,8 @@ let graph = new Chart(context, {
             x: {
                 display: true,
                 min:0,
-                max:24
+                max:25,
+                type: 'linear'
             },
             y: {
                 min:0,
