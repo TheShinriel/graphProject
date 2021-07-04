@@ -1,7 +1,9 @@
-h1, h2 {
+h1, h2, .p_result {
     text-align: center;
 }
-
+h1{
+    font-size: 2.5rem;
+}
 .invisible {
     display: none;
 }
@@ -10,3 +12,30 @@ h1, h2 {
     display: block
 }
 
+.ref {
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+.title_ref {
+    text-decoration: underline;
+}
+
+.text_agreement {
+    font-size: 1.2rem;
+}
+
+ #agreement,
+ #calc_tox {
+     margin: 3rem;
+ }
+
+ .p_result {
+      font-weight: bold;
+      font-size: 1.7rem;
+  }
+
+  #container_result {
+    margin: auto;
+    width: 50%;
+}

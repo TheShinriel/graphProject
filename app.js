@@ -1,10 +1,10 @@
 
 const DIFFUSION_TIME_IN_BLOOD = 4;
 
-let divAgreement = document.querySelector('.agreement');
-let divCalcTox = document.querySelector('.calc_tox');
+let divAgreement = document.querySelector('#agreement');
+let divCalcTox = document.querySelector('#calc_tox');
 let divMsgError = document.querySelector('.alertBadData');
-let divResult = document.querySelector('.container_result');
+let divResult = document.querySelector('#container_result');
 let pResult = document.querySelector('.p_result');
 
 let submitBtn = document.querySelector('.calc_data');
