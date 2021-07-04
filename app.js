@@ -1,18 +1,20 @@
 
 const DIFFUSION_TIME_IN_BLOOD = 4;
 
-let submitBtn = document.querySelector('.calc_data');
 let divAgreement = document.querySelector('.agreement');
 let divCalcTox = document.querySelector('.calc_tox');
 let divMsgError = document.querySelector('.alertBadData');
+let submitBtn = document.querySelector('.calc_data');
 let checkBoxAgreement = document.querySelector('input[id="accept_agreement"]');
 let ingestionTimeInput = document.querySelector('.time_after_ingestion');
 let paracetamolConcentrationInput = document.querySelector('.paracetamol_concentration');
+let context = document.querySelector('.graph');
+
 let timeAfterIngestion;
 let paracetamolConcentration;
 
-
-let context = document.querySelector('.graph');
+// TESSSSSSSSSSSSSSSSST
+// TESSSSSSSSSSSSSSSSSSSSST
 
 
 
@@ -76,10 +78,11 @@ let graph = new Chart(context, {
 });
 
 submitBtn.addEventListener("click", () => {
-    paracetamolConcentration = parseInt(paracetamolConcentrationInput.value);
-    timeAfterIngestion = checkValidity(parseInt(ingestionTimeInput.value)); 
-    console.log(timeAfterIngestion);
-    addData(graph, timeAfterIngestion, paracetamolConcentration )
+    paracetamolConcentration = parseFloat(paracetamolConcentrationInput.value);
+    timeAfterIngestion = checkValidity(parseFloat(ingestionTimeInput.value)); 
+
+    displayResult(timeAfterIngestion, paracetamolConcentration );
+    addData(graph, timeAfterIngestion, paracetamolConcentration );
 })
 
 checkBoxAgreement.addEventListener("click", () => {
@@ -100,6 +103,20 @@ function checkValidity(number) {
         return null;
     } else {
         divMsgError.setAttribute("class", "invisible");
+        return number;
     }
-    return number;
+}
+
+function displayResult(time, concentration) {
+    let result = Math.pow(0.840897, time);
+    let resultPossible = result * 300;
+    let resultProbable = result * 400;
+
+    if(concentration > resultProbable) {
+        console.log("Toxicité hépatique probable. Envisager la mise en place de NAC");
+    } else if (concentration > resultPossible) {
+        console.log("Toxicité hépatique possible");
+    } else {
+        console.log("Pas d'hépatotoxicité");
+    }
 }
