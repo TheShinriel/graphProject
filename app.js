@@ -1,7 +1,10 @@
 
+const DIFFUSION_TIME_IN_BLOOD = 4;
+
 let submitBtn = document.querySelector('.calc_data');
 let divAgreement = document.querySelector('.agreement');
-let divCalcTox = document.querySelector('.calc_tox') 
+let divCalcTox = document.querySelector('.calc_tox');
+let divMsgError = document.querySelector('.alertBadData');
 let checkBoxAgreement = document.querySelector('input[id="accept_agreement"]');
 let ingestionTimeInput = document.querySelector('.time_after_ingestion');
 let paracetamolConcentrationInput = document.querySelector('.paracetamol_concentration');
@@ -74,7 +77,8 @@ let graph = new Chart(context, {
 
 submitBtn.addEventListener("click", () => {
     paracetamolConcentration = parseInt(paracetamolConcentrationInput.value);
-    timeAfterIngestion = parseInt(ingestionTimeInput.value); 
+    timeAfterIngestion = checkValidity(parseInt(ingestionTimeInput.value)); 
+    console.log(timeAfterIngestion);
     addData(graph, timeAfterIngestion, paracetamolConcentration )
 })
 
@@ -90,3 +94,12 @@ function addData(chart, time, concentration) {
     chart.update();
 }
 
+function checkValidity(number) {
+    if(number < DIFFUSION_TIME_IN_BLOOD) {
+        divMsgError.setAttribute("class", "visible");
+        return null;
+    } else {
+        divMsgError.setAttribute("class", "invisible");
+    }
+    return number;
+}
