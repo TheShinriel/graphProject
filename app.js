@@ -20,25 +20,25 @@ let graph = new Chart(context, {
         [
             {
             type: 'line',
-            label: 'Ligne de tox',
+            label: 'Ligne de toxicité (ligne 200)',
             data: [,200,100,50,25,12.5,6.25]
             },
 
             {
             type: 'line',
-            label: 'Ligne de traitement',
+            label: 'Ligne de traitement (NAC)',
             data: [,150,75,37.5,18.75,9.375,4.6875],
             },
 
             {
             type: 'bubble',
-            label: 'calcul',
+            label: 'Concentration du patient saisie',
             data: [{}]
             }
         ],
         labels: [0,4,8,12,16,20,24]
     },
-    
+
     options: 
     {
         responsive: true,
@@ -47,7 +47,7 @@ let graph = new Chart(context, {
             title: 
             {
                 display: true,
-                text: 'Zone d\'éfficacité de l\'antidote'
+                text: 'Nomogramme de Rumack et Matthew'
             }
         },
 
