@@ -39,22 +39,30 @@ let graph = new Chart(context, {
         ],
         labels: [0,4,8,12,16,20,24]
     },
-    options: {
+    options: 
+    {
         responsive: true,
-        plugins: {
-            title: {
+        plugins: 
+        {
+            title: 
+            {
                 display: true,
                 text: 'Zone d\'éfficacité de l\'antidote'
             }
         },
-        scales: {
-            x: {
+
+        scales: 
+        {
+            x: 
+            {
                 display: true,
                 min:0,
                 max:25,
                 type: 'linear'
             },
-            y: {
+
+            y: 
+            {
                 min:0,
                 max:600,
                 display: true,
@@ -81,22 +89,4 @@ function addData(chart, time, concentration) {
     chart.data.datasets[2].data[0]= {x:time,y:concentration,r:10};
     chart.update();
 }
-
-
-//submit.addEventListener("click", () => {
-//    console.log(dataOne.value);
-//    addData(myChart, "votes", dataOne.value)
-//})
-
-
-
-
-//function addData(chart, label, data) {
-//    chart.data.labels.push(label);
-//    chart.data.datasets.forEach((dataset) => {
-//        dataset.data.push(data);
-//    });
-//    chart.update();
-//}
-
 
