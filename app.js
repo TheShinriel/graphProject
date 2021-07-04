@@ -4,6 +4,9 @@ const DIFFUSION_TIME_IN_BLOOD = 4;
 let divAgreement = document.querySelector('.agreement');
 let divCalcTox = document.querySelector('.calc_tox');
 let divMsgError = document.querySelector('.alertBadData');
+let divResult = document.querySelector('.container_result');
+let pResult = document.querySelector('.p_result');
+
 let submitBtn = document.querySelector('.calc_data');
 let checkBoxAgreement = document.querySelector('input[id="accept_agreement"]');
 let ingestionTimeInput = document.querySelector('.time_after_ingestion');
@@ -108,15 +111,20 @@ function checkValidity(number) {
 }
 
 function displayResult(time, concentration) {
-    let result = Math.pow(0.840897, time);
+    let exposant = (Math.log10(50) - Math.log10(200)) / 8 * time;
+    let result = Math.pow(10,exposant);
     let resultPossible = result * 300;
     let resultProbable = result * 400;
 
+
     if(concentration > resultProbable) {
-        console.log("Toxicité hépatique probable. Envisager la mise en place de NAC");
+        divResult.setAttribute("class", "visible");
+        pResult.textContent = "Concentration associée à un risque important de toxicité.";
     } else if (concentration > resultPossible) {
-        console.log("Toxicité hépatique possible");
-    } else {
-        console.log("Pas d'hépatotoxicité");
+        divResult.setAttribute("class", "visible");
+        pResult.textContent = "Concentration associée à un possible risque de toxicité." ;
+    } else if (timeAfterIngestion != null) {
+        divResult.setAttribute("class", "visible");
+        pResult.textContent = "Concentration associée à un risque faible de toxicité.";
     }
 }
