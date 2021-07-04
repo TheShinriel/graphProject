@@ -1,12 +1,13 @@
 
-let submit = document.querySelector('.calc_data');
-let ingestionTime = document.querySelector('.time_after_ingestion');
-let paracetamolConcentration = document.querySelector('.paracetamol_concentration');
+let submitBtn = document.querySelector('.calc_data');
+let ingestionTimeInput = document.querySelector('.time_after_ingestion');
+let paracetamolConcentrationInput = document.querySelector('.paracetamol_concentration');
 
-let testData1 = 11;
-let testData2 = 21;
+let timeAfterIngestion = 15;
+let paracetamolConcentration = 180;
 
 let context = document.querySelector('.graph');
+
 
 
 let graph = new Chart(context, {
@@ -23,9 +24,6 @@ let graph = new Chart(context, {
             type: 'bubble',
             label: 'calcul',
             data: [{
-                x: 11,
-                y: 33,
-                r: 5
             }]
         }
     ],
@@ -56,6 +54,18 @@ let graph = new Chart(context, {
         }
     }
 });
+
+submitBtn.addEventListener("click", () => {
+    paracetamolConcentration = parseInt(paracetamolConcentrationInput.value);
+    timeAfterIngestion = parseInt(ingestionTimeInput.value); 
+    addData(graph, timeAfterIngestion, paracetamolConcentration )
+})
+
+
+function addData(chart, time, concentration) {
+    chart.data.datasets[2].data[0]= {x:time,y:concentration,r:10};
+    chart.update();
+}
 
 
 //submit.addEventListener("click", () => {
