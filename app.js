@@ -5,10 +5,9 @@ let divCalcTox = document.querySelector('.calc_tox')
 let checkBoxAgreement = document.querySelector('input[id="accept_agreement"]');
 let ingestionTimeInput = document.querySelector('.time_after_ingestion');
 let paracetamolConcentrationInput = document.querySelector('.paracetamol_concentration');
-let timeAfterIngestion = 15;
-let paracetamolConcentration = 180;
+let timeAfterIngestion;
+let paracetamolConcentration;
 
-console.log(divCalcTox);
 
 let context = document.querySelector('.graph');
 
@@ -39,6 +38,7 @@ let graph = new Chart(context, {
         ],
         labels: [0,4,8,12,16,20,24]
     },
+    
     options: 
     {
         responsive: true,
