@@ -6,6 +6,8 @@ let divCalcTox = document.querySelector('#calc_tox');
 let divMsgError = document.querySelector('.alertBadData');
 let divResult = document.querySelector('#container_result');
 let labelAgreement = document.querySelector('.text_agreement');
+let mainTitle = document.querySelector('.main_title');
+let subTitle = document.querySelector('.sub_title');
 let pResult = document.querySelector('.p_result');
 let btnTranslation = document.querySelectorAll('.btn_translation');
 
@@ -18,7 +20,9 @@ let context = document.querySelector('.graph');
 let timeAfterIngestion;
 let paracetamolConcentration;
 
-let currentLangage = "english";
+let currentLangage = "french";
+
+// ##################
 
 
 let dataTranslation = {
@@ -33,8 +37,10 @@ let dataTranslation = {
         },
         "buttons":
         {
-         "checkboxAgreement": "L'ingestion a eu lieu en prise unique, le nomogramme est donc utilisable.",   
+         "checkboxLabel": "L'ingestion a eu lieu en prise unique, le nomogramme est donc utilisable.",   
          "btnValidation": "Evaluer le risque",
+         "ingestionTimePlaceholder": "Durée post-ingestion (h)",
+         "paracetamolplaceholder": "Paracetamol conc. (mg/l)"
         },
         "results":
         {
@@ -57,18 +63,20 @@ let dataTranslation = {
         "page": "English",
         "main": "English",
         "subTitle": "English",
-        "warningBadData": "English",
+        "warningBadData": "English"
         },
         "buttons":
         {
-         "checkboxAgreement": "English",   
+         "checkboxLabel": "English",   
          "btnValidation": "English",
+         "ingestionTimePlaceholder": "English",
+         "paracetamolplaceholder": "English"
         },
         "results":
         {
             "resultProbable": "English",
             "resultPossible":  "English",
-            "resultOk": "English",
+            "resultOk": "English"
         },
         "graph":
         {
@@ -147,6 +155,7 @@ let graph = new Chart(context, {
 });
 
 
+console.log(dataTranslation[currentLangage].buttons);
 // Eventlistener definitions
 submitBtn.addEventListener("click", () => {
     paracetamolConcentration = parseFloat(paracetamolConcentrationInput.value);
@@ -166,13 +175,21 @@ checkBoxAgreement.addEventListener("click", () => {
 btnTranslation.forEach( btn => {
     btn.addEventListener("click", () => {
         currentLangage = btn.dataset.langage;
-        console.log(btn.dataset.langage);
-        graph.update();
+        changeLangage(currentLangage);
     })
 });
 
 
 // function definitions
+function changeLangage(langage) {
+    labelAgreement.textContent = dataTranslation[currentLangage].buttons.checkboxLabel;
+    ingestionTimeInput.placeholder = dataTranslation[currentLangage].buttons.ingestionTimePlaceholder;
+    paracetamolConcentrationInput.placeholder = dataTranslation[currentLangage].buttons.paracetamolplaceholder;
+    mainTitle.textContent = dataTranslation[currentLangage].title.main;
+    subTitle.textContent = dataTranslation[currentLangage].title.subTitle;
+    submitBtn.textContent = dataTranslation[currentLangage].buttons.btnValidation;
+}
+
 function addData(chart, time, concentration) {
     chart.data.datasets[2].data[0]= {x:time,y:concentration,r:10};
     chart.update();
