@@ -10,11 +10,16 @@ let mainTitle = document.querySelector('.main_title');
 let subTitle = document.querySelector('.sub_title');
 let pResult = document.querySelector('.p_result');
 let btnTranslation = document.querySelectorAll('.btn_translation');
+let datePickerFirstSample = document.querySelector('.first_sampling_time');
+let datePickerSecondSample = document.querySelector('.second_sampling_time');
 
+let btnCalcHalfLife = document.querySelector('.calc_half_life');
 let submitBtn = document.querySelector('.calc_data');
 let checkBoxAgreement = document.querySelector('input[id="accept_agreement"]');
 let ingestionTimeInput = document.querySelector('.time_after_ingestion');
 let paracetamolConcentrationInput = document.querySelector('.paracetamol_concentration');
+let InputParacetamolFirstSample = document.querySelector('.paracetamol_concentration_1');
+let InputParacetamolSecondSample = document.querySelector('.paracetamol_concentration_2');
 let context = document.querySelector('.graph');
 
 let timeAfterIngestion;
@@ -97,6 +102,7 @@ let graph = new Chart(context, {
             {
             type: 'line',
             label: dataTranslation[currentLangage].graph.toxLine,
+            labelName: "toxLine",
             borderColor: 'rgb(75, 192, 192)',
             backgroundColor: 'rgb(75, 192, 192)',
             data: [,200,100,50,25,12.5,6.25]
@@ -105,6 +111,7 @@ let graph = new Chart(context, {
             {
             type: 'line',
             label: dataTranslation[currentLangage].graph.secondLine,
+            labelName: "secondLine",
             borderColor: 'brown',
             backgroundColor: 'brown',
             data: [,150,75,37.5,18.75,9.375,4.6875],
@@ -113,6 +120,7 @@ let graph = new Chart(context, {
         {
             type: 'bubble',
             label: dataTranslation[currentLangage].graph.patientSaisi,
+            labelName: "patientSaisi",
             fill: true,
             backgroundColor: 'rgb(255, 99, 132)',
             data: [{}]
@@ -129,7 +137,8 @@ let graph = new Chart(context, {
             title: 
             {
                 display: true,
-                text: dataTranslation[currentLangage].graph.title
+                text: dataTranslation[currentLangage].graph.title,
+                textName: "title"
             }
         },
 
@@ -177,13 +186,28 @@ checkBoxAgreement.addEventListener("click", () => {
 btnTranslation.forEach( btn => {
     btn.addEventListener("click", () => {
         currentLangage = btn.dataset.langage;
-        changeLangage(currentLangage);
+        graph.data.datasets.forEach( dataset => {
+            dataset.label = dataTranslation[currentLangage].graph[dataset.labelName];
+        })
+        graph.options.plugins.title.text = dataTranslation[currentLangage].graph[graph.options.plugins.title.textName];
+        graph.update();
+        changeLangage();
     })
 });
 
+btnCalcHalfLife.addEventListener("click", () => {
+    let duree = (Date.parse(datePickerSecondSample.value) - Date.parse(datePickerFirstSample.value)) / 3_600_000;
+    let valeur1 = parseFloat(InputParacetamolFirstSample.value);
+    let valeur2 = parseFloat(InputParacetamolSecondSample.value);
+    let Ke = (Math.log(valeur1) - Math.log(valeur2)) / duree;
+    let halfLife =  Math.log(2) / Ke;
+    console.log(halfLife);
+
+})
+
 
 // function definitions
-function changeLangage(langage) {
+function changeLangage() {
     labelAgreement.textContent = dataTranslation[currentLangage].buttons.checkboxLabel;
     ingestionTimeInput.placeholder = dataTranslation[currentLangage].buttons.ingestionTimePlaceholder;
     paracetamolConcentrationInput.placeholder = dataTranslation[currentLangage].buttons.paracetamolplaceholder;
