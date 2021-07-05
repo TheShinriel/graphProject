@@ -29,18 +29,24 @@ let graph = new Chart(context, {
             {
             type: 'line',
             label: 'Ligne de toxicité (ligne 200)',
+            borderColor: 'rgb(75, 192, 192)',
+            backgroundColor: 'rgb(75, 192, 192)',
             data: [,200,100,50,25,12.5,6.25]
             },
 
             {
             type: 'line',
             label: 'Ligne de traitement (NAC)',
+            borderColor: 'brown',
+            backgroundColor: 'brown',
             data: [,150,75,37.5,18.75,9.375,4.6875],
             },
 
             {
             type: 'bubble',
             label: 'Concentration du patient saisie',
+            fill: true,
+            backgroundColor: 'rgb(255, 99, 132)',
             data: [{}]
             }
         ],
@@ -128,3 +134,5 @@ function displayResult(time, concentration) {
         pResult.textContent = "Concentration associée à un risque faible de toxicité.";
     }
 }
+
+
