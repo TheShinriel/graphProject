@@ -16,10 +16,6 @@ let context = document.querySelector('.graph');
 let timeAfterIngestion;
 let paracetamolConcentration;
 
-// TESSSSSSSSSSSSSSSSST
-// TESSSSSSSSSSSSSSSSSSSSST
-
-
 
 let graph = new Chart(context, {
     data: 
@@ -96,8 +92,8 @@ submitBtn.addEventListener("click", () => {
 
 checkBoxAgreement.addEventListener("click", () => {
     if (checkBoxAgreement.value) {
-        divAgreement.setAttribute("class", "invisible");
-        divCalcTox.setAttribute("class", "visible");
+        setNewAttribute(divAgreement, "invisible");
+        setNewAttribute(divCalcTox, "visible");
     }
 })
 
@@ -108,13 +104,17 @@ function addData(chart, time, concentration) {
 
 function checkValidity(number) {
     if(number < DIFFUSION_TIME_IN_BLOOD) {
-        divMsgError.setAttribute("class", "visible");
-        divResult.setAttribute("class", "invisible");
+        setNewAttribute(divMsgError, "visible");
+        setNewAttribute(divResult, "invisible");
         return null;
     } else {
-        divMsgError.setAttribute("class", "invisible");
+        setNewAttribute(divMsgError, "invisible");
         return number;
     }
+}
+
+function setNewAttribute(htmlComponent, classAttribute) {
+    htmlComponent.setAttribute("class", classAttribute);
 }
 
 function displayResult(time, concentration) {
@@ -125,13 +125,13 @@ function displayResult(time, concentration) {
 
 
     if(concentration > resultProbable) {
-        divResult.setAttribute("class", "visible");
+        setNewAttribute(divResult, "visible");
         pResult.textContent = "Concentration associée à un risque important de toxicité.";
     } else if (concentration > resultPossible) {
-        divResult.setAttribute("class", "visible");
+        setNewAttribute(divResult, "visible");
         pResult.textContent = "Concentration associée à un possible risque de toxicité." ;
     } else if (timeAfterIngestion != null) {
-        divResult.setAttribute("class", "visible");
+        setNewAttribute(divResult, "visible");
         pResult.textContent = "Concentration associée à un risque faible de toxicité.";
     }
 }
