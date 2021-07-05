@@ -165,10 +165,12 @@ submitBtn.addEventListener("click", () => {
     addData(graph, timeAfterIngestion, paracetamolConcentration );
 })
 
+
 checkBoxAgreement.addEventListener("click", () => {
-    if (checkBoxAgreement.value) {
-        setNewAttribute(divAgreement, "invisible");
+    if (checkBoxAgreement.checked) {
         setNewAttribute(divCalcTox, "visible");
+    } else {
+        setNewAttribute(divCalcTox, "invisible");
     }
 })
 
