@@ -109,6 +109,7 @@ function addData(chart, time, concentration) {
 function checkValidity(number) {
     if(number < DIFFUSION_TIME_IN_BLOOD) {
         divMsgError.setAttribute("class", "visible");
+        divResult.setAttribute("class", "invisible");
         return null;
     } else {
         divMsgError.setAttribute("class", "invisible");
