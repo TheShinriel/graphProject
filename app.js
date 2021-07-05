@@ -1,11 +1,13 @@
 
-const DIFFUSION_TIME_IN_BLOOD = 4;
+const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 
 let divAgreement = document.querySelector('#agreement');
 let divCalcTox = document.querySelector('#calc_tox');
 let divMsgError = document.querySelector('.alertBadData');
 let divResult = document.querySelector('#container_result');
+let labelAgreement = document.querySelector('.text_agreement');
 let pResult = document.querySelector('.p_result');
+let btnTranslation = document.querySelectorAll('.btn_translation');
 
 let submitBtn = document.querySelector('.calc_data');
 let checkBoxAgreement = document.querySelector('input[id="accept_agreement"]');
@@ -16,6 +18,68 @@ let context = document.querySelector('.graph');
 let timeAfterIngestion;
 let paracetamolConcentration;
 
+let currentLangage = "english";
+
+
+let dataTranslation = {
+    "french":
+    {
+        "title":
+        {
+        "page": "Evaluation de la toxicité du paracetamol",
+        "main": "Toxicité hépatique du paracétamol",
+        "subTitle": "en fonction du dosage sanguin et du délai post ingestion",
+        "warningBadData": "Attention le nomogramme n'est utilisable que si le prélèvement est réalisé au moins 4 heures après ingestion. Reprélever le patient.",
+        },
+        "buttons":
+        {
+         "checkboxAgreement": "L'ingestion a eu lieu en prise unique, le nomogramme est donc utilisable.",   
+         "btnValidation": "Evaluer le risque",
+        },
+        "results":
+        {
+            "resultProbable": "Concentration associée à un risque important de toxicité.",
+            "resultPossible":  "Concentration associée à un possible risque de toxicité.",
+            "resultOk": "Concentration associée à un risque faible de toxicité.",
+        },
+        "graph":
+        {
+            "title": "Nomogramme de Rumack et Matthew",
+            "toxLine": "Ligne de toxicité (ligne 200)",
+            "secondLine": "Ligne de traitement (NAC)",
+            "patientSaisi": "Concentration du patient saisie"
+        }
+    },
+    "english": 
+    {
+        "title":
+        {
+        "page": "English",
+        "main": "English",
+        "subTitle": "English",
+        "warningBadData": "English",
+        },
+        "buttons":
+        {
+         "checkboxAgreement": "English",   
+         "btnValidation": "English",
+        },
+        "results":
+        {
+            "resultProbable": "English",
+            "resultPossible":  "English",
+            "resultOk": "English",
+        },
+        "graph":
+        {
+            "title": "English",
+            "toxLine": "English",
+            "secondLine": "English",
+            "patientSaisi": "English"
+        }
+
+    }
+}
 
 let graph = new Chart(context, {
     data: 
@@ -24,7 +88,7 @@ let graph = new Chart(context, {
         [
             {
             type: 'line',
-            label: 'Ligne de toxicité (ligne 200)',
+            label: dataTranslation[currentLangage].graph.toxLine,
             borderColor: 'rgb(75, 192, 192)',
             backgroundColor: 'rgb(75, 192, 192)',
             data: [,200,100,50,25,12.5,6.25]
@@ -32,15 +96,15 @@ let graph = new Chart(context, {
 
             {
             type: 'line',
-            label: 'Ligne de traitement (NAC)',
+            label: dataTranslation[currentLangage].graph.secondLine,
             borderColor: 'brown',
             backgroundColor: 'brown',
             data: [,150,75,37.5,18.75,9.375,4.6875],
-            },
-
-            {
+        },
+        
+        {
             type: 'bubble',
-            label: 'Concentration du patient saisie',
+            label: dataTranslation[currentLangage].graph.patientSaisi,
             fill: true,
             backgroundColor: 'rgb(255, 99, 132)',
             data: [{}]
@@ -57,7 +121,7 @@ let graph = new Chart(context, {
             title: 
             {
                 display: true,
-                text: 'Nomogramme de Rumack et Matthew'
+                text: dataTranslation[currentLangage].graph.title
             }
         },
 
@@ -82,6 +146,8 @@ let graph = new Chart(context, {
     }
 });
 
+
+// Eventlistener definitions
 submitBtn.addEventListener("click", () => {
     paracetamolConcentration = parseFloat(paracetamolConcentrationInput.value);
     timeAfterIngestion = checkValidity(parseFloat(ingestionTimeInput.value)); 
@@ -97,6 +163,16 @@ checkBoxAgreement.addEventListener("click", () => {
     }
 })
 
+btnTranslation.forEach( btn => {
+    btn.addEventListener("click", () => {
+        currentLangage = btn.dataset.langage;
+        console.log(btn.dataset.langage);
+        graph.update();
+    })
+});
+
+
+// function definitions
 function addData(chart, time, concentration) {
     chart.data.datasets[2].data[0]= {x:time,y:concentration,r:10};
     chart.update();
@@ -126,14 +202,15 @@ function displayResult(time, concentration) {
 
     if(concentration > resultProbable) {
         setNewAttribute(divResult, "visible");
-        pResult.textContent = "Concentration associée à un risque important de toxicité.";
+        pResult.textContent = dataTranslation[currentLangage].results.resultProbable;
     } else if (concentration > resultPossible) {
         setNewAttribute(divResult, "visible");
-        pResult.textContent = "Concentration associée à un possible risque de toxicité." ;
+        pResult.textContent = dataTranslation[currentLangage].results.resultPossible ;
     } else if (timeAfterIngestion != null) {
         setNewAttribute(divResult, "visible");
-        pResult.textContent = "Concentration associée à un risque faible de toxicité.";
+        pResult.textContent = dataTranslation[currentLangage].results.resultOk;
     }
 }
+
 
 
