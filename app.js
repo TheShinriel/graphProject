@@ -2,33 +2,38 @@
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 
 let divAgreement = document.querySelector('#agreement');
+let divAgreementHalfLife = document.querySelector('#container_calc_half_life');
 let divCalcTox = document.querySelector('#calc_tox');
 let divMsgError = document.querySelector('.alertBadData');
 let divResult = document.querySelector('#container_result');
+
 let labelAgreement = document.querySelector('.text_agreement');
+
 let mainTitle = document.querySelector('.main_title');
 let subTitle = document.querySelector('.sub_title');
+
 let pResult = document.querySelector('.p_result');
+
 let btnTranslation = document.querySelectorAll('.btn_translation');
+let btnCalcHalfLife = document.querySelector('.calc_half_life');
+let btnSubmit = document.querySelector('.calc_data');
+
 let datePickerFirstSample = document.querySelector('.first_sampling_time');
 let datePickerSecondSample = document.querySelector('.second_sampling_time');
 
-let btnCalcHalfLife = document.querySelector('.calc_half_life');
-let submitBtn = document.querySelector('.calc_data');
-let checkBoxAgreement = document.querySelector('input[id="accept_agreement"]');
-let ingestionTimeInput = document.querySelector('.time_after_ingestion');
-let paracetamolConcentrationInput = document.querySelector('.paracetamol_concentration');
-let InputParacetamolFirstSample = document.querySelector('.paracetamol_concentration_1');
-let InputParacetamolSecondSample = document.querySelector('.paracetamol_concentration_2');
-let context = document.querySelector('.graph');
+let checkBoxAgreements = document.querySelectorAll('input[type="checkbox"]');
 
+let inputIngestioTime = document.querySelector('.time_after_ingestion');
+let inputParacetamolConcentration = document.querySelector('.paracetamol_concentration');
+let inputParacetamolFirstSample = document.querySelector('.paracetamol_concentration_1');
+let inputParacetamolSecondSample = document.querySelector('.paracetamol_concentration_2');
+
+let context = document.querySelector('.graph');
 let timeAfterIngestion;
 let paracetamolConcentration;
-
 let currentLangage = "french";
 
 // ##################
-
 
 let dataTranslation = {
     "french":
@@ -164,24 +169,31 @@ let graph = new Chart(context, {
 });
 
 
-console.log(dataTranslation[currentLangage].buttons);
 // Eventlistener definitions
-submitBtn.addEventListener("click", () => {
-    paracetamolConcentration = parseFloat(paracetamolConcentrationInput.value);
-    timeAfterIngestion = checkValidity(parseFloat(ingestionTimeInput.value)); 
+btnSubmit.addEventListener("click", () => {
+    paracetamolConcentration = parseFloat(inputParacetamolConcentration.value);
+    timeAfterIngestion = checkValidity(parseFloat(inputIngestioTime.value)); 
 
     displayResult(timeAfterIngestion, paracetamolConcentration );
     addData(graph, timeAfterIngestion, paracetamolConcentration );
 })
 
 
-checkBoxAgreement.addEventListener("click", () => {
-    if (checkBoxAgreement.checked) {
-        setNewAttribute(divCalcTox, "visible");
-    } else {
-        setNewAttribute(divCalcTox, "invisible");
-    }
-})
+checkBoxAgreements.forEach(checkbox => {
+    checkbox.addEventListener("click", () => {
+        if (checkbox.checked && checkbox.dataset.div == "divCalcTox") {
+            setNewAttribute(divCalcTox, "visible");
+        } else {
+            setNewAttribute(divCalcTox, "invisible");
+        }
+        if (checkbox.checked && checkbox.dataset.div == "divAgreementHalfLife") {
+            setNewAttribute(divAgreementHalfLife, "visible");
+        } else {
+            setNewAttribute(divAgreementHalfLife, "invisible");
+        }
+
+    })
+});
 
 btnTranslation.forEach( btn => {
     btn.addEventListener("click", () => {
@@ -197,8 +209,8 @@ btnTranslation.forEach( btn => {
 
 btnCalcHalfLife.addEventListener("click", () => {
     let duree = (Date.parse(datePickerSecondSample.value) - Date.parse(datePickerFirstSample.value)) / 3_600_000;
-    let valeur1 = parseFloat(InputParacetamolFirstSample.value);
-    let valeur2 = parseFloat(InputParacetamolSecondSample.value);
+    let valeur1 = parseFloat(inputParacetamolFirstSample.value);
+    let valeur2 = parseFloat(inputParacetamolSecondSample.value);
     let Ke = (Math.log(valeur1) - Math.log(valeur2)) / duree;
     let halfLife =  Math.log(2) / Ke;
     console.log(halfLife);
@@ -209,11 +221,11 @@ btnCalcHalfLife.addEventListener("click", () => {
 // function definitions
 function changeLangage() {
     labelAgreement.textContent = dataTranslation[currentLangage].buttons.checkboxLabel;
-    ingestionTimeInput.placeholder = dataTranslation[currentLangage].buttons.ingestionTimePlaceholder;
-    paracetamolConcentrationInput.placeholder = dataTranslation[currentLangage].buttons.paracetamolplaceholder;
+    inputIngestioTime.placeholder = dataTranslation[currentLangage].buttons.ingestionTimePlaceholder;
+    inputParacetamolConcentration.placeholder = dataTranslation[currentLangage].buttons.paracetamolplaceholder;
     mainTitle.textContent = dataTranslation[currentLangage].title.main;
     subTitle.textContent = dataTranslation[currentLangage].title.subTitle;
-    submitBtn.textContent = dataTranslation[currentLangage].buttons.btnValidation;
+    btnSubmit.textContent = dataTranslation[currentLangage].buttons.btnValidation;
 }
 
 function addData(chart, time, concentration) {

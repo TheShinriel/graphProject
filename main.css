@@ -26,7 +26,8 @@ h1{
 }
 
  #agreement,
- #calc_tox {
+ #calc_tox, 
+ .container_half_life {
      margin: 3rem;
  }
 
