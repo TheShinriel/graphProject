@@ -11,64 +11,66 @@
         <button class="btn_translation" data-langage="french"> Français </button>
         <button class="btn_translation" data-langage="english"> English </button>
     </header>
- <h1 class="main_title"> Toxicité hépatique du paracétamol</h1>
- <h2 class="sub_title"> en fonction du dosage sanguin et du délai post ingestion</h2>
+    <h1 class="main_title"> Toxicité hépatique du paracétamol</h1>
+    <h2 class="sub_title"> en fonction du dosage sanguin et du délai post ingestion</h2>
 
-<div id="agreement" class="visible">
-    <input type="checkbox" data-div="divCalcTox" name="accept_agreement" id="accept_agreement">
-    <label class="text_agreement" for="accept_agreement"> L'ingestion a eu lieu en prise unique, le nomogramme est donc utilisable. </label>
-</div>
+    <div id="agreement" class="visible">
+        <input type="checkbox" data-div="calc_tox" name="accept_agreement" id="accept_agreement">
+        <label class="text_agreement" for="accept_agreement"> L'ingestion a eu lieu en prise unique, le nomogramme est donc utilisable. </label>
+    </div>
 
- <div id="calc_tox" class="invisible">
-    <input class="time_after_ingestion"type="number" placeholder="Durée post-ingestion (h)">
-    <input class="paracetamol_concentration"type="number" placeholder="Paracetamol conc. (mg/l)">
-    <button class="calc_data" type="submit"> Evaluer le risque </button>
- </div>
+    <div id="calc_tox" class="invisible">
+        <input class="time_after_ingestion"type="number" placeholder="Durée post-ingestion (h)">
+        <input class="paracetamol_concentration"type="number" placeholder="Paracetamol conc. (mg/l)">
+        <button class="calc_data" type="submit"> Evaluer le risque </button>
+    </div>
 
- <div class="container_half_life">
-     <div id="need_half_life">
-        <input type="checkbox" data-div="divAgreementHalfLife" name="need_half_life" id="need_half_life">
-        <label class="text_need_half_life" for="need_half_life"> J'ai deux prélèvements et souhaite obtenir la demi vie. </label>
-     </div>
+    <div class="container_half_life">
+        <div id="need_half_life">
+            <input type="checkbox" data-div="container_calc_half_life" name="need_half_life" id="need_half_life">
+            <label class="text_need_half_life" for="need_half_life"> J'ai deux prélèvements et souhaite obtenir la demi vie. </label>
+        </div>
      
-     <div id="container_calc_half_life" class="invisible">
-        <div class="first_date_picker">
-             <label for="first_sampling_time" class="first_sampling_label"> Date une </label>
-             <input type="datetime-local" class="first_sampling_time" id="first_sampling_time">
-        </div>
-        <div class="second_date_picker">
-            <label for="second_sampling_time" class="second_sampling_label"> Date deux </label>
-             <input type="datetime-local" class="second_sampling_time" id="second_sampling_time">
-        </div>
-        <div class="first_concentration">
-            <label for="first_concentration"> Concentration 1 </label>
-            <input class="paracetamol_concentration_1" type="number"  id="first_concentration" placeholder="Paracetamol conc. (mg/l)">
-        </div>
-        <div class="second_concentration">
-            <label for="second_concentration"> Concentration 2 </label>
-            <input class="paracetamol_concentration_2" type="number" id="second_concentration" placeholder="Paracetamol conc. (mg/l)">
-        </div>
-        <button class="calc_half_life"> calculer </button>
-        <div class="result_half_life">
-            <p id="result_calc_half_life" class="invisible"> Result</p>
+        <div id="container_calc_half_life" class="invisible">
+            <div class="first_date_picker">
+                <label for="first_sampling_time" class="first_sampling_label"> Date une </label>
+                <input type="datetime-local" class="first_sampling_time" id="first_sampling_time">
+            </div>
+            <div class="second_date_picker">
+                <label for="second_sampling_time" class="second_sampling_label"> Date deux </label>
+                <input type="datetime-local" class="second_sampling_time" id="second_sampling_time">
+            </div>
+            <div class="first_concentration">
+                <label for="first_concentration"> Concentration 1 </label>
+                <input class="paracetamol_concentration_1" type="number"  id="first_concentration" placeholder="Paracetamol conc. (mg/l)">
+            </div>
+            <div class="second_concentration">
+                <label for="second_concentration"> Concentration 2 </label>
+                <input class="paracetamol_concentration_2" type="number" id="second_concentration" placeholder="Paracetamol conc. (mg/l)">
+            </div>
+            <button class="calc_half_life"> calculer </button>
+            <div class="result_half_life">
+                <p id="result_calc_half_life" class="invisible"> Result</p>
+            </div>
         </div>
     </div>
-</div>
- <div class="alertBadData invisible">
-     <h3> Attention le nomogramme n'est utilisable que si le prélèvement est réalisé au moins 4heures après ingestion. Reprélever le patient.</h3>
- </div>
 
- <div id="container_result"class="invisible">
-     <p class="p_result">résultat</p>
- </div>
+    <div class="alertBadData invisible">
+        <h3> Attention le nomogramme n'est utilisable que si le prélèvement est réalisé au moins 4heures après ingestion. Reprélever le patient.</h3>
+    </div>
 
- <canvas class="graph" width="400" height="200"></canvas>
+    <div id="container_result"class="invisible">
+        <p class="p_result">résultat</p>
+    </div>
 
- <footer> 
-    <p class="title_ref"> Références : </p>
-    <p class="ref">White SJ, Rumack BH. The acetaminophen toxicity equations: "solutions" for acetaminophen toxicity based on the Rumack-Matthew nomogram. Ann Emerg Med. 2005 May;45(5):563-4. doi: 10.1016/j.annemergmed.2004.11.033. PMID: 15855961.</p>
-    <p class="ref">Saint-Marcoux F, Libert F; groupe Suivi thérapeutique pharmacologique de la Société française de pharmacologie et de thérapeutique. Éléments de l'interprétation et du dialogue clinico-biologique pour quelques paramètres usuels de pharmacologie-toxicologie [Practical information for therapeutic drug monitoring of the most common compounds]. Therapie. 2016 Sep;71(4):405-34. French. doi: 10.1016/j.therap.2016.01.007. Epub 2016 May 4. PMID: 27203171.</p>
- </footer>
- <script src="app.js"></script>
+    <canvas class="graph" width="400" height="200"></canvas>
+
+    <footer> 
+        <p class="title_ref"> Références : </p>
+        <p class="ref">White SJ, Rumack BH. The acetaminophen toxicity equations: "solutions" for acetaminophen toxicity based on the Rumack-Matthew nomogram. Ann Emerg Med. 2005 May;45(5):563-4. doi: 10.1016/j.annemergmed.2004.11.033. PMID: 15855961.</p>
+        <p class="ref">Saint-Marcoux F, Libert F; groupe Suivi thérapeutique pharmacologique de la Société française de pharmacologie et de thérapeutique. Éléments de l'interprétation et du dialogue clinico-biologique pour quelques paramètres usuels de pharmacologie-toxicologie [Practical information for therapeutic drug monitoring of the most common compounds]. Therapie. 2016 Sep;71(4):405-34. French. doi: 10.1016/j.therap.2016.01.007. Epub 2016 May 4. PMID: 27203171.</p>
+    </footer>
+    
+    <script src="app.js"></script>
 </body>
 </html>
