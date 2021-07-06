@@ -186,14 +186,20 @@ checkBoxAgreements.forEach(checkbox => {
     checkbox.addEventListener("click", () => {
         if (checkbox.checked && checkbox.dataset.div == "divCalcTox") {
             setNewAttribute(divCalcTox, "visible");
-        } else {
+        };
+        
+        if(!checkbox.checked && checkbox.dataset.div == "divCalcTox") {
             setNewAttribute(divCalcTox, "invisible");
-        }
+        };
+
         if (checkbox.checked && checkbox.dataset.div == "divAgreementHalfLife") {
             setNewAttribute(divAgreementHalfLife, "visible");
-        } else {
+        };
+
+        if(!checkbox.checked && checkbox.dataset.div == "divAgreementHalfLife") {
+            console.log("je passe ici");
             setNewAttribute(divAgreementHalfLife, "invisible");
-        }
+        };
 
     })
 });
