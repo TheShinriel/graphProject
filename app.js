@@ -8,12 +8,15 @@ let divMsgError = document.querySelector('.alertBadData');
 let divResult = document.querySelector('#container_result');
 
 let labelAgreement = document.querySelector('.text_agreement');
-let labelNeedHalfLife = document.querySelector('.text_need_half_life')
+let labelNeedHalfLife = document.querySelector('.text_need_half_life');
+let labelFirstSampleDatePicker = document.querySelector('.first_sampling_label');
+let labelSecondSampleDatePicker = document.querySelector('.second_sampling_label');
 
 let mainTitle = document.querySelector('.main_title');
 let subTitle = document.querySelector('.sub_title');
 
 let pResult = document.querySelector('.p_result');
+let pResultCalcHalfLife = document.querySelector('#result_calc_half_life');
 
 let btnTranslation = document.querySelectorAll('.btn_translation');
 let btnCalcHalfLife = document.querySelector('.calc_half_life');
@@ -50,6 +53,8 @@ let dataTranslation = {
         {
          "checkboxLabelAgreement": "L'ingestion a eu lieu en prise unique, le nomogramme est donc utilisable.",   
          "checkboxLabelHalfLife": "J'ai deux prélèvement et souhaite obtenir la demie vie",
+         "datePickerLabelFirstSample": "Première date",
+         "datePickerLabelSecondSample": "Deuxiéme date",
          "btnValidation": "Evaluer le risque",
          "ingestionTimePlaceholder": "Durée post-ingestion (h)",
          "paracetamolplaceholder": "Paracetamol conc. (mg/l)"
@@ -59,6 +64,7 @@ let dataTranslation = {
             "resultProbable": "Concentration associée à un risque important de toxicité.",
             "resultPossible":  "Concentration associée à un possible risque de toxicité.",
             "resultOk": "Concentration associée à un risque faible de toxicité.",
+            "resultHalfLife": "La demi vie est de : "
         },
         "graph":
         {
@@ -81,6 +87,8 @@ let dataTranslation = {
         {
          "checkboxLabelAgreement": "English",   
          "checkboxLabelHalfLife": "English",
+         "datePickerLabelFirstSample": "English",
+         "datePickerLabelSecondSample": "English",
          "btnValidation": "English",
          "ingestionTimePlaceholder": "English",
          "paracetamolplaceholder": "English"
@@ -89,7 +97,8 @@ let dataTranslation = {
         {
             "resultProbable": "English",
             "resultPossible":  "English",
-            "resultOk": "English"
+            "resultOk": "English",
+            "resultHalfLife": "English"
         },
         "graph":
         {
@@ -187,7 +196,7 @@ checkBoxAgreements.forEach(checkbox => {
         if (checkbox.checked && checkbox.dataset.div == "divCalcTox") {
             setNewAttribute(divCalcTox, "visible");
         };
-        
+
         if(!checkbox.checked && checkbox.dataset.div == "divCalcTox") {
             setNewAttribute(divCalcTox, "invisible");
         };
@@ -217,22 +226,21 @@ btnTranslation.forEach( btn => {
 });
 
 btnCalcHalfLife.addEventListener("click", () => {
-    let duree = (Date.parse(datePickerSecondSample.value) - Date.parse(datePickerFirstSample.value)) / 3_600_000;
-    let valeur1 = parseFloat(inputParacetamolFirstSample.value);
-    let valeur2 = parseFloat(inputParacetamolSecondSample.value);
-    let Ke = (Math.log(valeur1) - Math.log(valeur2)) / duree;
-    let halfLife =  Math.log(2) / Ke;
-    console.log(halfLife);
-
+    displayHalfLife();
 })
 
 
 // function definitions
 function changeLangage() {
+
     labelAgreement.textContent = dataTranslation[currentLangage].buttons.checkboxLabelAgreement;
     labelNeedHalfLife.textContent = dataTranslation[currentLangage].buttons.checkboxLabelHalfLife;
+    labelFirstSampleDatePicker.textContent = dataTranslation[currentLangage].buttons.datePickerLabelFirstSample;
+    labelSecondSampleDatePicker.textContent = dataTranslation[currentLangage].buttons.datePickerLabelSecondSample;
+    
     inputIngestioTime.placeholder = dataTranslation[currentLangage].buttons.ingestionTimePlaceholder;
     inputParacetamolConcentration.placeholder = dataTranslation[currentLangage].buttons.paracetamolplaceholder;
+    
     mainTitle.textContent = dataTranslation[currentLangage].title.main;
     subTitle.textContent = dataTranslation[currentLangage].title.subTitle;
     btnSubmit.textContent = dataTranslation[currentLangage].buttons.btnValidation;
@@ -257,6 +265,21 @@ function checkValidity(number) {
 function setNewAttribute(htmlComponent, classAttribute) {
     htmlComponent.setAttribute("class", classAttribute);
 }
+function displayHalfLife() {
+    result = calcHalfLife();
+    resultIsOk = checkHalfLifeResult(result);
+    displayResultHalfLife(resultIsOk);
+    pResultCalcHalfLife.textContent = `${dataTranslation[currentLangage].results.resultHalfLife} ${result}`;
+}
+
+function calcHalfLife() {
+    let duree = (Date.parse(datePickerSecondSample.value) - Date.parse(datePickerFirstSample.value)) / 3_600_000;
+    let valeur1 = parseFloat(inputParacetamolFirstSample.value);
+    let valeur2 = parseFloat(inputParacetamolSecondSample.value);
+    let Ke = (Math.log(valeur1) - Math.log(valeur2)) / duree;
+    let halfLife =  Math.log(2) / Ke;
+    return halfLife;
+}
 
 function displayResult(time, concentration) {
     let exposant = (Math.log10(50) - Math.log10(200)) / 8 * time;
@@ -274,6 +297,21 @@ function displayResult(time, concentration) {
     } else if (timeAfterIngestion != null) {
         setNewAttribute(divResult, "visible");
         pResult.textContent = dataTranslation[currentLangage].results.resultOk;
+    }
+}
+function displayResultHalfLife(resultIsOk) {
+    if(resultIsOk) {
+        setNewAttribute(pResultCalcHalfLife, "visible result_ok");
+    } else {
+        setNewAttribute(pResultCalcHalfLife, "visible result_not_ok");
+    }
+}
+
+function checkHalfLifeResult(number) {
+    if(number <= 4) {
+        return true;
+    } else {
+        return false;
     }
 }
 
