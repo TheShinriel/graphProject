@@ -32,12 +32,23 @@
      </div>
      
      <div id="container_calc_half_life" class="invisible">
-         <input type="datetime-local" class="first_sampling_time">
-         <input class="paracetamol_concentration_1" type="number" placeholder="Paracetamol conc. (mg/l)">
-         <input type="datetime-local" class="second_sampling_time">
-         <input class="paracetamol_concentration_2" type="number" placeholder="Paracetamol conc. (mg/l)">
-         
-         <button class="calc_half_life"> calculer </button>
+        <div class="first_date_picker">
+             <label for="first_sampling_time"> Date une </label>
+             <input type="datetime-local" class="first_sampling_time" id="first_sampling_time">
+        </div>
+        <div class="second_date_picker">
+            <label for="second_sampling_time"> Date deux </label>
+             <input type="datetime-local" class="second_sampling_time" id="second_sampling_time">
+        </div>
+        <div class="first_concentration">
+            <label for="first_concentration"> Concentration 1 </label>
+            <input class="paracetamol_concentration_1" type="number"  id="first_concentration" placeholder="Paracetamol conc. (mg/l)">
+        </div>
+        <div class="second_concentration">
+            <label for="second_concentration"> Concentration 2 </label>
+            <input class="paracetamol_concentration_2" type="number" id="second_concentration" placeholder="Paracetamol conc. (mg/l)">
+        </div>
+        <button class="calc_half_life"> calculer </button>
     </div>
 </div>
  <div class="alertBadData invisible">

@@ -8,6 +8,7 @@ let divMsgError = document.querySelector('.alertBadData');
 let divResult = document.querySelector('#container_result');
 
 let labelAgreement = document.querySelector('.text_agreement');
+let labelNeedHalfLife = document.querySelector('.text_need_half_life')
 
 let mainTitle = document.querySelector('.main_title');
 let subTitle = document.querySelector('.sub_title');
@@ -47,7 +48,8 @@ let dataTranslation = {
         },
         "buttons":
         {
-         "checkboxLabel": "L'ingestion a eu lieu en prise unique, le nomogramme est donc utilisable.",   
+         "checkboxLabelAgreement": "L'ingestion a eu lieu en prise unique, le nomogramme est donc utilisable.",   
+         "checkboxLabelHalfLife": "J'ai deux prélèvement et souhaite obtenir la demie vie",
          "btnValidation": "Evaluer le risque",
          "ingestionTimePlaceholder": "Durée post-ingestion (h)",
          "paracetamolplaceholder": "Paracetamol conc. (mg/l)"
@@ -77,7 +79,8 @@ let dataTranslation = {
         },
         "buttons":
         {
-         "checkboxLabel": "English",   
+         "checkboxLabelAgreement": "English",   
+         "checkboxLabelHalfLife": "English",
          "btnValidation": "English",
          "ingestionTimePlaceholder": "English",
          "paracetamolplaceholder": "English"
@@ -220,7 +223,8 @@ btnCalcHalfLife.addEventListener("click", () => {
 
 // function definitions
 function changeLangage() {
-    labelAgreement.textContent = dataTranslation[currentLangage].buttons.checkboxLabel;
+    labelAgreement.textContent = dataTranslation[currentLangage].buttons.checkboxLabelAgreement;
+    labelNeedHalfLife.textContent = dataTranslation[currentLangage].buttons.checkboxLabelHalfLife;
     inputIngestioTime.placeholder = dataTranslation[currentLangage].buttons.ingestionTimePlaceholder;
     inputParacetamolConcentration.placeholder = dataTranslation[currentLangage].buttons.paracetamolplaceholder;
     mainTitle.textContent = dataTranslation[currentLangage].title.main;
