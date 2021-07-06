@@ -192,24 +192,14 @@ btnSubmit.addEventListener("click", () => {
 
 
 checkBoxAgreements.forEach(checkbox => {
-    checkbox.addEventListener("click", () => {
-        if (checkbox.checked && checkbox.dataset.div == "divCalcTox") {
-            setNewAttribute(divCalcTox, "visible");
-        };
-
-        if(!checkbox.checked && checkbox.dataset.div == "divCalcTox") {
-            setNewAttribute(divCalcTox, "invisible");
-        };
-
-        if (checkbox.checked && checkbox.dataset.div == "divAgreementHalfLife") {
-            setNewAttribute(divAgreementHalfLife, "visible");
-        };
-
-        if(!checkbox.checked && checkbox.dataset.div == "divAgreementHalfLife") {
-            console.log("je passe ici");
-            setNewAttribute(divAgreementHalfLife, "invisible");
-        };
-
+    checkbox.addEventListener("click", (event) => {
+        if(event.target.checked == true) {
+            document.querySelector('#' + event.target.dataset.div).classList.remove("invisible");
+            document.querySelector('#' + event.target.dataset.div).classList.add("visible");
+        } else {
+            document.querySelector('#' + event.target.dataset.div).classList.remove("visible");
+            document.querySelector('#' + event.target.dataset.div).classList.add("invisible");
+        }
     })
 });
 
