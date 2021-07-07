@@ -22,6 +22,7 @@ let pResultCalcHalfLife = document.querySelector('#result_calc_half_life');
 let btnTranslation = document.querySelectorAll('.btn_translation');
 let btnCalcHalfLife = document.querySelector('.calc_half_life');
 let btnSubmit = document.querySelector('.calc_data');
+let btnCalcDose = document.querySelector('.calc_dose');
 
 let datePickerFirstSample = document.querySelector('.first_sampling_time');
 let datePickerSecondSample = document.querySelector('.second_sampling_time');
@@ -32,6 +33,8 @@ let inputIngestioTime = document.querySelector('.time_after_ingestion');
 let inputParacetamolConcentration = document.querySelector('.paracetamol_concentration');
 let inputParacetamolFirstSample = document.querySelector('.paracetamol_concentration_1');
 let inputParacetamolSecondSample = document.querySelector('.paracetamol_concentration_2');
+let inputHypotheticDose = document.querySelector('.subject_hypothetic_dosis');
+let inputSubjectWeight = document.querySelector('.subject_weight');
 
 let context = document.querySelector('.graph');
 let timeAfterIngestion;
@@ -222,6 +225,10 @@ btnCalcHalfLife.addEventListener("click", () => {
     displayHalfLife();
 })
 
+btnCalcDose.addEventListener("click", () => {
+  displayDoseWeight();
+})
+
 
 // function definitions
 function changeLangage() {
@@ -317,3 +324,9 @@ function checkIfNumberOneSupNumberTwo (number1, number2) {
     return number1 > number2;
 }
 
+function displayDoseWeight() {
+    let weight = inputSubjectWeight.value;
+    let dose = inputHypotheticDose.value;
+    let result = dose * 1000 / weight;
+    console.log(result);
+}

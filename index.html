@@ -14,6 +14,12 @@
     <h1 class="main_title"> Toxicité hépatique du paracétamol</h1>
     <h2 class="sub_title"> en fonction du dosage sanguin et du délai post ingestion</h2>
 
+    <div class="container_calc_tox_dosage">
+        <input class="subject_weight"type="number" placeholder="Poids du patient (kg)">
+        <input class="subject_hypothetic_dosis"type="number" placeholder="Dose suposée ingérée (g)">
+        <button class="calc_dose" type="submit"> Calcul de la dose en mg/kg </button>
+
+    </div>
     <div id="agreement" class="visible">
         <input type="checkbox" data-div="calc_tox" name="accept_agreement" id="accept_agreement">
         <label class="text_agreement" for="accept_agreement"> L'ingestion a eu lieu en prise unique, le nomogramme est donc utilisable. </label>
