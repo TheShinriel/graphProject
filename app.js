@@ -1,5 +1,6 @@
-
+"use strict"
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
+const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
 
 let divAgreement = document.querySelector('#agreement');
 let divAgreementHalfLife = document.querySelector('#container_calc_half_life');
@@ -64,7 +65,8 @@ let dataTranslation = {
             "resultProbable": "Concentration associée à un risque important de toxicité.",
             "resultPossible":  "Concentration associée à un possible risque de toxicité.",
             "resultOk": "Concentration associée à un risque faible de toxicité.",
-            "resultHalfLife": "La demi vie est de : "
+            "resultHalfLife": "La demi vie est de : ",
+            "badCalcul": "Les dates ou les concentrations saisies ne permettent pas le calcul de la demi vie."
         },
         "graph":
         {
@@ -98,7 +100,8 @@ let dataTranslation = {
             "resultProbable": "English",
             "resultPossible":  "English",
             "resultOk": "English",
-            "resultHalfLife": "English"
+            "resultHalfLife": "English",
+            "badCalcul": "English"
         },
         "graph":
         {
@@ -256,10 +259,15 @@ function setNewAttribute(htmlComponent, classAttribute) {
     htmlComponent.setAttribute("class", classAttribute);
 }
 function displayHalfLife() {
-    result = calcHalfLife();
-    resultIsOk = checkHalfLifeResult(result);
-    displayResultHalfLife(resultIsOk);
-    pResultCalcHalfLife.textContent = `${dataTranslation[currentLangage].results.resultHalfLife} ${result}`;
+    if(datePickerSecondSample.value > datePickerFirstSample.value && inputParacetamolFirstSample.value > inputParacetamolSecondSample.value) {
+        result = calcHalfLife();
+        resultIsOk = checkHalfLifeResult(result);
+        displayResultHalfLife(resultIsOk);
+        pResultCalcHalfLife.textContent = `${dataTranslation[currentLangage].results.resultHalfLife} ${result} h`;    
+    } else {
+        displayResultHalfLife(false);
+        pResultCalcHalfLife.textContent = dataTranslation[currentLangage].results.badCalcul;
+    }
 }
 
 function calcHalfLife() {
@@ -298,12 +306,14 @@ function displayResultHalfLife(resultIsOk) {
 }
 
 function checkHalfLifeResult(number) {
-    if(number <= 4) {
+    if(number <= OPTIMAL_ELIMINATION_TIME) {
         return true;
     } else {
         return false;
     }
 }
 
-
+function checkIfNumberOneSupNumberTwo (number1, number2) {
+    return number1 > number2;
+}
 
