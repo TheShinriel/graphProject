@@ -268,7 +268,7 @@ function calcHalfLife() {
     let valeur2 = parseFloat(inputParacetamolSecondSample.value);
     let Ke = (Math.log(valeur1) - Math.log(valeur2)) / duree;
     let halfLife =  Math.log(2) / Ke;
-    return halfLife;
+    return halfLife.toFixed(1);
 }
 
 function displayResult(time, concentration) {
