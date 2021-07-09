@@ -1,5 +1,6 @@
 "use strict"
 
+
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
 
@@ -7,6 +8,7 @@ const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
 let divAgreement = document.querySelector('#agreement');
 let divAgreementHalfLife = document.querySelector('#container_calc_half_life');
 let divCalcTox = document.querySelector('#calc_tox');
+let divNeedDose = document.querySelector('#need_dose');
 let divMsgError = document.querySelector('.alertBadData');
 let divResult = document.querySelector('#container_result');
 
@@ -19,6 +21,7 @@ let mainTitle = document.querySelector('.main_title');
 let subTitle = document.querySelector('.sub_title');
 
 let pResult = document.querySelector('.p_result');
+let pResultNeedDose = document.querySelector('#need_dose_result');
 let pResultCalcHalfLife = document.querySelector('#result_calc_half_life');
 
 let btnTranslation = document.querySelectorAll('.btn_translation');
@@ -249,7 +252,7 @@ function changeLangage() {
 }
 
 function addData(chart, time, concentration) {
-    chart.data.datasets[2].data[0]= {x:time,y:concentration,r:10};
+    chart.data.datasets[2].data[0]= {x:time,y:concentration,r:7};
     chart.update();
 }
 
@@ -327,6 +330,7 @@ function displayDoseWeight() {
     let weight = inputSubjectWeight.value;
     let dose = inputHypotheticDose.value;
     let result = dose * 1000 / weight;
+    pResultNeedDose.textContent = result;
     console.log(result);
 }
 
