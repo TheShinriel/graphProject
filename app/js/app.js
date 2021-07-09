@@ -1,14 +1,7 @@
 "use strict"
 
-module.exports = addition;
-
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
-
-function addition(a,b) {
-    return a + b;
-};
-
 
 
 let divAgreement = document.querySelector('#agreement');

@@ -1,4 +1,4 @@
-const tests = require('./decouverte.js');
+const tests = require('../app/js/decouverte.js');
 
 test('addNumbers ', () => {
     expect(tests.addNumbers(2,1)).toBe(3);
