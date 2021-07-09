@@ -1,6 +1,15 @@
 "use strict"
+
+module.exports = addition;
+
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
+
+function addition(a,b) {
+    return a + b;
+};
+
+
 
 let divAgreement = document.querySelector('#agreement');
 let divAgreementHalfLife = document.querySelector('#container_calc_half_life');
@@ -320,9 +329,6 @@ function checkHalfLifeResult(number) {
     }
 }
 
-function checkIfNumberOneSupNumberTwo (number1, number2) {
-    return number1 > number2;
-}
 
 function displayDoseWeight() {
     let weight = inputSubjectWeight.value;
@@ -330,3 +336,7 @@ function displayDoseWeight() {
     let result = dose * 1000 / weight;
     console.log(result);
 }
+
+
+
+

@@ -1,0 +1,22 @@
+{
+  "name": "hopitox",
+  "version": "1.0.0",
+  "description": "aide au diagnostic des surdosage médicamenteux",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Payhache/graphProject.git"
+  },
+  "author": "payhache et Khepri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Payhache/graphProject/issues"
+  },
+  "homepage": "https://github.com/Payhache/graphProject#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
