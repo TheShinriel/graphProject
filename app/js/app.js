@@ -271,10 +271,13 @@ function setNewAttribute(htmlComponent, classAttribute) {
     htmlComponent.setAttribute("class", classAttribute);
 }
 
+
 function displayHalfLife() {
-    if(datePickerSecondSample.value > datePickerFirstSample.value && inputParacetamolFirstSample.value > inputParacetamolSecondSample.value) {
-        result = calcHalfLife();
-        resultIsOk = checkHalfLifeResult(result);
+    let valeur1 = parseFloat(inputParacetamolFirstSample.value);
+    let valeur2 = parseFloat(inputParacetamolSecondSample.value);
+    if(datePickerSecondSample.value > datePickerFirstSample.value && valeur1 > valeur2) {
+        let result = calcHalfLife(valeur1, valeur2);
+        let resultIsOk = checkHalfLifeResult(result);
         displayResultHalfLife(resultIsOk);
         pResultCalcHalfLife.textContent = `${dataTranslation[currentLangage].results.resultHalfLife} ${result} h`;    
     } else {
@@ -282,11 +285,9 @@ function displayHalfLife() {
         pResultCalcHalfLife.textContent = dataTranslation[currentLangage].results.badCalcul;
     }
 }
-function calcHalfLife() {
+function calcHalfLife(nbre1, nbre2) {
     let duree = (Date.parse(datePickerSecondSample.value) - Date.parse(datePickerFirstSample.value)) / 3_600_000;
-    let valeur1 = parseFloat(inputParacetamolFirstSample.value);
-    let valeur2 = parseFloat(inputParacetamolSecondSample.value);
-    let Ke = (Math.log(valeur1) - Math.log(valeur2)) / duree;
+    let Ke = (Math.log(nbre1) - Math.log(nbre2)) / duree;
     let halfLife =  Math.log(2) / Ke;
     return halfLife.toFixed(1);
 }
@@ -333,7 +334,5 @@ function displayDoseWeight() {
     pResultNeedDose.textContent = `La dose ingérée est donc ${result} mg/Kg.`;
     console.log(result);
 }
-
-
 
 
