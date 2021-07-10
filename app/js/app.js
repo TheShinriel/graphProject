@@ -331,8 +331,7 @@ function displayDoseWeight() {
     let weight = inputSubjectWeight.value;
     let dose = inputHypotheticDose.value;
     let result = dose * 1000 / weight;
-    pResultNeedDose.textContent = `La dose ingérée est donc ${result} mg/Kg.`;
-    console.log(result);
+    pResultNeedDose.textContent = `La dose ingérée est donc ${result.toFixed(0)} mg/Kg.`;
 }
 
 
