@@ -1,6 +1,5 @@
 "use strict"
-
-
+export {calcHalfLife};
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
 
@@ -47,6 +46,7 @@ let paracetamolConcentration;
 let currentLangage = "french";
 
 // ##################
+console.log(divNeedDose);
 
 let dataTranslation = {
     "french":
@@ -270,6 +270,7 @@ function checkValidity(number) {
 function setNewAttribute(htmlComponent, classAttribute) {
     htmlComponent.setAttribute("class", classAttribute);
 }
+
 function displayHalfLife() {
     if(datePickerSecondSample.value > datePickerFirstSample.value && inputParacetamolFirstSample.value > inputParacetamolSecondSample.value) {
         result = calcHalfLife();
@@ -281,7 +282,6 @@ function displayHalfLife() {
         pResultCalcHalfLife.textContent = dataTranslation[currentLangage].results.badCalcul;
     }
 }
-
 function calcHalfLife() {
     let duree = (Date.parse(datePickerSecondSample.value) - Date.parse(datePickerFirstSample.value)) / 3_600_000;
     let valeur1 = parseFloat(inputParacetamolFirstSample.value);
@@ -330,7 +330,7 @@ function displayDoseWeight() {
     let weight = inputSubjectWeight.value;
     let dose = inputHypotheticDose.value;
     let result = dose * 1000 / weight;
-    pResultNeedDose.textContent = result;
+    pResultNeedDose.textContent = `La dose ingérée est donc ${result} mg/Kg.`;
     console.log(result);
 }
 

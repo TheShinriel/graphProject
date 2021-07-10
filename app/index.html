@@ -12,20 +12,20 @@
         <button class="btn_translation" data-langage="english"> English </button>
     </header>
     <h1 class="main_title"> #HopiTox </h1>
-    <h2 class="sub_title"> Toxicité hépatique du paracétamol en fonction du dosage sanguin et du délai post ingestion</h2>
+    <h2 class="sub_title"> HopiTox est un outil dynamique reprenant l'équation de Rumack dans une interface intuitive. Il permet de réaliser le calcul de la dose ingérée en mg/Kg, l'utilisation d'un nomogramme dynamique pour évaluer le risque toxique en fonction de la paracétamolémie, et le calcul de la demi-vie. Il ne subsitue évidemment pas à l'avis médical ni au dialogue clinico-biologique. </h2>
 
     <div id="need_dose_agreement" class="visible">
-        <input type="checkbox" data-div="need_dose" name="need_dose" id="need_dose">
-        <label class="need_dose" for="need_dose"> Il est possible de calculer la dose en mg/Kg. </label>
+        <input type="checkbox" data-div="need_dose" name="need_dose" id="need_dose_calc">
+        <label class="need_dose" for="need_dose_calc"> Il est possible de calculer la dose en mg/Kg. </label>
     </div>
 
-    <div id="need_dose" class="visible">
+    <div id="need_dose" class="invisible">
         <input class="subject_weight"type="number" placeholder="Poids du patient (kg)">
-        <input class="subject_hypothetic_dosis"type="number" placeholder="Dose suposée ingérée (g)">
+        <input class="subject_hypothetic_dosis"type="number" placeholder="Dose supposée(g)">
         <button class="calc_dose" type="submit"> Calcul de la dose en mg/kg </button>
     </div>
     <div class="need_dose_result_container">
-        <p id="need_dose_result"> result</p>
+        <p id="need_dose_result"> </p>
     </div>
     <div id="agreement" class="visible">
         <input type="checkbox" data-div="calc_tox" name="accept_agreement" id="accept_agreement">
@@ -33,10 +33,21 @@
     </div>
 
     <div id="calc_tox" class="invisible">
-        <input class="time_after_ingestion"type="number" placeholder="Durée post-ingestion (h)">
-        <input class="paracetamol_concentration"type="number" placeholder="Paracetamol conc. (mg/l)">
+        <input class="time_after_ingestion"type="number" placeholder="Durée post-ingest. (h)">
+        <input class="paracetamol_concentration"type="number" placeholder="Paracetamol (mg/l)">
         <button class="calc_data" type="submit"> Evaluer le risque </button>
     </div>
+
+
+    <div class="alertBadData invisible">
+        <h3> Attention le nomogramme n'est utilisable que si le prélèvement est réalisé au moins 4heures après ingestion. Reprélever le patient.</h3>
+    </div>
+
+    <div id="container_result"class="invisible">
+        <p class="p_result">résultat</p>
+    </div>
+
+    <canvas class="graph" width="400" height="200"></canvas>
 
     <div class="container_half_life">
         <div id="need_half_life">
@@ -46,16 +57,17 @@
      
         <div id="container_calc_half_life" class="invisible">
             <div class="first_date_picker">
-                <label for="first_sampling_time" class="first_sampling_label"> Date une </label>
+                <label for="first_sampling_time" class="first_sampling_label"> Date et heure du premier prélèvement </label>
                 <input type="datetime-local" class="first_sampling_time" id="first_sampling_time">
-            </div>
-            <div class="second_date_picker">
-                <label for="second_sampling_time" class="second_sampling_label"> Date deux </label>
-                <input type="datetime-local" class="second_sampling_time" id="second_sampling_time">
             </div>
             <div class="first_concentration">
                 <label for="first_concentration"> Concentration 1 </label>
                 <input class="paracetamol_concentration_1" type="number"  id="first_concentration" placeholder="Paracetamol conc. (mg/l)">
+            </div>
+
+            <div class="second_date_picker">
+                <label for="second_sampling_time" class="second_sampling_label"> Date et heure du second prélèvement </label>
+                <input type="datetime-local" class="second_sampling_time" id="second_sampling_time">
             </div>
             <div class="second_concentration">
                 <label for="second_concentration"> Concentration 2 </label>
@@ -68,15 +80,11 @@
         </div>
     </div>
 
-    <div class="alertBadData invisible">
-        <h3> Attention le nomogramme n'est utilisable que si le prélèvement est réalisé au moins 4heures après ingestion. Reprélever le patient.</h3>
+    <div class="contact">
+        <p>Créé en juillet 2021 suite à une discussion entre une biologiste et un développeur, cette outil est gratuit, réalisé de maniére bénévole, et peut être incrémenté au gré de vos demandes. </p>
+        <p> <a HREF="mailto:manon.launay@wanadoo.fr">Nous contacter</a></p>
     </div>
-
-    <div id="container_result"class="invisible">
-        <p class="p_result">résultat</p>
-    </div>
-
-    <canvas class="graph" width="400" height="200"></canvas>
+    
 
     <footer> 
         <p class="title_ref"> Références : </p>

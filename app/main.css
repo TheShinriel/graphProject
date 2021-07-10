@@ -1,9 +1,23 @@
-h1, h2, .p_result {
+@import url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&family=Zen+Loop&display=swap');
+body {
+    font-family: 'Josefin Slab', serif;
+}
+h1, .p_result {
     text-align: center;
 }
 
 h1{
-    font-size: 2.5rem;
+    font-size: 6rem;
+    font-family: 'Zen Loop', cursive;
+}
+button,
+input {
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Josefin Slab', serif;
+    margin-left: 3rem;
+
 }
 
 .invisible {
@@ -27,10 +41,36 @@ h1{
     font-size: 1.2rem;
 }
 
+.text_agreement {
+    font-size: 1.7rem;
+}
+
+.contact {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+}
+
+#container_calc_half_life label {
+    font-size: 1.4rem;
+}
+
+#need_half_life {
+    margin-bottom: 2rem;
+}
+
+.first_concentration{
+    margin-bottom: 1rem;
+}
+
 #agreement,
-#calc_tox, 
+#calc_tox,
+#need_dose_agreement,
+#need_dose,
+#need_dose_result,
 .container_half_life {
     margin: 3rem;
+    font-size: 1.7rem;
+
 }
 
 .p_result {
