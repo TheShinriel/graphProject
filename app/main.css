@@ -3,6 +3,7 @@
 body {
     font-family: 'Josefin Slab', serif;
 }
+
 .p_result {
     text-align: center;
 }
@@ -17,7 +18,7 @@ body {
 }
 
 .container_subtitle {
-    width: 75%;
+    width: 100%;
 }
 h1 {
  position: absolute;
@@ -35,6 +36,7 @@ h1{
     font-size: 6rem;
     font-family: 'Zen Loop', cursive;
 }
+
 button,
 input {
     font-size: 1rem;0
@@ -61,18 +63,6 @@ input {
     text-decoration: underline;
 }
 
-.text_agreement {
-    font-size: 1.2rem;
-}
-
-.text_agreement {
-    font-size: 1.7rem;
-}
-
-.contact {
-    font-size: 1.4rem;
-    margin-bottom: 3rem;
-}
 
 #container_calc_half_life label {
     font-size: 1.4rem;
@@ -91,6 +81,7 @@ input {
 #need_dose_agreement,
 #need_dose,
 #need_dose_result,
+div.contact p ,
 .container_half_life {
     margin: 3rem;
     font-size: 1.7rem;
