@@ -1,9 +1,47 @@
-h1, h2, .p_result {
+@import url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&family=Zen+Loop&display=swap');
+body {
+    font-family: 'Josefin Slab', serif;
+}
+.p_result {
     text-align: center;
+}
+#title {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+.banner_hero {
+    display: flex;
+    justify-content: start;
+}
+
+.container_subtitle {
+    width: 75%;
+}
+h1 {
+ position: absolute;
+    left: 50%;
+    top: 0px;
+    transform: translate(-50%, -50%);
+}
+
+h3 {
+    color: red;
+    font-size: 1.5rem;
 }
 
 h1{
-    font-size: 2.5rem;
+    font-size: 6rem;
+    font-family: 'Zen Loop', cursive;
+}
+button,
+input {
+    font-size: 1rem;0
+    font-weight: 700;
+    font-family: 'Josefin Slab', serif;
+    margin-left: 3rem;
+
 }
 
 .invisible {
@@ -27,10 +65,36 @@ h1{
     font-size: 1.2rem;
 }
 
+.text_agreement {
+    font-size: 1.7rem;
+}
+
+.contact {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+}
+
+#container_calc_half_life label {
+    font-size: 1.4rem;
+}
+
+#need_half_life {
+    margin-bottom: 2rem;
+}
+
+.first_concentration{
+    margin-bottom: 1rem;
+}
+
 #agreement,
-#calc_tox, 
+#calc_tox,
+#need_dose_agreement,
+#need_dose,
+#need_dose_result,
 .container_half_life {
     margin: 3rem;
+    font-size: 1.7rem;
+
 }
 
 .p_result {
