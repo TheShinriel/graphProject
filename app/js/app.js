@@ -1,5 +1,5 @@
 "use strict"
-export {calcHalfLife};
+
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
 
@@ -333,5 +333,4 @@ function displayDoseWeight() {
     let result = dose * 1000 / weight;
     pResultNeedDose.textContent = `La dose ingérée est donc ${result.toFixed(0)} mg/kg.`;
 }
-
 
