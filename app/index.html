@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
 <!-- Primary Meta Tags -->
@@ -24,6 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.0/chart.min.js" integrity="sha512-JxJpoAvmomz0MbIgw9mx+zZJLEvC6hIgQ6NcpFhVmbK1Uh5WynnRTTSGv3BTZMNBpPbocmdSJfldgV5lVnPtIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
     <header>
     </header>
@@ -78,9 +80,10 @@
     <div class="container_half_life">
         <div id="need_half_life">
             <input type="checkbox" data-div="container_calc_half_life" name="need_half_life" id="need_half_life">
-            <label class="text_need_half_life" for="need_half_life"> Deux prélèvements consécutifs ont été effectués. Il est possible de calculer la demi-vie. </label>
+            <label class="text_need_half_life" for="need_half_life"> Deux prélèvements consécutifs ont été effectués. Il
+                est possible de calculer la demi-vie. </label>
         </div>
-     
+
         <div id="container_calc_half_life" class="invisible">
             <div class="first_date_picker">
                 <label for="first_sampling_time" class="first_sampling_label"> Date et heure du premier prélèvement </label>
@@ -88,7 +91,8 @@
             </div>
             <div class="first_concentration">
                 <label for="first_concentration"> Concentration 1 </label>
-                <input class="paracetamol_concentration_1" type="number"  id="first_concentration" placeholder="Paracetamol conc. (mg/l)">
+                <input class="paracetamol_concentration_1" type="number" id="first_concentration"
+                    placeholder="Paracetamol conc. (mg/l)">
             </div>
 
             <div class="second_date_picker">
@@ -97,7 +101,8 @@
             </div>
             <div class="second_concentration">
                 <label for="second_concentration"> Concentration 2 </label>
-                <input class="paracetamol_concentration_2" type="number" id="second_concentration" placeholder="Paracetamol conc. (mg/l)">
+                <input class="paracetamol_concentration_2" type="number" id="second_concentration"
+                    placeholder="Paracetamol conc. (mg/l)">
             </div>
             <button class="calc_half_life"> calculer </button>
             <div class="result_half_life">
@@ -112,7 +117,7 @@
     </div>
     
 
-    <footer> 
+    <footer>
         <p class="title_ref"> Références : </p>
         <p class="ref">White SJ, Rumack BH. The acetaminophen toxicity equations: "solutions" for acetaminophen toxicity based on the Rumack-Matthew nomogram. Ann Emerg Med. 2005 May;45(5):563-4. doi: 10.1016/j.annemergmed.2004.11.033. PMID: 15855961.</p>
         <p class="ref">Recommandations Formalisées d'Experts communes à la Société de Réanimation en Langue Française et la Société Française de médecine d'urgence. Prise en charge des intoxications médicamenteuses et par drogues récréatives. Mai 2020.</p>
