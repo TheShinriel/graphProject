@@ -1,5 +1,7 @@
 "use strict"
+
 import Calculs from "./classes/calculs.js";
+
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
@@ -46,8 +48,6 @@ let paracetamolConcentration;
 let currentLangage = "french";
 
 // ##################
-console.log(divNeedDose);
-
 let dataTranslation = {
     "french":
     {
@@ -275,7 +275,10 @@ function setNewAttribute(htmlComponent, classAttribute) {
 function displayHalfLife() {
     let valeur1 = parseFloat(inputParacetamolFirstSample.value);
     let valeur2 = parseFloat(inputParacetamolSecondSample.value);
+
     let duree = (Date.parse(datePickerSecondSample.value) - Date.parse(datePickerFirstSample.value)) / 3_600_000;
+
+
     if(datePickerSecondSample.value > datePickerFirstSample.value && valeur1 > valeur2) {
         let result = Calculs.calcHalfLife(valeur1, valeur2, duree);
         let resultIsOk = checkHalfLifeResult(result);
