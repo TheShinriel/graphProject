@@ -1,9 +1,8 @@
 "use strict"
-
+import Calculs from "./classes/calculs.js";
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
-
 
 let divAgreement = document.querySelector('#agreement');
 let divAgreementHalfLife = document.querySelector('#container_calc_half_life');
@@ -47,6 +46,7 @@ let paracetamolConcentration;
 let currentLangage = "french";
 
 // ##################
+console.log(divNeedDose);
 
 let dataTranslation = {
     "french":
@@ -270,10 +270,15 @@ function checkValidity(number) {
 function setNewAttribute(htmlComponent, classAttribute) {
     htmlComponent.setAttribute("class", classAttribute);
 }
+
+
 function displayHalfLife() {
-    if(datePickerSecondSample.value > datePickerFirstSample.value && inputParacetamolFirstSample.value > inputParacetamolSecondSample.value) {
-        result = calcHalfLife();
-        resultIsOk = checkHalfLifeResult(result);
+    let valeur1 = parseFloat(inputParacetamolFirstSample.value);
+    let valeur2 = parseFloat(inputParacetamolSecondSample.value);
+    let duree = (Date.parse(datePickerSecondSample.value) - Date.parse(datePickerFirstSample.value)) / 3_600_000;
+    if(datePickerSecondSample.value > datePickerFirstSample.value && valeur1 > valeur2) {
+        let result = Calculs.calcHalfLife(valeur1, valeur2, duree);
+        let resultIsOk = checkHalfLifeResult(result);
         displayResultHalfLife(resultIsOk);
         pResultCalcHalfLife.textContent = `${dataTranslation[currentLangage].results.resultHalfLife} ${result} h`;    
     } else {
@@ -282,14 +287,6 @@ function displayHalfLife() {
     }
 }
 
-function calcHalfLife() {
-    let duree = (Date.parse(datePickerSecondSample.value) - Date.parse(datePickerFirstSample.value)) / 3_600_000;
-    let valeur1 = parseFloat(inputParacetamolFirstSample.value);
-    let valeur2 = parseFloat(inputParacetamolSecondSample.value);
-    let Ke = (Math.log(valeur1) - Math.log(valeur2)) / duree;
-    let halfLife =  Math.log(2) / Ke;
-    return halfLife.toFixed(1);
-}
 
 function displayResult(time, concentration) {
     let exposant = (Math.log10(50) - Math.log10(200)) / 8 * time;
@@ -330,10 +327,6 @@ function displayDoseWeight() {
     let weight = inputSubjectWeight.value;
     let dose = inputHypotheticDose.value;
     let result = dose * 1000 / weight;
-    pResultNeedDose.textContent = result;
-    console.log(result);
+    pResultNeedDose.textContent = `La dose ingérée est donc ${result.toFixed(0)} mg/kg.`;
 }
-
-
-
 
