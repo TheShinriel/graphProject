@@ -275,7 +275,6 @@ function setNewAttribute(htmlComponent, classAttribute) {
 function displayHalfLife() {
     let valeur1 = parseFloat(inputParacetamolFirstSample.value);
     let valeur2 = parseFloat(inputParacetamolSecondSample.value);
-
     let duree = (Date.parse(datePickerSecondSample.value) - Date.parse(datePickerFirstSample.value)) / 3_600_000;
 
 
@@ -292,16 +291,14 @@ function displayHalfLife() {
 
 
 function displayResult(time, concentration) {
-    let exposant = (Math.log10(50) - Math.log10(200)) / 8 * time;
-    let result = Math.pow(10,exposant);
-    let resultPossible = result * 300;
-    let resultProbable = result * 400;
+    let toxicity =  Calculs.calcToxicity(time);
+    let toxicityPossible = Calculs.calcToxicityPossible(toxicity);
+    let toxicityProbable = Calculs.calcToxicityProbable(toxicity);
 
-
-    if(concentration > resultProbable) {
+    if(concentration > toxicityProbable) {
         setNewAttribute(divResult, "visible");
         pResult.textContent = dataTranslation[currentLangage].results.resultProbable;
-    } else if (concentration > resultPossible) {
+    } else if (concentration > toxicityPossible) {
         setNewAttribute(divResult, "visible");
         pResult.textContent = dataTranslation[currentLangage].results.resultPossible ;
     } else if (timeAfterIngestion != null) {
@@ -309,6 +306,9 @@ function displayResult(time, concentration) {
         pResult.textContent = dataTranslation[currentLangage].results.resultOk;
     }
 }
+// ##########################################
+
+// ##########################
 function displayResultHalfLife(resultIsOk) {
     if(resultIsOk) {
         setNewAttribute(pResultCalcHalfLife, "visible result_ok");
