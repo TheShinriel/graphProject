@@ -1,5 +1,9 @@
 {
   "name": "hopitox",
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "jsdom"
+  },
   "version": "1.0.0",
   "description": "aide au diagnostic des surdosage médicamenteux",
   "main": "app.js",
