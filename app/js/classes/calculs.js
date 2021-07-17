@@ -1,4 +1,5 @@
-export default class Calculs {
+export default 
+class Calculs {
 
 
     static calcHalfLife(nbre1, nbre2, duree) 
@@ -31,5 +32,10 @@ export default class Calculs {
         return Math.pow(10,exposant);
     }
     
+    static calcDoseMgKg(weight,dose){
+        return (dose * 1000 / weight).toFixed(0);
+    }
     
 }
+
+//module.exports = Calculs;

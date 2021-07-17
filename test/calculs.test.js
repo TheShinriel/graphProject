@@ -1,7 +1,7 @@
 //import * as Calcs from '../app/js/classes/calculs.js';
-const Calculs = require('../app/js/classes/calculs');
+ const Calculs = require('../app/js/classes/Calculs');
 
 
-test('addNumbers ', () => {
-    expect(Calculs.defineExposant(4)).toBe(3);
+test('defineExposant ', () => {
+    expect(Calculs.defineExposant(4)).toBe(-0.30102999566398125);
 });
