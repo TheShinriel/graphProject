@@ -6,9 +6,9 @@ const DOSE_VALUE_MAX = 150;
 let inputHypotheticDose = document.querySelector('.subject_hypothetic_dosis');
 let inputSubjectWeight = document.querySelector('.subject_weight');
 
-let btnCalcDose = document.querySelector('.calc_dose');
+let btnCalcDose = document.querySelector('.calc_dose_paracetamol');
 
-let pResultDose = document.querySelector('.result_calc_dose');
+let pResultDose = document.querySelector('.result_calc_dose_paracetamol');
 
 let resultOfCalcDose;
 let styleResult;
@@ -19,7 +19,7 @@ console.log(modal.log)
 
 
 btnCalcDose.addEventListener("click", () => {
-   CalcDose();
+   calcParacetamolDose();
    removeStyleResult(pResultDose);
    defineStyleResult();
    addStyleResult(pResultDose)
@@ -27,7 +27,7 @@ btnCalcDose.addEventListener("click", () => {
   })
   
 
-function CalcDose() {
+function calcParacetamolDose() {
     resultOfCalcDose = Calculs.calcDoseMgKg(inputSubjectWeight.value , inputHypotheticDose.value);
 }
 
