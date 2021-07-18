@@ -199,7 +199,8 @@ btnSubmit.addEventListener("click", () => {
 
     displayResult(timeAfterIngestion, paracetamolConcentration );
     addData(graph, timeAfterIngestion, paracetamolConcentration );
-    window.scrollTo(0, graphCanvas.clientHeight);
+    // window.scrollTo(0, graphCanvas.clientHeight - 60);
+    pResult.scrollIntoView(true);
 })
 
 
