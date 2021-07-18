@@ -1,4 +1,6 @@
-export default class Calculs {
+export default 
+class Calculs {
+
 
     static calcHalfLife(nbre1, nbre2, duree) 
     {
@@ -9,8 +11,8 @@ export default class Calculs {
     }
 
     static calcToxicity(time) {
-       let exposant = defineExposant(time);
-       let toxicity = defineToxicity(exposant); 
+       let exposant = Calculs.defineExposant(time);
+       let toxicity = Calculs.defineToxicity(exposant); 
        return toxicity;
     }
 
@@ -22,13 +24,18 @@ export default class Calculs {
         return toxicity * 400;
     }
 
+    static defineExposant(time) {
+        return (Math.log10(50) - Math.log10(200)) / 8 * time;
+    }
+    
+    static defineToxicity(exposant) {
+        return Math.pow(10,exposant);
+    }
+    
+    static calcDoseMgKg(weight,dose){
+        return (dose * 1000 / weight).toFixed(0);
+    }
     
 }
 
-function defineExposant(time) {
-    return (Math.log10(50) - Math.log10(200)) / 8 * time;
-}
-
-function defineToxicity(exposant) {
-    return Math.pow(10,exposant);
-}
+//module.exports = Calculs;

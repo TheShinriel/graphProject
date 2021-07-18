@@ -1,6 +1,6 @@
 "use strict"
 
-import Calculs from "./classes/calculs.js";
+import Calculs from "./classes/Calculs.js";
 
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
