@@ -7,6 +7,6 @@ export class Modal {
     }  
     
     log() {
-        console.log(this.title);
+       return alert("test");
     }
 }
