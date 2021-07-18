@@ -39,7 +39,7 @@ h1{
 
 button,
 input {
-    font-size: 1rem;0
+    font-size: 1rem;
     font-weight: 700;
     font-family: 'Josefin Slab', serif;
     margin-left: 3rem;
@@ -104,4 +104,8 @@ div.contact p ,
 
 .result_not_ok {
     color: red;
+}
+
+html {
+    scroll-behavior: smooth;
 }

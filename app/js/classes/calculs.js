@@ -1,6 +1,4 @@
-export default 
-class Calculs {
-
+export default class Calculs {
 
     static calcHalfLife(nbre1, nbre2, duree) 
     {
