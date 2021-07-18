@@ -42,7 +42,7 @@ let inputParacetamolSecondSample = document.querySelector('.paracetamol_concentr
 let inputHypotheticDose = document.querySelector('.subject_hypothetic_dosis');
 let inputSubjectWeight = document.querySelector('.subject_weight');
 
-let context = document.querySelector('.graph');
+let graphCanvas = document.querySelector('.graph');
 let timeAfterIngestion;
 let paracetamolConcentration;
 let currentLangage = "french";
@@ -122,7 +122,7 @@ let dataTranslation = {
     }
 }
 
-let graph = new Chart(context, {
+let graph = new Chart(graphCanvas, {
     data: 
     {
         datasets: 
@@ -199,6 +199,7 @@ btnSubmit.addEventListener("click", () => {
 
     displayResult(timeAfterIngestion, paracetamolConcentration );
     addData(graph, timeAfterIngestion, paracetamolConcentration );
+    window.scrollTo(0, graphCanvas.clientHeight);
 })
 
 
