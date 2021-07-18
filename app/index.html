@@ -28,6 +28,8 @@
 
 <body>
     <header>
+        <button class="btn_translation" data-language="french">Français</button>
+        <button class="btn_translation" data-language="english">English</button>
     </header>
     <div id="title">
         <h1 class="main_title"> #HopiTox </h1>
@@ -44,7 +46,9 @@
 
     <div id="need_dose_agreement" class="visible">
         <input type="checkbox" data-div="need_dose" name="need_dose" id="need_dose_calc">
-        <label class="need_dose" for="need_dose_calc"> Il est possible de calculer la dose en mg/kg. </label>
+        <!-- <label class="need_dose" for="need_dose_calc"> Il est possible de calculer la dose en mg/kg. </label> -->
+        <label class="need_dose i18n" for="need_dose_calc" data-text="need_dose">  </label>
+
     </div>
 
     <div id="need_dose" class="invisible">

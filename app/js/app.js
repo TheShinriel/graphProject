@@ -118,6 +118,9 @@ let graph = new Chart(graphCanvas, {
     }
 });
 
+// on initialise avec le texte de la page en français
+changeLanguage("french");
+
 
 // Eventlistener definitions
 btnSubmit.addEventListener("click", () => {
@@ -142,17 +145,17 @@ checkBoxAgreements.forEach(checkbox => {
     })
 });
 
-btnTranslation.forEach( btn => {
-    btn.addEventListener("click", () => {
-        currentLangage = btn.dataset.langage;
-        graph.data.datasets.forEach( dataset => {
-            dataset.label = dataTranslation[currentLangage].graph[dataset.labelName];
-        })
-        graph.options.plugins.title.text = dataTranslation[currentLangage].graph[graph.options.plugins.title.textName];
-        graph.update();
-        changeLangage();
-    })
-});
+// btnTranslation.forEach( btn => {
+//     btn.addEventListener("click", () => {
+//         currentLangage = btn.dataset.langage;
+//         graph.data.datasets.forEach( dataset => {
+//             dataset.label = dataTranslation[currentLangage].graph[dataset.labelName];
+//         })
+//         graph.options.plugins.title.text = dataTranslation[currentLangage].graph[graph.options.plugins.title.textName];
+//         graph.update();
+//         changeLangage();
+//     })
+// });
 
 btnCalcHalfLife.addEventListener("click", () => {
     displayHalfLife();
@@ -164,19 +167,35 @@ btnCalcDose.addEventListener("click", () => {
 
 
 // function definitions
-function changeLangage() {
+// function changeLangage() {
 
-    labelAgreement.textContent = dataTranslation[currentLangage].buttons.checkboxLabelAgreement;
-    labelNeedHalfLife.textContent = dataTranslation[currentLangage].buttons.checkboxLabelHalfLife;
-    labelFirstSampleDatePicker.textContent = dataTranslation[currentLangage].buttons.datePickerLabelFirstSample;
-    labelSecondSampleDatePicker.textContent = dataTranslation[currentLangage].buttons.datePickerLabelSecondSample;
+//     labelAgreement.textContent = dataTranslation[currentLangage].buttons.checkboxLabelAgreement;
+//     labelNeedHalfLife.textContent = dataTranslation[currentLangage].buttons.checkboxLabelHalfLife;
+//     labelFirstSampleDatePicker.textContent = dataTranslation[currentLangage].buttons.datePickerLabelFirstSample;
+//     labelSecondSampleDatePicker.textContent = dataTranslation[currentLangage].buttons.datePickerLabelSecondSample;
     
-    inputIngestioTime.placeholder = dataTranslation[currentLangage].buttons.ingestionTimePlaceholder;
-    inputParacetamolConcentration.placeholder = dataTranslation[currentLangage].buttons.paracetamolplaceholder;
+//     inputIngestioTime.placeholder = dataTranslation[currentLangage].buttons.ingestionTimePlaceholder;
+//     inputParacetamolConcentration.placeholder = dataTranslation[currentLangage].buttons.paracetamolplaceholder;
     
-    mainTitle.textContent = dataTranslation[currentLangage].title.main;
-    subTitle.textContent = dataTranslation[currentLangage].title.subTitle;
-    btnSubmit.textContent = dataTranslation[currentLangage].buttons.btnValidation;
+//     mainTitle.textContent = dataTranslation[currentLangage].title.main;
+//     subTitle.textContent = dataTranslation[currentLangage].title.subTitle;
+//     btnSubmit.textContent = dataTranslation[currentLangage].buttons.btnValidation;
+// }
+
+btnTranslation.forEach(btn => {
+    btn.addEventListener('click', () => {
+        let language = btn.dataset.language;
+        changeLanguage(language)
+    })
+})
+
+function changeLanguage(language) {
+    document.querySelectorAll(".i18n").forEach( element => {
+        if(element.dataset.text != null) {
+            let textID = element.dataset.text;
+            element.innerText = dataTranslation[language][textID];
+        }
+    })
 }
 
 function addData(chart, time, concentration) {

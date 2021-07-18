@@ -1,5 +1,6 @@
 export default {
     "french": {
+        "need_dose": "Il est possible de calculer la dose en mg/kg",
         "title": {
             "page": "Evaluation de la toxicité du paracetamol",
             "main": "Toxicité hépatique du paracétamol",
@@ -30,6 +31,7 @@ export default {
         }
     },
     "english": {
+        "need_dose": "It's possible to calculate the dose in mg/kg",
         "title": {
             "page": "English",
             "main": "English",
