@@ -30,7 +30,7 @@ export default class Calculs {
         return Math.pow(10,exposant);
     }
     
-    static calcDoseMgKg(weight,dose){
+    static calcDoseParacetamol(weight,dose){
         return (dose * 1000 / weight).toFixed(0);
     }
     
