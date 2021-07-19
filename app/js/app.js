@@ -1,7 +1,10 @@
 "use strict"
 
 import Calculs from "./classes/Calculs.js";
-import dataTranslation from "./classes/Trads.js";
+// import dataTranslation from "./classes/Trads.js";
+import french from "../lang/french.js";
+import english from "../lang/english.js";
+let languages = {"french": french, "english": english};
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
@@ -28,7 +31,7 @@ let pResultCalcHalfLife = document.querySelector('#result_calc_half_life');
 let btnTranslation = document.querySelectorAll('.btn_translation');
 let btnCalcHalfLife = document.querySelector('.calc_half_life');
 let btnSubmit = document.querySelector('.calc_data');
-let btnCalcDose = document.querySelector('.calc_dose');
+let btnCalcDose = document.querySelector('.calc_dose_button');
 
 let datePickerFirstSample = document.querySelector('.first_sampling_time');
 let datePickerSecondSample = document.querySelector('.second_sampling_time');
@@ -45,10 +48,9 @@ let inputSubjectWeight = document.querySelector('.subject_weight');
 let graphCanvas = document.querySelector('.graph');
 let timeAfterIngestion;
 let paracetamolConcentration;
-let currentLangage = "french";
+let currentLanguage = "french";
 
 // ##################
-
 let graph = new Chart(graphCanvas, {
     data: 
     {
@@ -56,7 +58,7 @@ let graph = new Chart(graphCanvas, {
         [
             {
             type: 'line',
-            label: dataTranslation[currentLangage].graph.toxLine,
+            label: languages[currentLanguage].graph.toxLine,
             labelName: "toxLine",
             borderColor: 'rgb(75, 192, 192)',
             backgroundColor: 'rgb(75, 192, 192)',
@@ -65,7 +67,7 @@ let graph = new Chart(graphCanvas, {
 
             {
             type: 'line',
-            label: dataTranslation[currentLangage].graph.secondLine,
+            label: languages[currentLanguage].graph.secondLine,
             labelName: "secondLine",
             borderColor: 'brown',
             backgroundColor: 'brown',
@@ -74,7 +76,7 @@ let graph = new Chart(graphCanvas, {
         
         {
             type: 'bubble',
-            label: dataTranslation[currentLangage].graph.patientSaisi,
+            label: languages[currentLanguage].graph.patientSaisi,
             labelName: "patientSaisi",
             fill: true,
             backgroundColor: 'rgb(255, 99, 132)',
@@ -92,7 +94,7 @@ let graph = new Chart(graphCanvas, {
             title: 
             {
                 display: true,
-                text: dataTranslation[currentLangage].graph.title,
+                text: languages[currentLanguage].graph.title,
                 textName: "title"
             }
         },
@@ -191,10 +193,13 @@ btnTranslation.forEach(btn => {
 
 function changeLanguage(language) {
     document.querySelectorAll(".i18n").forEach( element => {
-        if(element.dataset.text != null) {
-            let textID = element.dataset.text;
-            element.innerText = dataTranslation[language][textID];
-        }
+        let textID = element.dataset.text;
+        if(element.placeholder != null && element.dataset.text != null) {
+            element.placeholder = languages[language][textID];
+        } else if(element.dataset.text != null) {
+            element.innerText = languages[language][textID];
+        } 
+        
     })
 }
 
