@@ -28,7 +28,7 @@ btnCalcDose.addEventListener("click", () => {
   
 
 function calcParacetamolDose() {
-    resultOfCalcDose = Calculs.calcDoseMgKg(inputSubjectWeight.value , inputHypotheticDose.value);
+    resultOfCalcDose = Calculs.calcDoseParacetamol(inputSubjectWeight.value , inputHypotheticDose.value);
 }
 
 function displayDoseResult(htmlElement) {

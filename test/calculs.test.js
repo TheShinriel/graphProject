@@ -23,10 +23,10 @@ test("la toxicité pour 5 est de 0.4204482076268572", () => {
 });
 
 test("la demi-vie pour un prélèvement à 150mg/L puis 130mg/L à 4H d'intervalle est de 19,4H", () => {
-    expect(Calculs.default.calcHalfLife(150, 130, 4)).toBe("19.4");
+    expect(Calculs.default.calcHalfLife(150, 130, 4)).toBe(19.4);
 });
 
 test("la dose en mg/kg pour un patient de 50kg prélevé à 20g est de 400mg/kg", () => {
-    expect(Calculs.default.calcDoseMgKg(50, 20)).toBe("400");
+    expect(Calculs.default.calcDoseParacetamol(50, 20)).toBe("400");
 });
 
