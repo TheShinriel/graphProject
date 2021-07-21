@@ -1,5 +1,7 @@
 import Calculs from "./classes/Calculs.js";
 import { Modal } from "./classes/Modal.js";
+import Trads from "../js/classes/Trads.js";
+Trads.changeLanguage("french");
 
 const DOSE_VALUE_MAX = 150;
 
