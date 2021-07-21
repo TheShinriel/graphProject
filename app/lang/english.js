@@ -7,30 +7,30 @@ export default {
     "title_warningBadData": "Beware that the nomogram can only be used if the sample is made at least 4 hours after the ingestion. Please sample again.",
 
     // BUTTONS
-        "checkboxLabelAgreement": "The ingestion has been made ",
-        "checkboxLabelHalfLife": "English checkboxLabelHalfLife",
-        "datePickerLabelFirstSample": "English datePickerLabelFirstSample",
-        "datePickerLabelSecondSample": "English datePickerLabelSecondSample",
-        "btnValidation": "English btnValidation",
-        "ingestionTimePlaceholder": "English ingestionTimePlaceholder",
-        "paracetamolplaceholder": "English paracetamolplaceholder",
-        "calc_dose_button": "Calculate the dose in mg/kg",
+    "calculate_toxicity_label": "Ingestion took place as a single dose, so the nomogram can be used",
+    "checkboxLabelHalfLife": "I have two samples and want to calculate the half-life",
+    "datePickerLabelFirstSample": "Date of the first sample",
+    "datePickerLabelSecondSample": "Date of the second sample",
+    "btnValidation": "Evaluate the risk",
+    "calc_dose_button": "Calculate the dose in mg/kg",
 
     // INPUTS
     "subject_weight_input": "Patient's weight (kg)",
     "subject_hypothetic_dosis": "Supposed dose (g)",
+    "calculate_toxicity_ingestion_time": "Time since ingestion (h)",
+    "calculate_toxicity_paracetamol_concentration": "Paracetamol concentration (mg/L)",
 
-    "results": {
-        "resultProbable": "English resultProbable",
-        "resultPossible": "English resultPossible",
-        "resultOk": "English resultOk",
-        "resultHalfLife": "English resultHalfLife",
-        "badCalcul": "English badCalcul"
-    },
-    "graph": {
-        "title": "English title",
-        "toxLine": "English toxLine",
-        "secondLine": "English secondLine",
-        "patientSaisi": "English patientSaisi"
-    }
+
+    // RESULTS
+    "resultProbable": "Concentration leading to an important toxicity risk",
+    "resultPossible": "Concentration leading to a possible toxicity risk",
+    "resultOk": "Concentration leading to a low toxicity risk",
+    "resultHalfLife": "The half-life is : ",
+    "badCalcul": "The dates or the concentration entered don't allow to calculate the half-life",
+    
+    // GRAPH
+    "title": "Nomogramme of Rumack and Matthew",
+    "toxLine": "Toxicity line (line 200)",
+    "secondLine": "Treatment line (NAC)",
+    "patientSaisi": "Entered patient's concentration",
 }
