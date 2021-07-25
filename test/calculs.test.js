@@ -29,3 +29,7 @@ test("la dose en mg/kg pour un patient de 50kg prélevé à 20g est de 400mg/kg"
     expect(Calcs.calcDoseParacetamol(50, 20)).toBe("400");
 });
 
+test("converti une donnée en µmol/l en mg/l", () => {
+    expect(Calcs.convertMicromolesToMilligrames(2).tobe(302.326));
+});
+

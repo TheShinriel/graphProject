@@ -31,6 +31,7 @@ let graph = new Chart(graphCanvas, {
             type: 'line',
             label: languages[currentLanguage].graph_toxicity_line,
             labelName: "toxLine",
+            lineDashType: "dash",
             borderColor: 'rgb(75, 192, 192)',
             backgroundColor: 'rgb(75, 192, 192)',
             data: [,200,100,50,25,12.5,6.25]
@@ -40,6 +41,7 @@ let graph = new Chart(graphCanvas, {
             label: languages[currentLanguage].graph_second_line,
             labelName: "secondLine",
             borderColor: 'brown',
+            lineDashType: "dash",
             backgroundColor: 'brown',
             data: [,150,75,37.5,18.75,9.375,4.6875],
         },
@@ -47,17 +49,19 @@ let graph = new Chart(graphCanvas, {
             type: 'line',
             label: languages[currentLanguage].graph_riskFactor_line,
             labelName: "riskFactor",
+            lineDashType: "dash",
             borderColor: 'green',
             backgroundColor: 'green',
             data: [,100,50,25,12.5,6.25,3.125],
         },
         {
-            type: 'bubble',
+            type: 'line',
             label: languages[currentLanguage].graph_patient_saisi,
             labelName: "patientSaisi",
-            fill: true,
+            borderColor: 'rgb(255, 99, 132)',
+            // fill: true,
             backgroundColor: 'rgb(255, 99, 132)',
-            data: [{}]
+            data: []
             }
         ],
         labels: [0,4,8,12,16,20,24]
@@ -123,7 +127,8 @@ checkBoxAgreement.addEventListener("click", (event) => {
 
 // FUNCTIONS
 function addData(chart, time, concentration) {
-    chart.data.datasets[2].data[0]= {x:time,y:concentration,r:7};
+    chart.data.datasets[3].data[0]= {x:time,y:concentration};
+    chart.data.datasets[3].data[1]= {x:9,y:125};
     chart.update();
 }
 
