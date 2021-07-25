@@ -28,6 +28,14 @@ let graph = new Chart(graphCanvas, {
         datasets: 
         [
             {
+                type: 'line',
+                label: 'resultat non interpretable',
+                fill: true,
+                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: 'rgb(75, 192, 192,0.5)',
+                data: [{x:0, y:620}, {x:4, y:620}]
+                },    
+            {
             type: 'line',
             label: languages[currentLanguage].graph_toxicity_line,
             labelName: "toxLine",
