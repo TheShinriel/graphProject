@@ -1,7 +1,8 @@
-import Calculs from "./classes/Calculs.js";
+import * as Calculs from '../js/classes/Calculs.js';
 import Trads from "../js/classes/Trads.js";
 import french from "../lang/french.js";
 import english from "../lang/english.js";
+
 let languages = {"french": french, "english": english};
 Trads.changeLanguage("french");
 let currentLanguage = "french";
@@ -41,6 +42,14 @@ let graph = new Chart(graphCanvas, {
             borderColor: 'brown',
             backgroundColor: 'brown',
             data: [,150,75,37.5,18.75,9.375,4.6875],
+        },
+        {
+            type: 'line',
+            label: languages[currentLanguage].graph_riskFactor_line,
+            labelName: "riskFactor",
+            borderColor: 'green',
+            backgroundColor: 'green',
+            data: [,100,50,25,12.5,6.25,3.125],
         },
         {
             type: 'bubble',

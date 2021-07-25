@@ -34,4 +34,6 @@ export default {
     "graph_toxicity_line": "Toxicity line (line 200)",
     "graph_second_line": "Treatment line (NAC)",
     "graph_patient_saisi": "Entered patient's concentration",
+    "graph_riskFactor_line": "Risk factor"
+
 }
