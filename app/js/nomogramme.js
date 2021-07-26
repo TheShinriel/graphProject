@@ -31,43 +31,43 @@ let graph = new Chart(graphCanvas, {
                 type: 'line',
                 label: 'resultat non interpretable',
                 fill: true,
-                borderColor: 'rgb(75, 192, 192)',
-                backgroundColor: 'rgb(75, 192, 192,0.5)',
+                borderColor: 'rgb(128, 128, 128)',
+                backgroundColor: 'rgb(128, 128, 128,0.3)',
                 data: [{x:0, y:620}, {x:4, y:620}]
                 },    
             {
             type: 'line',
             label: languages[currentLanguage].graph_toxicity_line,
             labelName: "toxLine",
-            lineDashType: "dash",
+            backgroundColor: 'white',
+            borderDash: [5,5],
             borderColor: 'rgb(75, 192, 192)',
-            backgroundColor: 'rgb(75, 192, 192)',
-            data: [,200,100,50,25,12.5,6.25]
+            data: [{x:4, y:200}, {x:24, y:6.25}]
             },
             {
             type: 'line',
             label: languages[currentLanguage].graph_second_line,
             labelName: "secondLine",
+            backgroundColor: 'white',
             borderColor: 'brown',
-            lineDashType: "dash",
-            backgroundColor: 'brown',
-            data: [,150,75,37.5,18.75,9.375,4.6875],
+            borderDash: [5,5],
+            data: [{x:4, y:150}, {x:24, y:4.6875}],
+
         },
         {
             type: 'line',
             label: languages[currentLanguage].graph_riskFactor_line,
+            backgroundColor: 'white',
             labelName: "riskFactor",
-            lineDashType: "dash",
+            borderDash: [5,5],
             borderColor: 'green',
-            backgroundColor: 'green',
-            data: [,100,50,25,12.5,6.25,3.125],
+            data: [{x:4, y:100}, {x:24, y:3.125}],
         },
         {
             type: 'line',
             label: languages[currentLanguage].graph_patient_saisi,
             labelName: "patientSaisi",
             borderColor: 'rgb(255, 99, 132)',
-            // fill: true,
             backgroundColor: 'rgb(255, 99, 132)',
             data: []
             }
@@ -135,8 +135,8 @@ checkBoxAgreement.addEventListener("click", (event) => {
 
 // FUNCTIONS
 function addData(chart, time, concentration) {
-    chart.data.datasets[3].data[0]= {x:time,y:concentration};
-    chart.data.datasets[3].data[1]= {x:9,y:125};
+    chart.data.datasets[4].data[0]= {x:time,y:concentration};
+    //chart.data.datasets[4].data[1]= {x:9,y:125};
     chart.update();
 }
 
