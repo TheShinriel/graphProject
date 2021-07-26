@@ -12,15 +12,21 @@ const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
 
 let timeAfterIngestion = 0;
 let paracetamolConcentration = 0;
+
 let resultText = document.querySelector('.result_text');
-let checkBoxAgreement = document.querySelector('input[type="checkbox"]');
+
 let divCalcToxParacetamol = document.querySelector('#calculate_toxicity_div');
-let btnTranslation = document.querySelectorAll('.btn_translation');
-let calculateToxicityBtn = document.querySelector('.calculate_toxicity_btn');
-let inputIngestionTime = document.querySelector('.time_after_ingestion');
-let inputParacetamolConcentration = document.querySelector('.paracetamol_concentration');
 let divMsgError = document.querySelector('.alertBadData');
 let divResult = document.querySelector('#container_result');
+
+let btnTranslation = document.querySelectorAll('.btn_translation');
+let btnCalcToxicity = document.querySelector('.calculate_toxicity_btn');
+
+let inputIngestionTime = document.querySelector('.time_after_ingestion');
+let inputParacetamolConcentration = document.querySelector('.paracetamol_concentration');
+
+let checkBoxAgreement = document.querySelector('input[type="checkbox"]');
+
 let graphCanvas = document.querySelector('.graph');
 let graph = new Chart(graphCanvas, {
     data: 
@@ -113,9 +119,13 @@ btnTranslation.forEach(btn => {
     })
 })
 
-calculateToxicityBtn.addEventListener("click", () => {
+btnCalcToxicity.addEventListener("click", () => {
     paracetamolConcentration = parseFloat(inputParacetamolConcentration.value);
-    timeAfterIngestion = checkValidity(parseFloat(inputIngestionTime.value)); 
+    timeAfterIngestion = parseFloat(inputIngestionTime.value); 
+
+    isValidTimeAfterIngestion(timeAfterIngestion);
+    //   styleResult = (resultOfCalcDose < DOSE_VALUE_MAX ? 'good' : 'bad');
+
 
     displayResult(timeAfterIngestion, paracetamolConcentration );
     addData(graph, timeAfterIngestion, paracetamolConcentration );
@@ -140,7 +150,7 @@ function addData(chart, time, concentration) {
     chart.update();
 }
 
-function checkValidity(number) {
+function isValidTimeAfterIngestion(number) {
     if(number < DIFFUSION_TIME_IN_BLOOD) {
         divMsgError.classList.remove("invisible");
         divMsgError.classList.add("visible");
