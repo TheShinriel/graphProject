@@ -48,8 +48,8 @@ let graph = new Chart(graphCanvas, {
             label: languages[currentLanguage].graph_toxicity_line,
             labelName: "toxLine",
             backgroundColor: 'white',
-            borderDash: [5,5],
-            borderColor: 'rgb(75, 192, 192)',
+            borderDash: [15,10],
+            borderColor: 'rgb(243, 17, 41)',
             data: [{x:4, y:200}, {x:24, y:6.25}]
             },
             {
@@ -57,8 +57,8 @@ let graph = new Chart(graphCanvas, {
             label: languages[currentLanguage].graph_second_line,
             labelName: "secondLine",
             backgroundColor: 'white',
-            borderColor: 'brown',
-            borderDash: [5,5],
+            borderColor: 'rgb(140,56,197)',
+            borderDash: [15,10],
             data: [{x:4, y:150}, {x:24, y:4.6875}],
 
         },
@@ -67,8 +67,8 @@ let graph = new Chart(graphCanvas, {
             label: languages[currentLanguage].graph_riskFactor_line,
             backgroundColor: 'white',
             labelName: "riskFactor",
-            borderDash: [5,5],
-            borderColor: 'green',
+            borderDash: [15,10],
+            borderColor: 'rgb(53,197,154)',
             data: [{x:4, y:100}, {x:24, y:3.125}],
         },
         {
@@ -130,7 +130,7 @@ btnCalcToxicity.addEventListener("click", () => {
         calcToxicities(timeAfterIngestion);
         compareToxicities();
         displayDiv(divResult);
-        addDataToGraph(graph, [{x: timeAfterIngestion, y: paracetamolConcentration}]);
+        addDataToGraph(graph, [{x: timeAfterIngestion, y: paracetamolConcentration}, {x:10, y: 200}, {x:12, y:150}]);
         resultText.scrollIntoView(true);
     }
     
