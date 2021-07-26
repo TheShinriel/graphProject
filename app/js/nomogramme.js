@@ -126,17 +126,17 @@ btnCalcToxicity.addEventListener("click", () => {
     timeAfterIngestion = parseFloat(inputIngestionTime.value); 
 
     if(isValidTimeAfterIngestion(timeAfterIngestion)) {
-        hideDivError();
+        hideDiv(divMsgError);
         calcToxicities(timeAfterIngestion);
         compareToxicities();
-        displayDivResult();
+        displayDiv(divResult);
         addDataToGraph(graph, {x: timeAfterIngestion, y: paracetamolConcentration});
         resultText.scrollIntoView(true);
     }
     
     if(!isValidTimeAfterIngestion(timeAfterIngestion)) {
-        displayDivError();
-        hideDivResult();
+        displayDiv(divMsgError);
+        hideDiv(divResult);
         // ajoute une donnée vide pour désafficher le précédent résultat valide
         addDataToGraph(graph, {x: 0, y: 0});
     }
@@ -145,11 +145,9 @@ btnCalcToxicity.addEventListener("click", () => {
 
 checkBoxAgreement.addEventListener("click", (event) => {
     if(event.target.checked == true) {
-        divCalcToxParacetamol.classList.remove("invisible");
-        divCalcToxParacetamol.classList.add("visible");
+        displayDiv(divCalcToxParacetamol);
     } else {
-        divCalcToxParacetamol.classList.remove("visible");
-        divCalcToxParacetamol.classList.add("invisible");
+        hideDiv(divCalcToxParacetamol);
     }
 })
 
@@ -181,22 +179,13 @@ function compareToxicities() {
     } 
 }
 
-function hideDivError() {
-    divMsgError.classList.remove("visible");
-    divMsgError.classList.add("invisible");
+function hideDiv(htmlElement) {
+    htmlElement.classList.remove("visible");
+    htmlElement.classList.add("invisible");
 }
 
-function  displayDivError() {
-    divMsgError.classList.remove("invisible");
-    divMsgError.classList.add("visible");
+function  displayDiv(htmlElement) {
+    htmlElement.classList.remove("invisible");
+    htmlElement.classList.add("visible");
 }
 
-function  displayDivResult() {
-    divResult.classList.remove("invisible");
-    divResult.classList.add("visible");
-}
-
-function hideDivResult() {
-    divResult.classList.remove("visible");
-    divResult.classList.add("invisible");
-}
