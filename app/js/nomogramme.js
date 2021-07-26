@@ -127,7 +127,7 @@ btnCalcToxicity.addEventListener("click", () => {
 
     if(isValidTimeAfterIngestion(timeAfterIngestion)) {
         hideDivError();
-        calcToxicities(timeAfterIngestion, paracetamolConcentration);
+        calcToxicities(timeAfterIngestion);
         compareToxicities();
         displayDivResult();
         addDataToGraph(graph, {x: timeAfterIngestion, y: paracetamolConcentration});
@@ -137,6 +137,8 @@ btnCalcToxicity.addEventListener("click", () => {
     if(!isValidTimeAfterIngestion(timeAfterIngestion)) {
         displayDivError();
         hideDivResult();
+        // ajoute une donnée vide pour désafficher le précédent résultat valide
+        addDataToGraph(graph, {x: 0, y: 0});
     }
 
 })
@@ -161,7 +163,6 @@ function addDataToGraph(chart, coordonate) {
 
 function isValidTimeAfterIngestion(number) {
      return (number < DIFFUSION_TIME_IN_BLOOD) ? false : true; 
-        // styleResult = (resultOfCalcDose < DOSE_VALUE_MAX ? 'good' : 'bad')
 }
 
 function calcToxicities(time) {
