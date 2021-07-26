@@ -130,7 +130,7 @@ btnCalcToxicity.addEventListener("click", () => {
         calcToxicities(timeAfterIngestion);
         compareToxicities();
         displayDiv(divResult);
-        addDataToGraph(graph, {x: timeAfterIngestion, y: paracetamolConcentration});
+        addDataToGraph(graph, [{x: timeAfterIngestion, y: paracetamolConcentration}]);
         resultText.scrollIntoView(true);
     }
     
@@ -153,9 +153,11 @@ checkBoxAgreement.addEventListener("click", (event) => {
 
 
 // FUNCTIONS
-function addDataToGraph(chart, coordonate) {
-    chart.data.datasets[4].data[0] = coordonate;
-    // chart.data.datasets[4].data[1]= {x:9,y:125};
+function addDataToGraph(chart, coordonates) {
+    
+    for (let index = 0; index < coordonates.length; index++) {
+        chart.data.datasets[4].data[index] = coordonates[index];
+    }
     chart.update();
 }
 
