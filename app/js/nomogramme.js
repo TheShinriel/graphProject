@@ -12,6 +12,9 @@ const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
 
 let timeAfterIngestion = 0;
 let paracetamolConcentration = 0;
+let toxicity 
+let toxicityPossible
+let toxicityProbable
 
 let resultText = document.querySelector('.result_text');
 
@@ -37,7 +40,6 @@ let graph = new Chart(graphCanvas, {
                 type: 'line',
                 label: 'resultat non interpretable',
                 fill: true,
-                borderColor: 'rgb(128, 128, 128)',
                 backgroundColor: 'rgb(128, 128, 128,0.3)',
                 data: [{x:0, y:620}, {x:4, y:620}]
                 },    
@@ -121,14 +123,12 @@ btnTranslation.forEach(btn => {
 
 btnCalcToxicity.addEventListener("click", () => {
     paracetamolConcentration = parseFloat(inputParacetamolConcentration.value);
-    timeAfterIngestion = parseFloat(inputIngestionTime.value); 
+    timeAfterIngestion = isValidTimeAfterIngestion(parseFloat(inputIngestionTime.value)); 
 
-    isValidTimeAfterIngestion(timeAfterIngestion);
     //   styleResult = (resultOfCalcDose < DOSE_VALUE_MAX ? 'good' : 'bad');
-
-
-    displayResult(timeAfterIngestion, paracetamolConcentration );
-    addData(graph, timeAfterIngestion, paracetamolConcentration );
+    calcToxicities(timeAfterIngestion, paracetamolConcentration);
+    compareToxicities();
+    addData(graph, timeAfterIngestion, paracetamolConcentration);
     resultText.scrollIntoView(true);
 })
 
@@ -164,14 +164,16 @@ function isValidTimeAfterIngestion(number) {
     }
 }
 
-function displayResult(time, concentration) {
-    let toxicity =  Calculs.calcToxicity(time);
-    let toxicityPossible = Calculs.calcToxicityPossible(toxicity);
-    let toxicityProbable = Calculs.calcToxicityProbable(toxicity);
+function calcToxicities(time) {
+    toxicity =  Calculs.calcToxicity(time);
+    toxicityPossible = Calculs.calcToxicityPossible(toxicity);
+    toxicityProbable = Calculs.calcToxicityProbable(toxicity);
+}
 
-    if(concentration > toxicityProbable) {
+function compareToxicities() {
+    if(paracetamolConcentration > toxicityProbable) {
         resultText.textContent = languages[currentLanguage].toxicity_result_probable;
-    } else if (concentration > toxicityPossible) {
+    } else if (paracetamolConcentration > toxicityPossible) {
         resultText.textContent = languages[currentLanguage].toxicity_result_possible;
     } else if (timeAfterIngestion != null) {
         resultText.textContent = languages[currentLanguage].toxicity_result_ok;
