@@ -126,7 +126,7 @@ btnCalcToxicity.addEventListener("click", () => {
     timeAfterIngestion = parseFloat(inputIngestionTime.value); 
 
     if(isValidTimeAfterIngestion(timeAfterIngestion)) {
-        removeErrormsg();
+        hideDivError();
         calcToxicities(timeAfterIngestion, paracetamolConcentration);
         compareToxicities();
         displayDivResult();
@@ -135,7 +135,7 @@ btnCalcToxicity.addEventListener("click", () => {
     }
     
     if(!isValidTimeAfterIngestion(timeAfterIngestion)) {
-        addMsgError();
+        displayDivError();
         hideDivResult();
     }
 
@@ -155,7 +155,7 @@ checkBoxAgreement.addEventListener("click", (event) => {
 // FUNCTIONS
 function addDataToGraph(chart, coordonate) {
     chart.data.datasets[4].data[0] = coordonate;
-    //chart.data.datasets[4].data[1]= {x:9,y:125};
+    // chart.data.datasets[4].data[1]= {x:9,y:125};
     chart.update();
 }
 
@@ -180,12 +180,12 @@ function compareToxicities() {
     } 
 }
 
-function removeErrormsg() {
+function hideDivError() {
     divMsgError.classList.remove("visible");
     divMsgError.classList.add("invisible");
 }
 
-function  addMsgError() {
+function  displayDivError() {
     divMsgError.classList.remove("invisible");
     divMsgError.classList.add("visible");
 }
