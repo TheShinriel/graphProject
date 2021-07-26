@@ -123,13 +123,22 @@ btnTranslation.forEach(btn => {
 
 btnCalcToxicity.addEventListener("click", () => {
     paracetamolConcentration = parseFloat(inputParacetamolConcentration.value);
-    timeAfterIngestion = isValidTimeAfterIngestion(parseFloat(inputIngestionTime.value)); 
+    timeAfterIngestion = parseFloat(inputIngestionTime.value); 
 
-    //   styleResult = (resultOfCalcDose < DOSE_VALUE_MAX ? 'good' : 'bad');
-    calcToxicities(timeAfterIngestion, paracetamolConcentration);
-    compareToxicities();
-    addData(graph, timeAfterIngestion, paracetamolConcentration);
-    resultText.scrollIntoView(true);
+    if(isValidTimeAfterIngestion(timeAfterIngestion)) {
+        removeErrormsg();
+        calcToxicities(timeAfterIngestion, paracetamolConcentration);
+        compareToxicities();
+        displayDivResult();
+        addDataToGraph(graph, {x: timeAfterIngestion, y: paracetamolConcentration});
+        resultText.scrollIntoView(true);
+    }
+    
+    if(!isValidTimeAfterIngestion(timeAfterIngestion)) {
+        addMsgError();
+        hideDivResult();
+    }
+
 })
 
 checkBoxAgreement.addEventListener("click", (event) => {
@@ -144,24 +153,15 @@ checkBoxAgreement.addEventListener("click", (event) => {
 
 
 // FUNCTIONS
-function addData(chart, time, concentration) {
-    chart.data.datasets[4].data[0]= {x:time,y:concentration};
+function addDataToGraph(chart, coordonate) {
+    chart.data.datasets[4].data[0] = coordonate;
     //chart.data.datasets[4].data[1]= {x:9,y:125};
     chart.update();
 }
 
 function isValidTimeAfterIngestion(number) {
-    if(number < DIFFUSION_TIME_IN_BLOOD) {
-        divMsgError.classList.remove("invisible");
-        divMsgError.classList.add("visible");
-        divResult.classList.remove("visible");
-        divResult.classList.add("invisible");
-        return null;
-    } else {
-        divMsgError.classList.remove("visible");
-        divMsgError.classList.add("invisible");
-        return number;
-    }
+     return (number < DIFFUSION_TIME_IN_BLOOD) ? false : true; 
+        // styleResult = (resultOfCalcDose < DOSE_VALUE_MAX ? 'good' : 'bad')
 }
 
 function calcToxicities(time) {
@@ -175,9 +175,27 @@ function compareToxicities() {
         resultText.textContent = languages[currentLanguage].toxicity_result_probable;
     } else if (paracetamolConcentration > toxicityPossible) {
         resultText.textContent = languages[currentLanguage].toxicity_result_possible;
-    } else if (timeAfterIngestion != null) {
+    } else if (timeAfterIngestion != false) {
         resultText.textContent = languages[currentLanguage].toxicity_result_ok;
     } 
+}
+
+function removeErrormsg() {
+    divMsgError.classList.remove("visible");
+    divMsgError.classList.add("invisible");
+}
+
+function  addMsgError() {
+    divMsgError.classList.remove("invisible");
+    divMsgError.classList.add("visible");
+}
+
+function  displayDivResult() {
     divResult.classList.remove("invisible");
     divResult.classList.add("visible");
+}
+
+function hideDivResult() {
+    divResult.classList.remove("visible");
+    divResult.classList.add("invisible");
 }
