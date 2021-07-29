@@ -12,6 +12,7 @@ const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
 
 let timeAfterIngestion = 0;
 let paracetamolConcentration = 0;
+let patientGotRisks = false;
 let toxicity;
 let toxicityPossible;
 let toxicityProbable;
@@ -129,7 +130,7 @@ btnCalcToxicity.addEventListener("click", () => {
     if(isValidTimeAfterIngestion(timeAfterIngestion)) {
         hideDiv(divMsgError);
         calcToxicities(timeAfterIngestion);
-        compareToxicities();
+        patientGotRisks ? compareToxicitiesWithRisk() : compareToxicitiesWithNoRisk();
         displayDiv(divResult);
         addDataToGraph(graph, [{x: timeAfterIngestion, y: paracetamolConcentration}, {x:10, y: 200}, {x:12, y:150}]);
         resultText.scrollIntoView(true);
@@ -152,6 +153,9 @@ checkBoxAgreement.addEventListener("click", (event) => {
     }
 })
 
+checkBoxPatientGotRisk.addEventListener("click", () => {
+    patientGotRisks = checkBoxPatientGotRisk.checked;
+})
 
 // FUNCTIONS
 function addDataToGraph(chart, coordonates) {
@@ -173,7 +177,7 @@ function calcToxicities(time) {
     toxicityWithRisk = Calculs.calcToxicityProbableWithRisk(toxicity);
 }
 
-function compareToxicities() {
+function compareToxicitiesWithNoRisk() {
     if(paracetamolConcentration > toxicityProbable) {
         resultText.textContent = languages[currentLanguage].toxicity_result_probable;
     } else if (paracetamolConcentration > toxicityPossible) {
@@ -181,6 +185,11 @@ function compareToxicities() {
     } else if (timeAfterIngestion != false) {
         resultText.textContent = languages[currentLanguage].toxicity_result_ok;
     } 
+}
+
+function compareToxicitiesWithRisk() {
+    // TODO phrases de resultats avec des risques associés 
+    alert("Y A DES RISQUES");
 }
 
 function hideDiv(htmlElement) {
