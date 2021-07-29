@@ -40,7 +40,7 @@ let datePickerSecondSample = document.querySelector('.second_sampling_time');
 
 let checkBoxAgreement = document.querySelector('input[type="checkbox"]');
 let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
-let toggleSingleOrMultipleSamles = document.querySelector('#got_multiple_sampling');
+let toggleSingleOrMultipleSamples = document.querySelector('#got_multiple_sampling');
 
 let graphCanvas = document.querySelector('.graph');
 let graph = new Chart(graphCanvas, {
@@ -158,9 +158,9 @@ checkBoxAgreement.addEventListener("click", (event) => {
     }
 })
 
-toggleSingleOrMultipleSamles.addEventListener("click", () => {
-    gotMultipleSample = toggleSingleOrMultipleSamles.checked
-    if(toggleSingleOrMultipleSamles.checked) {
+toggleSingleOrMultipleSamples.addEventListener("click", () => {
+    gotMultipleSample = toggleSingleOrMultipleSamples.checked
+    if(toggleSingleOrMultipleSamples.checked) {
         displayDiv(divCalcNeeded);
         hideDiv(divNocalcNeeded);
     } else {
@@ -186,8 +186,8 @@ function isValidTimeAfterIngestion(number) {
      return (number < DIFFUSION_TIME_IN_BLOOD) ? false : true; 
 }
 
-function calcToxicities(time) {
-    toxicity =  Calculs.calcToxicity(time);
+function calcToxicities() {
+    toxicity =  Calculs.calcToxicity(timeAfterIngestion);
     toxicityPossible = Calculs.calcToxicityPossible(toxicity);
     toxicityProbable = Calculs.calcToxicityProbable(toxicity);
     toxicityWithRisk = Calculs.calcToxicityProbableWithRisk(toxicity);
@@ -220,14 +220,15 @@ function  displayDiv(htmlElement) {
 
 function calcWithOneSample() {
     hideDiv(divMsgError);
-    calcToxicities(timeAfterIngestion);
+    calcToxicities();
     patientGotRisks ? compareToxicitiesWithRisk() : compareToxicitiesWithNoRisk();
     displayDiv(divResult);
-    addDataToGraph(graph, [{x: timeAfterIngestion, y: paracetamolConcentration}, {x:10, y: 200}, {x:12, y:150}]);
+    addDataToGraph(graph, [{x: timeAfterIngestion, y: paracetamolConcentration}]);
     resultText.scrollIntoView(true);
 
 }
 
 function calcWithMultipleSample() {
+    //TODO ajout des multiples samples dans le graph
     alert("j'ai pas encore fait");
 }
