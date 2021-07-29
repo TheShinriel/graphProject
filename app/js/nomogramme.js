@@ -12,10 +12,10 @@ const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
 
 let timeAfterIngestion = 0;
 let paracetamolConcentration = 0;
-let toxicity 
-let toxicityPossible
-let toxicityProbable
-
+let toxicity;
+let toxicityPossible;
+let toxicityProbable;
+let toxicityWithRisk;
 let resultText = document.querySelector('.result_text');
 
 let divCalcToxParacetamol = document.querySelector('#calculate_toxicity_div');
@@ -29,6 +29,7 @@ let inputIngestionTime = document.querySelector('.time_after_ingestion');
 let inputParacetamolConcentration = document.querySelector('.paracetamol_concentration');
 
 let checkBoxAgreement = document.querySelector('input[type="checkbox"]');
+let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
 
 let graphCanvas = document.querySelector('.graph');
 let graph = new Chart(graphCanvas, {
@@ -169,6 +170,7 @@ function calcToxicities(time) {
     toxicity =  Calculs.calcToxicity(time);
     toxicityPossible = Calculs.calcToxicityPossible(toxicity);
     toxicityProbable = Calculs.calcToxicityProbable(toxicity);
+    toxicityWithRisk = Calculs.calcToxicityProbableWithRisk(toxicity);
 }
 
 function compareToxicities() {

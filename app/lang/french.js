@@ -9,6 +9,7 @@ export default {
 
     // BUTTONS
     "calculate_toxicity_label": "L'ingestion a eu lieu en prise unique, le nomogramme est donc utilisable.",
+    "patient_got_risk_label": "le patient présente des risques",
     "checkboxLabelHalfLife": "J'ai deux prélèvement et souhaite obtenir la demie vie",
     "datePickerLabelFirstSample": "Première date",
     "datePickerLabelSecondSample": "Deuxiéme date",
