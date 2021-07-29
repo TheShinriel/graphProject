@@ -35,3 +35,7 @@ export function defineToxicity(exposant) {
 export function calcDoseParacetamol(weight,dose){
     return (dose * 1000 / weight).toFixed(0);
 }
+
+export function calcTimeBetweenTwoDatesInHour(date1, date2) {
+    return  (Date.parse(date1) - Date.parse(date2)) / 3_600_000;
+}

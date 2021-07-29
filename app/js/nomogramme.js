@@ -13,10 +13,12 @@ const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
 let timeAfterIngestion = 0;
 let paracetamolConcentration = 0;
 let patientGotRisks = false;
+let gotMultipleSample = false;
 let toxicity;
 let toxicityPossible;
 let toxicityProbable;
 let toxicityWithRisk;
+let duration;
 let resultText = document.querySelector('.result_text');
 
 let divCalcToxParacetamol = document.querySelector('#calculate_toxicity_div');
@@ -30,6 +32,11 @@ let btnCalcToxicity = document.querySelector('.calculate_toxicity_btn');
 
 let inputIngestionTime = document.querySelector('.time_after_ingestion');
 let inputParacetamolConcentration = document.querySelector('.paracetamol_concentration');
+let inputParacetamolFirstSample = document.querySelector('.paracetamol_concentration_1');
+let inputParacetamolSecondSample = document.querySelector('.paracetamol_concentration_2');
+
+let datePickerFirstSample = document.querySelector('.first_sampling_time');
+let datePickerSecondSample = document.querySelector('.second_sampling_time');
 
 let checkBoxAgreement = document.querySelector('input[type="checkbox"]');
 let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
@@ -131,12 +138,7 @@ btnCalcToxicity.addEventListener("click", () => {
     timeAfterIngestion = parseFloat(inputIngestionTime.value); 
 
     if(isValidTimeAfterIngestion(timeAfterIngestion)) {
-        hideDiv(divMsgError);
-        calcToxicities(timeAfterIngestion);
-        patientGotRisks ? compareToxicitiesWithRisk() : compareToxicitiesWithNoRisk();
-        displayDiv(divResult);
-        addDataToGraph(graph, [{x: timeAfterIngestion, y: paracetamolConcentration}, {x:10, y: 200}, {x:12, y:150}]);
-        resultText.scrollIntoView(true);
+        gotMultipleSample ? calcWithMultipleSample() : calcWithOneSample();
     }
     
     if(!isValidTimeAfterIngestion(timeAfterIngestion)) {
@@ -156,15 +158,15 @@ checkBoxAgreement.addEventListener("click", (event) => {
     }
 })
 
-toggleSingleOrMultipleSamles.addEventListener("click", (event) => {
-    if(event.target.checked == true) {
+toggleSingleOrMultipleSamles.addEventListener("click", () => {
+    gotMultipleSample = toggleSingleOrMultipleSamles.checked
+    if(toggleSingleOrMultipleSamles.checked) {
         displayDiv(divCalcNeeded);
         hideDiv(divNocalcNeeded);
     } else {
         displayDiv(divNocalcNeeded);
         hideDiv(divCalcNeeded);
     }
-
 })
 
 checkBoxPatientGotRisk.addEventListener("click", () => {
@@ -216,3 +218,16 @@ function  displayDiv(htmlElement) {
     htmlElement.classList.add("visible");
 }
 
+function calcWithOneSample() {
+    hideDiv(divMsgError);
+    calcToxicities(timeAfterIngestion);
+    patientGotRisks ? compareToxicitiesWithRisk() : compareToxicitiesWithNoRisk();
+    displayDiv(divResult);
+    addDataToGraph(graph, [{x: timeAfterIngestion, y: paracetamolConcentration}, {x:10, y: 200}, {x:12, y:150}]);
+    resultText.scrollIntoView(true);
+
+}
+
+function calcWithMultipleSample() {
+    alert("j'ai pas encore fait");
+}
