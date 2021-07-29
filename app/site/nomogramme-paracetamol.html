@@ -21,13 +21,41 @@
         <label class="text_agreement i18n" data-text="calculate_toxicity_label" for="accept_agreement">  </label>
     </div>
 
-    <div id="calculate_toxicity_div" class="invisible">
+    <div id="calculate_toxicity_div" class="visible"> <!--TODO change to invisible-->
         <div class="patient_got_risk_container">
             <input type="checkbox" name="patient_got_risk" id="patient_got_risk">
             <label class="patient_got_risk i18n" data-text="patient_got_risk_label" for="patient_got_risk">  </label>
         </div>
-        <input class="time_after_ingestion i18n" type="number" data-text="calculate_toxicity_ingestion_time" placeholder="">
-        <input class="paracetamol_concentration i18n" type="number" data-text="calculate_toxicity_paracetamol_concentration" placeholder="Paracetamol (mg/l)">
+        <div class="got_multiple_sampling_container">
+            <input type="checkbox" name="got_multiple_sampling" id="got_multiple_sampling">
+            <label class="got_multiple_sampling i18n" data-text="got_multiple_sampling_label" for="got_multiple_sampling">  </label>
+        </div>
+
+        <div class="no_calc_container">
+            <input class="time_after_ingestion i18n" type="number" data-text="calculate_toxicity_ingestion_time" placeholder="">
+            <input class="paracetamol_concentration i18n" type="number" data-text="calculate_toxicity_paracetamol_concentration" placeholder="Paracetamol (mg/l)">
+        </div>
+        <div class="calc_container invisible">
+                <div class="first_date_picker">
+                    <label for="first_sampling_time" class="first_sampling_label"> Date et heure du premier prélèvement </label>
+                    <input type="datetime-local" class="first_sampling_time" id="first_sampling_time">
+                </div>
+                <div class="first_concentration">
+                    <label for="first_concentration"> Concentration 1 </label>
+                    <input class="paracetamol_concentration_1" type="number" id="first_concentration"
+                        placeholder="Paracetamol conc. (mg/l)">
+                </div>
+    
+                <div class="second_date_picker">
+                    <label for="second_sampling_time" class="second_sampling_label"> Date et heure du second prélèvement </label>
+                    <input type="datetime-local" class="second_sampling_time" id="second_sampling_time">
+                </div>
+                <div class="second_concentration">
+                    <label for="second_concentration"> Concentration 2 </label>
+                    <input class="paracetamol_concentration_2" type="number" id="second_concentration"
+                        placeholder="Paracetamol conc. (mg/l)">
+                </div>
+        </div>
         <button class="calculate_toxicity_btn i18n" data-text="calculate_toxicity_btn" type="submit"></button>
     </div>
 

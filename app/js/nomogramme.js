@@ -22,6 +22,8 @@ let resultText = document.querySelector('.result_text');
 let divCalcToxParacetamol = document.querySelector('#calculate_toxicity_div');
 let divMsgError = document.querySelector('.alertBadData');
 let divResult = document.querySelector('#container_result');
+let divNocalcNeeded = document.querySelector('.no_calc_container')
+let divCalcNeeded = document.querySelector('.calc_container')
 
 let btnTranslation = document.querySelectorAll('.btn_translation');
 let btnCalcToxicity = document.querySelector('.calculate_toxicity_btn');
@@ -31,6 +33,7 @@ let inputParacetamolConcentration = document.querySelector('.paracetamol_concent
 
 let checkBoxAgreement = document.querySelector('input[type="checkbox"]');
 let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
+let toggleSingleOrMultipleSamles = document.querySelector('#got_multiple_sampling');
 
 let graphCanvas = document.querySelector('.graph');
 let graph = new Chart(graphCanvas, {
@@ -151,6 +154,17 @@ checkBoxAgreement.addEventListener("click", (event) => {
     } else {
         hideDiv(divCalcToxParacetamol);
     }
+})
+
+toggleSingleOrMultipleSamles.addEventListener("click", (event) => {
+    if(event.target.checked == true) {
+        displayDiv(divCalcNeeded);
+        hideDiv(divNocalcNeeded);
+    } else {
+        displayDiv(divNocalcNeeded);
+        hideDiv(divCalcNeeded);
+    }
+
 })
 
 checkBoxPatientGotRisk.addEventListener("click", () => {

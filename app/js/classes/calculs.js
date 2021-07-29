@@ -20,11 +20,9 @@ export function calcToxicityProbable (toxicity) {
     return toxicity * 400;
 }
 
-// TODO
 export function calcToxicityProbableWithRisk (toxicity) {
     return toxicity * 200;
 }
-
 
 export function defineExposant(time) {
     return (Math.log10(50) - Math.log10(200)) / 8 * time;
