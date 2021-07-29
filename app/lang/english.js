@@ -30,7 +30,7 @@ export default {
     "badCalcul": "The dates or the concentration entered don't allow to calculate the half-life",
     
     // GRAPH
-    "graph_title": "Nomogramme of Rumack and Matthew",
+    "graph_title": "Nomogram of Rumack and Matthew",
     "graph_toxicity_line": "Toxicity line (line 200)",
     "graph_second_line": "Treatment line (NAC)",
     "graph_patient_saisi": "Entered patient's concentration",
