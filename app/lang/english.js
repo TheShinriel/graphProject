@@ -10,7 +10,7 @@ export default {
     // BUTTONS
     "calculate_toxicity_label": "Ingestion took place as a single dose, so the nomogram can be used",
     "patient_got_risk_label": "patient got risks",
-    "got_multiple_sampling_label": "got multiple sample",
+    "got_multiple_sampling_date_label": "got multiple sample",
     "checkboxLabelHalfLife": "I have two samples and want to calculate the half-life",
     "datePickerLabelFirstSample": "Date of the first sample",
     "datePickerLabelSecondSample": "Date of the second sample",

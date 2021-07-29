@@ -26,14 +26,21 @@
             <input type="checkbox" name="patient_got_risk" id="patient_got_risk">
             <label class="patient_got_risk i18n" data-text="patient_got_risk_label" for="patient_got_risk">  </label>
         </div>
-        <div class="got_multiple_sampling_container">
-            <input type="checkbox" name="got_multiple_sampling" id="got_multiple_sampling">
-            <label class="got_multiple_sampling i18n" data-text="got_multiple_sampling_label" for="got_multiple_sampling">  </label>
+        <div class="got_multiple_sampling_date_container">
+            <input type="checkbox" name="got_multiple_sampling_date" id="got_multiple_sampling_date">
+            <label class="got_multiple_sampling_date i18n" data-text="got_multiple_sampling_date_label" for="got_multiple_sampling_date">  </label>
         </div>
 
         <div class="no_calc_container">
-            <input class="time_after_ingestion i18n" type="number" data-text="calculate_toxicity_ingestion_time" placeholder="">
-            <input class="paracetamol_concentration i18n" type="number" data-text="calculate_toxicity_paracetamol_concentration" placeholder="Paracetamol (mg/l)">
+            <div class="first_sample_interval_container">
+                <input class="first_interval_after_ingestion i18n" type="number" data-text="calculate_toxicity_ingestion_time" placeholder="">
+                <input class="first_interval_paracetamol_concentration i18n" type="number" data-text="calculate_toxicity_paracetamol_concentration" placeholder="Paracetamol (mg/l)">
+            </div>
+            <div class="first_sample_interval_container">
+                <input class="second_interval_after_ingestion i18n" type="number" data-text="calculate_toxicity_ingestion_time" placeholder="">
+                <input class="second_interval_paracetamol_concentration i18n" type="number" data-text="calculate_toxicity_paracetamol_concentration" placeholder="Paracetamol (mg/l)">
+            </div>
+
         </div>
         <div class="calc_container invisible">
                 <div class="first_date_picker">
