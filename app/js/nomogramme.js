@@ -10,11 +10,16 @@ let currentLanguage = "french";
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; //time in hour
 
+// variables
 let timeAfterIngestion = 0;
 let paracetamolConcentration = 0;
 let timeAfterIngestion2 = 0;
 let paracetamolConcentration2 = 0;
-
+//test
+let ingestionTimes = [];
+let paracetamolConcentrations = [];
+let coordonates = [{}];
+// fin test
 let patientGotRisks = false;
 let gotDateSample = false;
 let toxicity;
@@ -23,27 +28,27 @@ let toxicityProbable;
 let toxicityWithRisk;
 let duration;
 let resultText = document.querySelector('.result_text');
-
+// divs
 let divCalcToxParacetamol = document.querySelector('#calculate_toxicity_div');
 let divMsgError = document.querySelector('.alertBadData');
 let divResult = document.querySelector('#container_result');
 let divNocalcNeeded = document.querySelector('.no_calc_container')
 let divCalcNeeded = document.querySelector('.calc_container')
-
+// buttons
 let btnTranslation = document.querySelectorAll('.btn_translation');
 let btnCalcToxicity = document.querySelector('.calculate_toxicity_btn');
-// interval
+// interval inputs
 let inputIngestionTime = document.querySelector('.first_interval_after_ingestion');
 let inputIngestionTime2 = document.querySelector('.second_interval_after_ingestion');
 let inputParacetamolConcentration = document.querySelector('.first_interval_paracetamol_concentration');
 let inputParacetamolConcentration2 = document.querySelector('.second_interval_paracetamol_concentration');
-// datePickers
+// datePickers inputs
 let inputParacetamolFirstSample = document.querySelector('.paracetamol_concentration_1');
 let inputParacetamolSecondSample = document.querySelector('.paracetamol_concentration_2');
 
 let datePickerFirstSample = document.querySelector('.first_sampling_time');
 let datePickerSecondSample = document.querySelector('.second_sampling_time');
-
+// checkboxs
 let checkBoxAgreement = document.querySelector('input[type="checkbox"]');
 let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
 let toggleSingleOrMultipleSamples = document.querySelector('#got_multiple_sampling_date');
@@ -144,6 +149,16 @@ btnCalcToxicity.addEventListener("click", () => {
     paracetamolConcentration2 = parseFloat(inputParacetamolConcentration2.value);
     timeAfterIngestion = parseFloat(inputIngestionTime.value); 
     timeAfterIngestion2 = parseFloat(inputIngestionTime2.value); 
+    
+    //test 
+    ingestionTimes = [];
+    paracetamolConcentrations = [];
+    ingestionTimes.push(timeAfterIngestion);
+    (isNaN(timeAfterIngestion2)) ?  false : ingestionTimes.push(timeAfterIngestion2);
+    paracetamolConcentrations.push(paracetamolConcentration);
+    (isNaN(paracetamolConcentration2)) ?  false : paracetamolConcentrations.push(paracetamolConcentration2);
+    createCoordonates(ingestionTimes, paracetamolConcentrations);
+    // fin test
 
     if(isValidTimeAfterIngestion(timeAfterIngestion) && isValidTimeAfterIngestion(timeAfterIngestion2)) {
         gotDateSample ? calcWithDateSample() : calcWithIntervalSample();
@@ -231,7 +246,7 @@ function calcWithIntervalSample() {
     calcToxicities();
     patientGotRisks ? compareToxicitiesWithRisk() : compareToxicitiesWithNoRisk();
     displayDiv(divResult);
-    addDataToGraph(graph, [{x: timeAfterIngestion, y: paracetamolConcentration}, {x: timeAfterIngestion2, y: paracetamolConcentration2}]);
+    addDataToGraph(graph, coordonates);
     resultText.scrollIntoView(true);
 
 }
@@ -239,4 +254,11 @@ function calcWithIntervalSample() {
 function calcWithDateSample() {
     //TODO ajout des multiples samples dans le graph
     alert("j'ai pas encore fait");
+}
+
+function createCoordonates(array1, array2) {
+    coordonates = [];
+    for (let index = 0; index < array1.length; index++) {
+        coordonates.push({x:array1[index], y: array2[index]});
+    }
 }
