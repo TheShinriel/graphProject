@@ -38,6 +38,8 @@ let divCalcNeeded = document.querySelector('.calc_container')
 let btnTranslation = document.querySelectorAll('.btn_translation');
 let btnCalcToxicity = document.querySelector('.calculate_toxicity_btn');
 // interval inputs
+let ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
+let paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
 let inputIngestionTime = document.querySelector('.first_interval_after_ingestion');
 let inputIngestionTime2 = document.querySelector('.second_interval_after_ingestion');
 let inputParacetamolConcentration = document.querySelector('.first_interval_paracetamol_concentration');
@@ -150,15 +152,7 @@ btnCalcToxicity.addEventListener("click", () => {
     timeAfterIngestion = parseFloat(inputIngestionTime.value); 
     timeAfterIngestion2 = parseFloat(inputIngestionTime2.value); 
     
-    //test 
-    ingestionTimes = [];
-    paracetamolConcentrations = [];
-    ingestionTimes.push(timeAfterIngestion);
-    (isNaN(timeAfterIngestion2)) ?  false : ingestionTimes.push(timeAfterIngestion2);
-    paracetamolConcentrations.push(paracetamolConcentration);
-    (isNaN(paracetamolConcentration2)) ?  false : paracetamolConcentrations.push(paracetamolConcentration2);
-    createCoordonates(ingestionTimes, paracetamolConcentrations);
-    // fin test
+    prepareDataForGraph()
 
     if(isValidTimeAfterIngestion(timeAfterIngestion) && isValidTimeAfterIngestion(timeAfterIngestion2)) {
         gotDateSample ? calcWithDateSample() : calcWithIntervalSample();
@@ -261,4 +255,27 @@ function createCoordonates(array1, array2) {
     for (let index = 0; index < array1.length; index++) {
         coordonates.push({x:array1[index], y: array2[index]});
     }
+}
+
+function prepareDataForGraph() {
+        setIngestionTimesArray();
+        setParacetamolConcentrationArray();
+        createCoordonates(ingestionTimes, paracetamolConcentrations);
+}
+
+function setIngestionTimesArray() {
+    ingestionTimes = [];
+
+    ingestionIntervals.forEach(interval => {
+        if (interval.value !== "") ingestionTimes.push(+interval.value);
+    });
+    console.log(ingestionTimes.every(num => num >= DIFFUSION_TIME_IN_BLOOD));    
+}
+
+function setParacetamolConcentrationArray() {
+    paracetamolConcentrations = [];
+
+    paracetamolConcentrationIntervals.forEach(concentration => {
+        if (concentration.value !== "") paracetamolConcentrations.push(+concentration.value);
+    });
 }
