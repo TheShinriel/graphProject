@@ -211,8 +211,13 @@ function compareToxicitiesWithNoRisk() {
 }
 
 function compareToxicitiesWithRisk() {
-    // TODO phrases de resultats avec des risques associés 
-    alert("Y A DES RISQUES");
+    if(paracetamolConcentration > toxicityProbable) {
+        resultText.textContent = languages[currentLanguage].toxicity_result_probable;
+    } else if (paracetamolConcentration > toxicityWithRisk) {
+        resultText.textContent = languages[currentLanguage].toxicity_result_possible;
+    } else if (timeAfterIngestion != false) {
+        resultText.textContent = languages[currentLanguage].toxicity_result_ok;
+    } 
 }
 
 function hideDiv(htmlElement) {
