@@ -134,7 +134,6 @@ btnCalcToxicity.addEventListener("click", () => {
     prepareDataForGraph()
     findConcentrationToAnalize()
     
-
     if(isValidTimeAfterIngestion(ingestionTimes)) {
         calcWithIntervalSample();
     }
@@ -228,25 +227,17 @@ function createCoordonates(array1, array2) {
 }
 
 function prepareDataForGraph() {
-        setIngestionTimesArray();
-        setParacetamolConcentrationsArray();
+        ingestionTimes = setNodeModuleInArrayWithoutBlankValue(ingestionIntervals)
+        paracetamolConcentrations = setNodeModuleInArrayWithoutBlankValue(paracetamolConcentrationIntervals)
         createCoordonates(ingestionTimes, paracetamolConcentrations);
 }
 
-function setIngestionTimesArray() {
-    ingestionTimes = [];
-
-    ingestionIntervals.forEach(interval => {
-        if (interval.value !== "") ingestionTimes.push(+interval.value);
+function setNodeModuleInArrayWithoutBlankValue(nodeModule) {
+    let array = [];
+    nodeModule.forEach(concentration => {
+        if (concentration.value !== "") array.push(+concentration.value);
     });
-}
-
-function setParacetamolConcentrationsArray() {
-    paracetamolConcentrations = [];
-
-    paracetamolConcentrationIntervals.forEach(concentration => {
-        if (concentration.value !== "") paracetamolConcentrations.push(+concentration.value);
-    });
+    return array;
 }
 
 function findConcentrationToAnalize() {
