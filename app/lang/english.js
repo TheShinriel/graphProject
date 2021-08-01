@@ -6,6 +6,8 @@ export default {
     "title_sub_title": "ENGLISH HopiTox is an online dynamic nomogram based on Rumack equation in order to assess the potential risk for hepatotoxicity after acetaminophen acute overdose. Here are tools to calculate dose in mg/kg or acetaminophen half-life when two samples are withdrawn, and a dynamic nomogram in a user-friendly interface. HopiTox is a tool, not a replacement for medical or biological advice.",
     "title_warningBadData": "Acetaminophen concentration at more than 4h post ingestion should be obtained. An other sample should be withdrawn.",
     "nomogram_title": "Rumack-Matthew dynamic nomogram for acetaminophen overdose",
+    "resp_scientifique": "Scientific officer : Dr Manon Launay, PharmD, PhD",
+    "resp_dev_web": "Developers : Pierre-Henri Laurency, Maxime Rogues",
 
     // BUTTONS
     "calculate_toxicity_label": "Use of the Rumack-Matthew nomogram in management of acetaminophen overdose is only acceptable when the acuity of ingestion is known to be within 24 hours.",

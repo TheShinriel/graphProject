@@ -17,7 +17,6 @@ let ingestionTimes = [];
 let paracetamolConcentrations = [];
 let coordonates = [{}];
 let patientGotRisks = false;
-let gotDateSample = false;
 let toxicity;
 let toxicityPossible;
 let toxicityProbable;
@@ -36,12 +35,6 @@ let btnCalcToxicity = document.querySelector('.calculate_toxicity_btn');
 // interval inputs
 let ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
 let paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
-// datePickers inputs
-let inputParacetamolFirstSample = document.querySelector('.paracetamol_concentration_1');
-let inputParacetamolSecondSample = document.querySelector('.paracetamol_concentration_2');
-
-let datePickerFirstSample = document.querySelector('.first_sampling_time');
-let datePickerSecondSample = document.querySelector('.second_sampling_time');
 // checkboxs
 let checkBoxAgreement = document.querySelector('input[type="checkbox"]');
 let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
@@ -143,7 +136,7 @@ btnCalcToxicity.addEventListener("click", () => {
     
 
     if(isValidTimeAfterIngestion(ingestionTimes)) {
-        gotDateSample ? calcWithDateSample() : calcWithIntervalSample();
+        calcWithIntervalSample();
     }
     
     if(!isValidTimeAfterIngestion(ingestionTimes)) {
@@ -160,17 +153,6 @@ checkBoxAgreement.addEventListener("click", (event) => {
         displayDiv(divCalcToxParacetamol);
     } else {
         hideDiv(divCalcToxParacetamol);
-    }
-})
-
-toggleSingleOrMultipleSamples.addEventListener("click", () => {
-    gotDateSample = toggleSingleOrMultipleSamples.checked
-    if(toggleSingleOrMultipleSamples.checked) {
-        displayDiv(divCalcNeeded);
-        hideDiv(divNocalcNeeded);
-    } else {
-        displayDiv(divNocalcNeeded);
-        hideDiv(divCalcNeeded);
     }
 })
 
@@ -236,11 +218,6 @@ function calcWithIntervalSample() {
     addDataToGraph(graph, coordonates);
     resultText.scrollIntoView(true);
 
-}
-
-function calcWithDateSample() {
-    //TODO ajout des multiples samples dans le graph
-    alert("j'ai pas encore fait");
 }
 
 function createCoordonates(array1, array2) {

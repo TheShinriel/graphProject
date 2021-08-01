@@ -1,4 +1,4 @@
-import Calculs from "./classes/Calculs.js";
+import * as Calculs from '../js/classes/Calculs.js';
 import { Modal } from "./classes/Modal.js";
 import Trads from "../js/classes/Trads.js";
 Trads.changeLanguage("french");

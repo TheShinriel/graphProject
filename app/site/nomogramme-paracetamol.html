@@ -14,23 +14,26 @@
         <button class="btn_translation" data-language="french">Français</button>
         <button class="btn_translation" data-language="english">English</button>
     </header>
-    <h1 class="i18n" data-text="nomogram_title"></h1>
     <br>
+    <h1> Calcul de la dose en mg/kg</h1>
+    <div class="container_calc_dose_paracetamol">    
+        <input class="subject_weight" type="number" placeholder="Poids du patient (kg)">
+        <input class="subject_hypothetic_dosis"type="number" placeholder="Dose supposée(g)">
+        <button class="calc_dose_paracetamol" type="submit"> Calcul de la dose en mg/kg </button>
+        <p class="result_calc_dose_paracetamol"></p>
+    </div>
+    
+    <h1 class="i18n" data-text="nomogram_title"></h1>
     <div id="agreement" class="visible">
         <input type="checkbox" data-div="calculate_toxicity_div" name="accept_agreement" id="accept_agreement">
         <label class="text_agreement i18n" data-text="calculate_toxicity_label" for="accept_agreement">  </label>
     </div>
 
-    <div id="calculate_toxicity_div" class="invisible"> <!--TODO change to invisible-->
+    <div id="calculate_toxicity_div" class="invisible">
         <div class="patient_got_risk_container">
             <input type="checkbox" name="patient_got_risk" id="patient_got_risk">
             <label class="patient_got_risk i18n" data-text="patient_got_risk_label" for="patient_got_risk">  </label>
         </div>
-        <div class="got_multiple_sampling_date_container">
-            <input type="checkbox" name="got_multiple_sampling_date" id="got_multiple_sampling_date">
-            <label class="got_multiple_sampling_date i18n" data-text="got_multiple_sampling_date_label" for="got_multiple_sampling_date">  </label>
-        </div>
-
         <div class="no_calc_container">
             <div class="first_sample_interval_container">
                 <input class="interval_after_ingestion  i18n" type="number" data-text="calculate_toxicity_ingestion_time" placeholder="">
@@ -40,28 +43,6 @@
                 <input class="interval_after_ingestion i18n" type="number" data-text="calculate_toxicity_ingestion_time" placeholder="">
                 <input class="interval_paracetamol_concentration i18n" type="number" data-text="calculate_toxicity_paracetamol_concentration" placeholder="Paracetamol (mg/l)">
             </div>
-
-        </div>
-        <div class="calc_container invisible">
-                <div class="first_date_picker">
-                    <label for="first_sampling_time" class="first_sampling_label"> Date et heure du premier prélèvement </label>
-                    <input type="datetime-local" class="first_sampling_time" id="first_sampling_time">
-                </div>
-                <div class="first_concentration">
-                    <label for="first_concentration"> Concentration 1 </label>
-                    <input class="paracetamol_concentration_1" type="number" id="first_concentration"
-                        placeholder="Paracetamol conc. (mg/l)">
-                </div>
-    
-                <div class="second_date_picker">
-                    <label for="second_sampling_time" class="second_sampling_label"> Date et heure du second prélèvement </label>
-                    <input type="datetime-local" class="second_sampling_time" id="second_sampling_time">
-                </div>
-                <div class="second_concentration">
-                    <label for="second_concentration"> Concentration 2 </label>
-                    <input class="paracetamol_concentration_2" type="number" id="second_concentration"
-                        placeholder="Paracetamol conc. (mg/l)">
-                </div>
         </div>
         <button class="calculate_toxicity_btn i18n" data-text="calculate_toxicity_btn" type="submit"></button>
     </div>
@@ -77,13 +58,20 @@
     <canvas class="graph" width="400" height="200"></canvas>
 
     <footer> 
-        <p class="title_ref"> Références : </p>
-        <p class="ref">White SJ, Rumack BH. The acetaminophen toxicity equations: "solutions" for acetaminophen toxicity based on the Rumack-Matthew nomogram. Ann Emerg Med. 2005 May;45(5):563-4. doi: 10.1016/j.annemergmed.2004.11.033. PMID: 15855961.</p>
-        <p class="ref">Mégarbane B, Oberlin M, Alvarez JC, Balen F, Beaune S, Bédry R, Chauvin A, Claudet I, Danel V, Debaty G, Delahaye A, Deye N, Gaulier JM, Grossenbacher F, Hantson P, Jacobs F, Jaffal K, Labadie M, Labat L, Langrand J, Lapostolle F, Le Conte P, Maignan M, Nisse P, Sauder P, Tournoud C, Vodovar D, Voicu S, Claret PG, Cerf C. Management of pharmaceutical and recreational drug poisoning. Ann Intensive Care. 2020 Nov 23;10(1):157. doi: 10.1186/s13613-020-00762-9. PMID: 33226502; PMCID: PMC7683636.</p>
-        <p class="ref">Saint-Marcoux F, Libert F; groupe Suivi thérapeutique pharmacologique de la Société française de pharmacologie et de thérapeutique. Éléments de l'interprétation et du dialogue clinico-biologique pour quelques paramètres usuels de pharmacologie-toxicologie [Practical information for therapeutic drug monitoring of the most common compounds]. Therapie. 2016 Sep;71(4):405-34. French. doi: 10.1016/j.therap.2016.01.007. Epub 2016 May 4. PMID: 27203171.</p>
-        <p class="ref">Beer C, Pakravan N, Hudson M, Smith LT, Simpson K, Bateman DN, Thomas SH. Liver unit admission following paracetamol overdose with concentrations below current UK treatment thresholds. QJM. 2007 Feb;100(2):93-6. doi: 10.1093/qjmed/hcm003. Epub 2007 Jan 20. PMID: 17237484.</p>
-        <p class="ref">Bateman DN. Paracetamol poisoning: beyond the nomogram. Br J Clin Pharmacol. 2015 Jul;80(1):45-50. doi: 10.1111/bcp.12604. Epub 2015 Jun 1. PMID: 26099917; PMCID: PMC4500323.</p>
-    </footer>
-    <script type="module" src="../js/nomogramme.js"></script>
-</body>
-</html>
+        <div class="ref_container">
+            <p class="title_ref"> Références : </p>
+            <p class="ref">White SJ, Rumack BH. The acetaminophen toxicity equations: "solutions" for acetaminophen toxicity based on the Rumack-Matthew nomogram. Ann Emerg Med. 2005 May;45(5):563-4. doi: 10.1016/j.annemergmed.2004.11.033. PMID: 15855961.</p>
+            <p class="ref">Mégarbane B, Oberlin M, Alvarez JC, Balen F, Beaune S, Bédry R, Chauvin A, Claudet I, Danel V, Debaty G, Delahaye A, Deye N, Gaulier JM, Grossenbacher F, Hantson P, Jacobs F, Jaffal K, Labadie M, Labat L, Langrand J, Lapostolle F, Le Conte P, Maignan M, Nisse P, Sauder P, Tournoud C, Vodovar D, Voicu S, Claret PG, Cerf C. Management of pharmaceutical and recreational drug poisoning. Ann Intensive Care. 2020 Nov 23;10(1):157. doi: 10.1186/s13613-020-00762-9. PMID: 33226502; PMCID: PMC7683636.</p>
+            <p class="ref">Saint-Marcoux F, Libert F; groupe Suivi thérapeutique pharmacologique de la Société française de pharmacologie et de thérapeutique. Éléments de l'interprétation et du dialogue clinico-biologique pour quelques paramètres usuels de pharmacologie-toxicologie [Practical information for therapeutic drug monitoring of the most common compounds]. Therapie. 2016 Sep;71(4):405-34. French. doi: 10.1016/j.therap.2016.01.007. Epub 2016 May 4. PMID: 27203171.</p>
+            <p class="ref">Beer C, Pakravan N, Hudson M, Smith LT, Simpson K, Bateman DN, Thomas SH. Liver unit admission following paracetamol overdose with concentrations below current UK treatment thresholds. QJM. 2007 Feb;100(2):93-6. doi: 10.1093/qjmed/hcm003. Epub 2007 Jan 20. PMID: 17237484.</p>
+            <p class="ref">Bateman DN. Paracetamol poisoning: beyond the nomogram. Br J Clin Pharmacol. 2015 Jul;80(1):45-50. doi: 10.1111/bcp.12604. Epub 2015 Jun 1. PMID: 26099917; PMCID: PMC4500323.</p>
+        </div>
+        <div class="responsable_container">
+            <p class="resp_scientifique i18n"></p>
+            <p class="resp_dev_web i18n"></p>
+        </div>
+        </footer>
+        <script type="module" src="../js/nomogramme.js"></script>
+        <script type="module" src="../js/calc-dose.js"></script>
+    </body>
+    </html>
