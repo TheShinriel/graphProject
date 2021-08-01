@@ -64,17 +64,15 @@ let graph = new Chart(graphCanvas, {
             type: 'line',
             label: languages[currentLanguage].graph_toxicity_line,
             labelName: "toxLine",
-            backgroundColor: 'white',
             borderDash: [15,10],
-            borderColor: 'rgb(243, 17, 41)',
+            borderColor: 'rgb(243, 17, 41,0.5)',
             data: [{x:4, y:200}, {x:24, y:6.25}]
             },
             {
             type: 'line',
             label: languages[currentLanguage].graph_second_line,
             labelName: "secondLine",
-            backgroundColor: 'white',
-            borderColor: 'rgb(140,56,197)',
+            borderColor: 'rgb(140,56,197,0.5)',
             borderDash: [15,10],
             data: [{x:4, y:150}, {x:24, y:4.6875}],
 
@@ -82,18 +80,18 @@ let graph = new Chart(graphCanvas, {
         {
             type: 'line',
             label: languages[currentLanguage].graph_riskFactor_line,
-            backgroundColor: 'white',
             labelName: "riskFactor",
             borderDash: [15,10],
-            borderColor: 'rgb(53,197,154)',
+            borderColor: 'rgb(53,197,154,0.5)',
             data: [{x:4, y:100}, {x:24, y:3.125}],
         },
         {
             type: 'line',
             label: languages[currentLanguage].graph_patient_saisi,
             labelName: "patientSaisi",
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'red',
+            backgroundColor: 'red',
+            order: 1,
             data: []
             }
         ],

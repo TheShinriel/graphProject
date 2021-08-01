@@ -1,27 +1,27 @@
 export default {
     // TITLE
-    "need_dose": "It's possible to calculate the dose in mg/kg",
-    "title_page": "Evaluation of the paracetamol's toxicity",
-    "title_main": "Liver toxicity of the paracetamol",
-    "title_sub_title": "ENGLISH HopiTox est un outil dynamique reprenant l'équation de Rumack dans une interface intuitive pour évaluer le risque toxique après une prise unique massive de paracetamol. Il permet de réaliser le calcul de la dose ingérée en mg/kg, l'utilisation d'un nomogramme dynamique pour évaluer le risque toxique en fonction de la paracétamolémie, et le calcul de la demi-vie. Il ne se subsitue évidemment pas à l'avis médical ni au dialogue clinico-biologique.",
-    "title_warningBadData": "Beware that the nomogram can only be used if the sample is made at least 4 hours after the ingestion. Please sample again.",
-    "nomogram_title": "Dynamic nomogram of Rumack-Matthew",
+    "need_dose": "A tool to calculate the dose in mg/kg is available.",
+    "title_page": "Assessment of acetaminophen toxicity using an online dynamic Rumack-Matthew nomogram",
+    "title_main": "je ne sais pas ce que je dois écrire",
+    "title_sub_title": "ENGLISH HopiTox is an online dynamic nomogram based on Rumack equation in order to assess the potential risk for hepatotoxicity after acetaminophen acute overdose. Here are tools to calculate dose in mg/kg or acetaminophen half-life when two samples are withdrawn, and a dynamic nomogram in a user-friendly interface. HopiTox is a tool, not a replacement for medical or biological advice.",
+    "title_warningBadData": "Acetaminophen concentration at more than 4h post ingestion should be obtained. An other sample should be withdrawn.",
+    "nomogram_title": "Rumack-Matthew dynamic nomogram for acetaminophen overdose",
 
     // BUTTONS
-    "calculate_toxicity_label": "Ingestion took place as a single dose, so the nomogram can be used",
-    "patient_got_risk_label": "patient got risks",
-    "got_multiple_sampling_date_label": "got multiple sample",
+    "calculate_toxicity_label": "Use of the Rumack-Matthew nomogram in management of acetaminophen overdose is only acceptable when the acuity of ingestion is known to be within 24 hours.",
+    "patient_got_risk_label": "Patient has risk factors for enhanced hepatotoxicity (e.g. starvation or malnutrition, consumption of enzyme inducing drugs, a history of chronic alcohol use and chronic debilitating disease), the 100-line should therefore be used. ",
+    "got_multiple_sampling_date_label": "on vire",
     "checkboxLabelHalfLife": "I have two samples and want to calculate the half-life",
     "datePickerLabelFirstSample": "Date of the first sample",
     "datePickerLabelSecondSample": "Date of the second sample",
-    "calculate_toxicity_btn": "Evaluate the risk",
+    "calculate_toxicity_btn": "Risk assessment",
     "calc_dose_button": "Calculate the dose in mg/kg",
 
     // INPUTS
     "subject_weight_input": "Patient's weight (kg)",
-    "subject_hypothetic_dosis": "Supposed dose (g)",
+    "subject_hypothetic_dosis": "Assumed acetaminophen dose (g)",
     "calculate_toxicity_ingestion_time": "Time since ingestion (h)",
-    "calculate_toxicity_paracetamol_concentration": "Paracetamol concentration (mg/L)",
+    "calculate_toxicity_paracetamol_concentration": "Paracetamol conc. (mg/L)",
 
 
     // RESULTS
@@ -32,10 +32,10 @@ export default {
     "badCalcul": "The dates or the concentration entered don't allow to calculate the half-life",
     
     // GRAPH
-    "graph_title": "Nomogramme of Rumack and Matthew",
-    "graph_toxicity_line": "Toxicity line (line 200)",
-    "graph_second_line": "Treatment line (NAC)",
-    "graph_patient_saisi": "Entered patient's concentration",
-    "graph_riskFactor_line": "Risk factor"
+    "graph_title": "Rumack and Matthew nomogram",
+    "graph_toxicity_line": "Probable toxicity line (200-line)",
+    "graph_second_line": "Treatment line (150-line)",
+    "graph_patient_saisi": "Patient's concentration",
+    "graph_riskFactor_line": "100-line"
 
 }

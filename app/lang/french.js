@@ -8,9 +8,9 @@ export default {
     "nomogram_title": "Nomogramme dynamique de Rumack-Matthew",
 
     // BUTTONS
-    "calculate_toxicity_label": "L'ingestion a eu lieu en prise unique, le nomogramme est donc utilisable.",
-    "patient_got_risk_label": "le patient présente des risques",
-    "got_multiple_sampling_date_label": "j'ai plusieurs prélevements",
+    "calculate_toxicity_label": "L'ingestion a eu lieu en prise unique, il y a moins de 24h, et avec un délai connu et fiable donc le nomogramme est utilisable. La co-administration de composés réduisant le transit (ex: opiacés) peut allonger la phase d'absorption.",
+    "patient_got_risk_label": "Le patient présente des facteurs de risque de d'hépatotoxicité (alcoolisme, cirrhose), le seuil de traitement est donc abaissé (ne cocher cette case que si le patient est concerné).",
+    "got_multiple_sampling_date_label": "Il est possible de faire le même calcul en entrant date et heure d'ingestion ou de prélèvement.",
     "checkboxLabelHalfLife": "J'ai deux prélèvement et souhaite obtenir la demie vie",
     "datePickerLabelFirstSample": "Première date",
     "datePickerLabelSecondSample": "Deuxiéme date",
@@ -33,8 +33,8 @@ export default {
     
     //GRAPH
     "graph_title": "Nomogramme de Rumack et Matthew",
-    "graph_toxicity_line": "Ligne de toxicité (ligne 200)",
+    "graph_toxicity_line": "Limite inférieure du groupe à haut risque probable (ligne 200)",
     "graph_second_line": "Ligne de traitement (NAC)",
-    "graph_patient_saisi": "Concentration du patient saisie",
-    "graph_riskFactor_line": "Ligne de traitement si facteur de risque"
+    "graph_patient_saisi": "Concentrations du patient saisies",
+    "graph_riskFactor_line": "Ligne de traitement (NAC) si facteur de risque"
 }
