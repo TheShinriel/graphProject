@@ -15,11 +15,6 @@ let pResultDose = document.querySelector('.result_calc_dose_paracetamol');
 let resultOfCalcDose;
 let styleResult;
 
-let modal = new Modal("test", "non", "non");
-modal.log;
-console.log(modal.log)
-
-
 btnCalcDose.addEventListener("click", () => {
    calcParacetamolDose();
    removeStyleResult(pResultDose);
@@ -46,5 +41,5 @@ function removeStyleResult(htmlElement) {
 }
 
 function addStyleResult(htmlElement) {
-    pResultDose.classList.add(styleResult)
+    htmlElement.classList.add(styleResult)
 }

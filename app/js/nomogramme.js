@@ -2,6 +2,7 @@ import * as Calculs from '../js/classes/Calculs.js';
 import Trads from "../js/classes/Trads.js";
 import french from "../lang/french.js";
 import english from "../lang/english.js";
+import * as Samples from "../js/classes/Sample-nommogramme.js";
 
 let languages = {"french": french, "english": english};
 Trads.changeLanguage("french");
@@ -21,21 +22,21 @@ let toxicity;
 let toxicityPossible;
 let toxicityProbable;
 let toxicityWithRisk;
-let duration;
 let resultText = document.querySelector('.result_text');
 // divs
 let divCalcToxParacetamol = document.querySelector('#calculate_toxicity_div');
 let divMsgError = document.querySelector('.alertBadData');
 let divResult = document.querySelector('#container_result');
-let divNocalcNeeded = document.querySelector('.no_calc_container')
-let divCalcNeeded = document.querySelector('.calc_container')
+let divNoCalc = document.querySelector('.no_calc_container')
 // buttons
 let btnTranslation = document.querySelectorAll('.btn_translation');
 let btnCalcToxicity = document.querySelector('.calculate_toxicity_btn');
+let btnAddSample = document.querySelector('.add_sample');
 // interval inputs
 let ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
 let paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
 // checkboxs
+console.log(ingestionIntervals);
 let checkBoxAgreement = document.querySelector('input[type="checkbox"]');
 let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
 
@@ -127,6 +128,12 @@ btnTranslation.forEach(btn => {
         Trads.changeLanguage(language);
     })
 })
+
+btnAddSample.addEventListener("click", () => {
+    Samples.addSample(divNoCalc);
+    ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
+    paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
+});
 
 btnCalcToxicity.addEventListener("click", () => {
     
@@ -221,8 +228,9 @@ function createCoordonates(array1, array2) {
 }
 
 function prepareDataForGraph() {
-        ingestionTimes = setNodeModuleInArrayWithoutBlankValue(ingestionIntervals)
-        paracetamolConcentrations = setNodeModuleInArrayWithoutBlankValue(paracetamolConcentrationIntervals)
+    ingestionTimes = setNodeModuleInArrayWithoutBlankValue(ingestionIntervals)
+    paracetamolConcentrations = setNodeModuleInArrayWithoutBlankValue(paracetamolConcentrationIntervals)
+    console.log(paracetamolConcentrations);
         createCoordonates(ingestionTimes, paracetamolConcentrations);
 }
 
