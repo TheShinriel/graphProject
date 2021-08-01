@@ -38,7 +38,6 @@ let paracetamolConcentrationIntervals = document.querySelectorAll('.interval_par
 // checkboxs
 let checkBoxAgreement = document.querySelector('input[type="checkbox"]');
 let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
-let toggleSingleOrMultipleSamples = document.querySelector('#got_multiple_sampling_date');
 
 let graphCanvas = document.querySelector('.graph');
 let graph = new Chart(graphCanvas, {
@@ -132,17 +131,22 @@ btnTranslation.forEach(btn => {
 btnCalcToxicity.addEventListener("click", () => {
     
     prepareDataForGraph()
-    findConcentrationToAnalize()
+    selectDataToAnalize()
     
     if(isValidTimeAfterIngestion(ingestionTimes)) {
-        calcWithIntervalSample();
+        hideDiv(divMsgError);
+        calcToxicities();
+        patientGotRisks ? compareToxicitiesWithRisk() : compareToxicitiesWithNoRisk();
+        displayDiv(divResult);
+        resultText.scrollIntoView(true);
+        addDataToGraph(graph, coordonates);
     }
     
     if(!isValidTimeAfterIngestion(ingestionTimes)) {
-        displayDiv(divMsgError);
         hideDiv(divResult);
+        displayDiv(divMsgError);
         // ajoute une donnée vide pour désafficher le précédent résultat valide
-        addDataToGraph(graph, {x: 0, y: 0});
+        addDataToGraph(graph, [{x: 0, y: 0}, {x: 0, y: 0}]);
     }
 
 })
@@ -209,16 +213,6 @@ function  displayDiv(htmlElement) {
     htmlElement.classList.add("visible");
 }
 
-function calcWithIntervalSample() {
-    hideDiv(divMsgError);
-    calcToxicities();
-    patientGotRisks ? compareToxicitiesWithRisk() : compareToxicitiesWithNoRisk();
-    displayDiv(divResult);
-    addDataToGraph(graph, coordonates);
-    resultText.scrollIntoView(true);
-
-}
-
 function createCoordonates(array1, array2) {
     coordonates = [];
     for (let index = 0; index < array1.length; index++) {
@@ -240,7 +234,7 @@ function setNodeModuleInArrayWithoutBlankValue(nodeModule) {
     return array;
 }
 
-function findConcentrationToAnalize() {
+function selectDataToAnalize() {
     coordonates = coordonates.sort(compare)
     paracetamolConcentration = coordonates[coordonates.length-1].y;
     timeAfterIngestion = coordonates[coordonates.length-1].x;
