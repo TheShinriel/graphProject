@@ -28,13 +28,14 @@
         </div>
     </div>
     <br>
-    <h2> Calcul de la dose en mg/kg</h2>
+    <h1 class="i18n" data-text="calc_dose_title"> Calcul de la dose en mg/kg</h1>
     <div class="container_calc_dose_paracetamol">    
-        <input class="subject_weight" type="number" placeholder="Poids du patient (kg)">
-        <input class="subject_hypothetic_dosis"type="number" placeholder="Dose supposée(g)">
-        <button class="calc_dose_paracetamol" type="submit"> Calcul de la dose en mg/kg </button>
-        <p class="result_calc_dose_paracetamol"></p>
-    </div>
+        <input class="subject_weight i18n" type="number" 
+        data-text="calc_dose_patient_weight_input" >
+        <input class="subject_hypothetic_dosis i18n" type="number" data-text="calc_dose_paracetamol_dose_input" >
+        <button class="calc_dose_paracetamol i18n" data-text="calc_dose_submit_btn" type="submit"> Calcul de la dose en mg/kg </button>
+        <p class="result_calc_dose_paracetamol" data-text="calc_dose_result"></p>
+</div>
     
     <h2 class="i18n" data-text="nomogram_title"></h2>
     <div id="agreement" class="visible">
@@ -59,14 +60,16 @@
     </div>
 
     <div id="container_result"class="invisible">
-        <p class="result_text"></p>
+        <p class="result_text i18n"></p>
     </div>
 
     <div class="alertBadData invisible">
         <h3 class="title_warningBadData i18n"> Attention le nomogramme n'est utilisable que si le prélèvement est réalisé au moins 4 heures après ingestion. Reprélever le patient.</h3>
     </div>
     <br>
-    <canvas class="graph" width="400" height="200"></canvas>
+    <div id="nomogramGraphDiv" class="graphDiv">
+        <canvas class="graph" id="nomogramGraph" width="400" height="200"></canvas>
+    </div>
 
     <footer> 
         <div class="ref_container">

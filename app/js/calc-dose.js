@@ -1,6 +1,11 @@
 import * as Calculs from '../js/classes/Calculs.js';
 import { Modal } from "./classes/Modal.js";
+import french from "../lang/french.js";
+import english from "../lang/english.js";
 import Trads from "../js/classes/Trads.js";
+
+let currentLanguage = "french";
+let languages = {"french": french, "english": english};
 Trads.changeLanguage("french");
 
 const DOSE_VALUE_MAX = 150;
@@ -29,7 +34,8 @@ function calcParacetamolDose() {
 }
 
 function displayDoseResult(htmlElement) {
-    htmlElement.textContent = `La dose ingérée est donc ${resultOfCalcDose} mg/kg.`;
+    console.log(currentLanguage);
+    htmlElement.textContent = languages[currentLanguage].calc_dose_result.replace("result", resultOfCalcDose);
 }
 
 function defineStyleResult() {
