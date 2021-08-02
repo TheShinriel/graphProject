@@ -6,8 +6,8 @@ export default {
     "title_sub_title": "HopiTox est un outil dynamique reprenant l'équation de Rumack dans une interface intuitive pour évaluer le risque toxique après une prise unique massive de paracetamol. Il permet de réaliser le calcul de la dose ingérée en mg/kg, l'utilisation d'un nomogramme dynamique pour évaluer le risque toxique en fonction de la paracétamolémie, et le calcul de la demi-vie. Il ne se subsitue évidemment pas à l'avis médical ni au dialogue clinico-biologique.",
     "title_warningBadData": "Attention le nomogramme n'est utilisable que si le prélèvement est réalisé au moins 4 heures après ingestion. Reprélever le patient.",
     "nomogram_title": "Nomogramme dynamique de Rumack-Matthew",
-    "resp_scientifique": "Responsable scientifique : Dr Manon Launay, PharmD, PhD",
-    "resp_dev_web": "Developpeurs : Pierre-Henri Laurency, Maxime Rogues",
+    "calc_dose_title": "Calcul de la dose en mg/kg",
+
 
     // BUTTONS
     "calculate_toxicity_label": "L'ingestion a eu lieu en prise unique, il y a moins de 24h, et avec un délai connu et fiable donc le nomogramme est utilisable. La co-administration de composés réduisant le transit (ex: opiacés) peut allonger la phase d'absorption.",
@@ -17,11 +17,11 @@ export default {
     "datePickerLabelFirstSample": "Première date",
     "datePickerLabelSecondSample": "Deuxiéme date",
     "calculate_toxicity_btn": "Évaluer le risque",
-    "calc_dose_button": "Calcul de la dose en mg/kg",
+    "calc_dose_submit_btn": "Calcul de la dose en mg/kg",
 
     // INPUTS
-    "subject_weight_input": "Poids du patient (kg)",
-    "subject_hypothetic_dosis": "Dose supposée (g)",
+    "calc_dose_patient_weight_input": "Poids du patient (kg)",
+    "calc_dose_paracetamol_dose_input": "Dose supposée (g)",
     "calculate_toxicity_ingestion_time": "Durée post-ingestion (h)",
     "calculate_toxicity_paracetamol_concentration": "Paracetamol conc. (mg/L)",
 
@@ -32,11 +32,17 @@ export default {
     "toxicity_result_ok": "Concentration associée à un risque faible de toxicité.",
     "resultHalfLife": "La demi vie est de : ",
     "badCalcul": "Les dates ou les concentrations saisies ne permettent pas le calcul de la demi vie.",
+    "calc_dose_result": "La dose ingérée est donc result mg/kg.",
+    
     
     //GRAPH
     "graph_title": "Nomogramme de Rumack et Matthew",
     "graph_toxicity_line": "Limite inférieure du groupe à haut risque probable (ligne 200)",
     "graph_second_line": "Ligne de traitement (NAC)",
     "graph_patient_saisi": "Concentrations du patient saisies",
-    "graph_riskFactor_line": "Ligne de traitement (NAC) si facteur de risque"
+    "graph_riskFactor_line": "Ligne de traitement (NAC) si facteur de risque",
+
+    // OTHERS
+    "resp_scientifique": "Responsable scientifique : Dr Manon Launay, PharmD, PhD",
+    "resp_dev_web": "Developpeurs : Pierre-Henri Laurency, Maxime Rogues",
 }

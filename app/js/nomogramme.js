@@ -6,7 +6,6 @@ import * as Samples from "../js/classes/Sample-nommogramme.js";
 
 let currentLanguage = "french";
 let languages = {"french": french, "english": english};
-Trads.changeLanguage(currentLanguage);
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; // time in hour
@@ -37,7 +36,6 @@ let ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
 let paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
 // checkboxs
 console.log(ingestionIntervals);
-let checkBoxAgreement = document.querySelector('input[type="checkbox"]');
 let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
 
 let inputIngestionTime = document.querySelector('.time_after_ingestion');
@@ -133,7 +131,6 @@ btnTranslation.forEach(btn => {
         currentLanguage = btn.dataset.language;
         Trads.changeLanguage(currentLanguage);
         Trads.changeGraphLanguage(graph, currentLanguage);
-
     })
 })
 
@@ -176,7 +173,10 @@ checkBoxAgreement.addEventListener("click", (event) => {
 
 checkBoxPatientGotRisk.addEventListener("click", () => {
     patientGotRisks = checkBoxPatientGotRisk.checked;
-})
+});
+
+Trads.changeLanguage(currentLanguage);
+
 
 // FUNCTIONS
 function addDataToGraph(chart, coordonates) {

@@ -15,13 +15,14 @@
         <button class="btn_translation" data-language="english">English</button>
     </header>
     <br>
-    <h1> Calcul de la dose en mg/kg</h1>
+    <h1 class="i18n" data-text="calc_dose_title"> Calcul de la dose en mg/kg</h1>
     <div class="container_calc_dose_paracetamol">    
-        <input class="subject_weight" type="number" placeholder="Poids du patient (kg)">
-        <input class="subject_hypothetic_dosis"type="number" placeholder="Dose supposée(g)">
-        <button class="calc_dose_paracetamol" type="submit"> Calcul de la dose en mg/kg </button>
-        <p class="result_calc_dose_paracetamol"></p>
-    </div>
+        <input class="subject_weight i18n" type="number" 
+        data-text="calc_dose_patient_weight_input" >
+        <input class="subject_hypothetic_dosis i18n" type="number" data-text="calc_dose_paracetamol_dose_input" >
+        <button class="calc_dose_paracetamol i18n" data-text="calc_dose_submit_btn" type="submit"> Calcul de la dose en mg/kg </button>
+        <p class="result_calc_dose_paracetamol" data-text="calc_dose_result"></p>
+</div>
     
     <h1 class="i18n" data-text="nomogram_title"></h1>
     <div id="agreement" class="visible">
