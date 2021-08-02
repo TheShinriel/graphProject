@@ -38,9 +38,9 @@ export default {
     //GRAPH
     "graph_title": "Nomogramme de Rumack et Matthew",
     "graph_toxicity_line": "Limite inférieure du groupe à haut risque probable (ligne 200)",
-    "graph_second_line": "Ligne de traitement (NAC)",
+    "graph_second_line": "Ligne de traitement ( Ligne 150, NAC)",
     "graph_patient_saisi": "Concentrations du patient saisies",
-    "graph_riskFactor_line": "Ligne de traitement (NAC) si facteur de risque",
+    "graph_riskFactor_line": "Ligne de traitement (NAC) si facteur de risque (ligne 100)",
 
     // OTHERS
     "resp_scientifique": "Responsable scientifique : Dr Manon Launay, PharmD, PhD",
