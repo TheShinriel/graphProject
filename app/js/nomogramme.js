@@ -35,7 +35,6 @@ let btnAddSample = document.querySelector('.add_sample');
 let ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
 let paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
 // checkboxs
-console.log(ingestionIntervals);
 let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
 
 let inputIngestionTime = document.querySelector('.time_after_ingestion');
