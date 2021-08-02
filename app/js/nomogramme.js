@@ -153,7 +153,7 @@ btnCalcToxicity.addEventListener("click", () => {
         hideDiv(divResult);
         displayDiv(divMsgError);
         // ajoute une donnée vide pour désafficher le précédent résultat valide
-        addDataToGraph(graph, [{x: 0, y: 0}, {x: 0, y: 0}]);
+        addDataToGraph(graph, [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}]);
     }
 
 })

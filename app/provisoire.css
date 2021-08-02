@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&family=Zen+Loop&display=swap');
+body {
+    font-family: 'Josefin Slab', serif;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+.p_result {
+    text-align: center;
+}
+#title {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+.banner_hero {
+    display: flex;
+    justify-content: start;
+}
+
+.container_subtitle {
+    width: 100%;
+}
+
+.lang_buttons {
+    position: absolute;
+}
+
+h1 {
+ position: absolute;
+    left: 50%;
+    top: 0px;
+    transform: translate(-50%, -50%);
+}
+h2 {
+    margin-left: 3rem;
+    text-decoration-line: underline;
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h1{
+    font-size: 6rem;
+    font-family: 'Zen Loop', cursive;
+}
+
+.trad_incoming {
+    text-align: center;
+    color: grey;
+    font-style: italic;
+}
+
+button,
+input {
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Josefin Slab', serif;
+    margin-left: 3rem;
+
+}
+
+label {
+    font-size: 1.3rem;
+    color: black;
+}
+
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: block
+}
+
+.ref {
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+.title_ref {
+    text-decoration: underline;
+}
+
+
+#container_calc_half_life label {
+    font-size: 1.4rem;
+}
+
+#need_half_life {
+    margin-bottom: 2rem;
+}
+
+.first_concentration{
+    margin-bottom: 1rem;
+}
+
+.patient_got_risk_container {
+    margin: 1rem;
+}
+
+
+
+.p_result {
+    font-weight: bold;
+    font-size: 1.7rem;
+    margin-left: 3rem;
+}
+
+.result_text, .result_calc_dose_paracetamol {
+    font-size: 1.7rem;
+    margin-left: 3rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+  #container_result {
+    margin: auto;
+    width: 50%;
+}
+
+#agreement,
+#calculate_toxicity_div {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.calculate_toxicity_div {
+    margin-left: 3rem;
+}

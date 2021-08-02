@@ -7,7 +7,7 @@ export function addSample(divToAppend) {
     inputInterval.classList.add("interval_after_ingestion");
     inputInterval.type = "number";
     inputConcentration.classList.add("interval_paracetamol_concentration");
-
+    inputConcentration.type = "number";
     div.appendChild(inputInterval);
     div.appendChild(inputConcentration);
 
