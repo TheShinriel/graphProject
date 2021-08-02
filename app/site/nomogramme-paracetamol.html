@@ -70,7 +70,30 @@
     <div id="nomogramGraphDiv" class="graphDiv">
         <canvas class="graph" id="nomogramGraph" width="400" height="200"></canvas>
     </div>
+    <div id="container_calc_half_life" class="visible">
+        <h2 class="i18n" data-text="title_calc_half_life"></h2>
+        <div class="first_date_picker">
+            <label for="first_sampling_time" class="first_sampling_label"> Date et heure du premier prélèvement </label>
+            <input type="datetime-local" class="first_sampling_time" id="first_sampling_time">
+        </div>
+        <div class="first_concentration">
+            <label for="first_concentration"> Concentration 1 </label>
+            <input class="first_paracetamol_concentration" type="number"  id="first_concentration" placeholder="Paracetamol conc. (mg/l)">
+        </div>
 
+        <div class="second_date_picker">
+            <label for="second_sampling_time" class="second_sampling_label"> Date et heure du second prélèvement </label>
+            <input type="datetime-local" class="second_sampling_time" id="second_sampling_time">
+        </div>
+        <div class="second_concentration">
+            <label for="second_concentration"> Concentration 2 </label>
+            <input class="second_paracetamol_concentration" type="number" id="second_concentration" placeholder="Paracetamol conc. (mg/l)">
+        </div>
+        <button class="calc_half_life"> calculer </button>
+        <div class="result_half_life">
+            <p id="result_calc_half_life" class="invisible"> Result</p>
+        </div>
+    </div>
     <footer> 
         <div class="ref_container">
             <p class="title_ref"> Références : </p>
@@ -86,6 +109,7 @@
         </div>
         </footer>
         <script type="module" src="../js/nomogramme.js"></script>
+        <script type="module" src="../js/half-life.js"></script>
         <script type="module" src="../js/calc-dose.js"></script>
     </body>
     </html>
