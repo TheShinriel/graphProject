@@ -7,6 +7,8 @@ export default {
     "title_warningBadData": "Acetaminophen concentration at more than 4h post ingestion should be obtained. An other sample should be withdrawn.",
     "nomogram_title": "Rumack-Matthew dynamic nomogram for acetaminophen overdose",
     "calc_dose_title": "Calculation of the dose in mg/kg",
+    "title_calc_half_life": "Half life calculation",
+
 
 
     // BUTTONS

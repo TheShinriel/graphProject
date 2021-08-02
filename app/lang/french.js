@@ -7,6 +7,7 @@ export default {
     "title_warningBadData": "Attention le nomogramme n'est utilisable que si le prélèvement est réalisé au moins 4 heures après ingestion. Reprélever le patient.",
     "nomogram_title": "Nomogramme dynamique de Rumack-Matthew",
     "calc_dose_title": "Calcul de la dose en mg/kg",
+    "title_calc_half_life": "Calcul de la demi-vie",
 
 
     // BUTTONS
