@@ -127,14 +127,16 @@ label {
     margin-left: 3rem;
 }
 
-.result_text, .result_calc_dose_paracetamol {
+.result_text, 
+.result_calc_dose_paracetamol, 
+.result_calc_half_life {
     font-size: 1.7rem;
     margin-left: 3rem;
     margin-top: 5%;
     margin-bottom: 5%;
 }
 
-  #container_result {
+#container_result {
     margin: auto;
     width: 50%;
 }

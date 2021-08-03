@@ -5,7 +5,7 @@ import Trads from "../js/classes/Trads.js";
 
 let currentLanguage = "french";
 let btnTranslation = document.querySelectorAll('.btn_translation');
-let pResult = document.querySelector(.'result_calc_half_life');
+let pResult = document.querySelector('.result_calc_half_life');
 
 let languages = {"french": french, "english": english};
 Trads.changeLanguage("french");
