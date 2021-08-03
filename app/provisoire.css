@@ -8,6 +8,19 @@ html {
     scroll-behavior: smooth;
   }
 
+  .sample_interval_container {
+      display: flex;
+      text-align: left;
+  }
+label.d_block, input.d_block {
+      display: block;
+      margin-left: 3rem;
+      margin-right: -8px;
+  }
+
+button.add_sample {
+    height: 50%;
+}
 .p_result {
     text-align: center;
 }

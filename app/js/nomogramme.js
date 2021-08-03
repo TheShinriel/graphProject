@@ -36,10 +36,6 @@ let ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
 let paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
 // checkboxs
 let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
-
-let inputIngestionTime = document.querySelector('.time_after_ingestion');
-let inputParacetamolConcentration = document.querySelector('.paracetamol_concentration');
-
 let checkBoxAgreement = document.querySelector('#accept_agreement');
 
 let graphCanvas = document.querySelector('#nomogramGraph');
@@ -156,8 +152,7 @@ btnCalcToxicity.addEventListener("click", () => {
     if(!isValidTimeAfterIngestion(ingestionTimes)) {
         hideDiv(divResult);
         displayDiv(divMsgError);
-        // ajoute une donnée vide pour désafficher le précédent résultat valide
-        addDataToGraph(graph, [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}]);
+        clearDataGraph()
     }
 
 })
@@ -185,6 +180,10 @@ function addDataToGraph(chart, coordonates) {
     chart.update();
 }
 
+function clearDataGraph() {
+    graph.data.datasets[4].data = [];
+    graph.update();
+}
 function isValidTimeAfterIngestion(array) {
      return array.every(num => num >= DIFFUSION_TIME_IN_BLOOD); 
 }
@@ -236,8 +235,7 @@ function createCoordonates(array1, array2) {
 function prepareDataForGraph() {
     ingestionTimes = setNodeModuleInArrayWithoutBlankValue(ingestionIntervals)
     paracetamolConcentrations = setNodeModuleInArrayWithoutBlankValue(paracetamolConcentrationIntervals)
-    console.log(paracetamolConcentrations);
-        createCoordonates(ingestionTimes, paracetamolConcentrations);
+    createCoordonates(ingestionTimes, paracetamolConcentrations);
 }
 
 function setNodeModuleInArrayWithoutBlankValue(nodeModule) {
