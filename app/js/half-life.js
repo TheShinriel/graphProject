@@ -5,6 +5,7 @@ import Trads from "../js/classes/Trads.js";
 
 let currentLanguage = "french";
 let btnTranslation = document.querySelectorAll('.btn_translation');
+let pResult = document.querySelector(.'result_calc_half_life');
 
 let languages = {"french": french, "english": english};
 Trads.changeLanguage("french");
@@ -31,5 +32,12 @@ btnTranslation.forEach(btn => {
 btnCalcHalfLife.addEventListener('click', () => {
     duree = Calculs.calcTimeBetweenTwoDatesInHour(datePickerSecondSample.value, datePickerFirstSample.value)
     halflife = Calculs.calcHalfLife(inputParacetamolFirstSample.value, inputParacetamolSecondSample.value, duree );
+    displayHalfLifeResult(pResult);
 })
+
+
+function displayHalfLifeResult(htmlElement) {
+    htmlElement.textContent = languages[currentLanguage].result_calc_half_life.replace("result", halflife);
+}
+
 

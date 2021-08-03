@@ -24,7 +24,7 @@ export default {
     "calc_dose_patient_weight_input": "Poids du patient (kg)",
     "calc_dose_paracetamol_dose_input": "Dose supposée (g)",
     "calculate_toxicity_ingestion_time": "Durée post-ingestion (h)",
-    "calculate_toxicity_paracetamol_concentration": "Paracetamol conc. (mg/L)",
+    "calculate_toxicity_paracetamol_concentration": "Paracetamolémie (mg/L)",
 
 
     // RESULTS
@@ -34,6 +34,7 @@ export default {
     "resultHalfLife": "La demi vie est de : ",
     "badCalcul": "Les dates ou les concentrations saisies ne permettent pas le calcul de la demi vie.",
     "calc_dose_result": "La dose ingérée est donc result mg/kg.",
+    "result_calc_half_life": "Le résultat est de result h.",
     
     
     //GRAPH

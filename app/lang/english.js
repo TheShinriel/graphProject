@@ -25,7 +25,7 @@ export default {
     "calc_dose_patient_weight_input": "Patient's weight (kg)",
     "calc_dose_paracetamol_dose_input": "Assumed acetaminophen dose (g)",
     "calculate_toxicity_ingestion_time": "Time since ingestion (h)",
-    "calculate_toxicity_paracetamol_concentration": "Paracetamol (mg/L)",
+    "calculate_toxicity_paracetamol_concentration": "Paracetamolemia (mg/L)",
 
 
     // RESULTS
@@ -35,6 +35,8 @@ export default {
     "resultHalfLife": "The half-life is : ",
     "badCalcul": "Half-life could not be calculated. Please verify the data.",
     "calc_dose_result": "The ingested dose is result mg/kg.",
+    "result_calc_half_life": "Le résultat est de result h.",
+
     
     // GRAPH
     "graph_title": "Rumack and Matthew nomogram",

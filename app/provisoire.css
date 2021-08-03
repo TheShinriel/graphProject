@@ -16,10 +16,12 @@ label.d_block, input.d_block {
       display: block;
       margin-left: 3rem;
       margin-right: -8px;
+      margin-top: 1rem;
   }
 
 button.add_sample {
     height: 50%;
+    margin-top: 3rem;
 }
 .p_result {
     text-align: center;
