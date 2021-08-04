@@ -94,6 +94,7 @@ let graph = new Chart(graphCanvas, {
     options: 
     {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: 
         {
             title: 
@@ -253,3 +254,4 @@ function compare(a, b) {
     }
     return 0;
 }
+

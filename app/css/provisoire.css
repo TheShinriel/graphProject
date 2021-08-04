@@ -157,6 +157,12 @@ footer {
     text-align: center;
 }
 
+#nomogramGraphDiv {
+    position: relative;
+}
+
+
+
 
 @media screen and (max-width: 700px) {
     .btn_translation {
