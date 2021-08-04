@@ -186,4 +186,19 @@ footer {
         margin-right: -8px;
         margin-top: 1rem;
     }
+
+    .result_text, 
+    .result_calc_dose_paracetamol, 
+    .result_calc_half_life {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    }
+
+    #container_result {
+        width: 100%;
+    }
+
   }
