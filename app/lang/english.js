@@ -8,11 +8,17 @@ export default {
     "nomogram_title": "Rumack-Matthew dynamic nomogram for acetaminophen overdose",
     "calc_dose_title": "Calculation of the dose in mg/kg",
     "title_calc_half_life": "Half life calculation",
-
+    //label
+    "label_first_sampling_time_half_life": "First sampling time",
+    "label_second_sampling_time_half_life": "Second sampling time",
+    "label_first_concentration_half_life": "First concentration",
+    "label_Second_concentration_half_life": "Second concentration",
+    
 
 
     // BUTTONS
     "calculate_toxicity_label": "Use of the Rumack-Matthew nomogram in management of acetaminophen overdose is only acceptable when the acuity of ingestion is known to be within 24 hours.",
+    "calculate_half_life": "Half-life calculation",
     "patient_got_risk_label": "Patient has risk factors for enhanced hepatotoxicity (e.g. starvation or malnutrition, consumption of enzyme inducing drugs, a history of chronic alcohol use and chronic debilitating disease), the 100-line should therefore be used. ",
     "got_multiple_sampling_date_label": "on vire",
     "checkboxLabelHalfLife": "Two samples were withdrawn, what is the elimination half-life?",
@@ -29,9 +35,9 @@ export default {
 
 
     // RESULTS
-    "toxicity_result_probable": "Concentration leading to a probable hepatic toxicity",
-    "toxicity_result_possible": "Concentration leading to a possible hepatic toxicity",
-    "toxicity_result_ok": "Concentration leading to a low risk of hepatic toxicity",
+    "toxicity_result_probable": "Concentration at T+ variable h leading to a probable hepatic toxicity",
+    "toxicity_result_possible": "Concentration at T+ variable h leading to a possible hepatic toxicity",
+    "toxicity_result_ok": "Concentration at T+ variable h leading to a low risk of hepatic toxicity",
     "resultHalfLife": "The half-life is : ",
     "badCalcul": "Half-life could not be calculated. Please verify the data.",
     "calc_dose_result": "The ingested dose is result mg/kg.",

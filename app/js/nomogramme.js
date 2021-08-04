@@ -199,21 +199,21 @@ function calcToxicities() {
 
 function compareToxicitiesWithNoRisk() {
     if(paracetamolConcentration > toxicityProbable) {
-        resultText.innerText = languages[currentLanguage].toxicity_result_probable;
+        resultText.innerText = languages[currentLanguage].toxicity_result_probable.replace('variable', timeAfterIngestion);
     } else if (paracetamolConcentration > toxicityPossible) {
-        resultText.innerText = languages[currentLanguage].toxicity_result_possible;
+        resultText.innerText = languages[currentLanguage].toxicity_result_possible.replace('variable', timeAfterIngestion);
     } else if (timeAfterIngestion != false) {
-        resultText.innerText = languages[currentLanguage].toxicity_result_ok;
+        resultText.innerText = languages[currentLanguage].toxicity_result_ok.replace('variable', timeAfterIngestion);
     } 
 }
 
 function compareToxicitiesWithRisk() {
     if(paracetamolConcentration > toxicityProbable) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_probable;
+        resultText.textContent = languages[currentLanguage].toxicity_result_probable.replace('variable', timeAfterIngestion);
     } else if (paracetamolConcentration > toxicityWithRisk) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_possible;
+        resultText.textContent = languages[currentLanguage].toxicity_result_possible.replace('variable', timeAfterIngestion);
     } else if (timeAfterIngestion != false) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_ok;
+        resultText.textContent = languages[currentLanguage].toxicity_result_ok.replace('variable', timeAfterIngestion);
     } 
 }
 

@@ -92,28 +92,36 @@
     <div id="container_calc_half_life" class="visible">
         <h2 class="i18n" data-text="title_calc_half_life"></h2>
         <div class="first_date_picker">
-            <label class="d_block" for="first_sampling_time" class="first_sampling_label"> Date et heure du premier prélèvement </label>
+            <label for="first_sampling_time" class="first_sampling_label d_block i18n" data-text="label_first_sampling_time_half_life"></label>
             <input type="datetime-local" class="first_sampling_time" id="first_sampling_time">
         </div>
         <div class="first_concentration">
-            <label class="d_block" for="first_concentration"> Concentration 1 </label>
+            <label class="d_block i18n" for="first_concentration" data-text="label_first_concentration_half_life"></label>
             <input class="first_paracetamol_concentration" type="number"  id="first_concentration" placeholder="Paracetamol conc. (mg/l)">
         </div>
 
         <div class="second_date_picker">
-            <label class="d_block" for="second_sampling_time" class="second_sampling_label"> Date et heure du second prélèvement </label>
+            <label for="second_sampling_time" class="second_sampling_label d_block i18n" data-text="label_second_sampling_time_half_life"> </label>
             <input type="datetime-local" class="second_sampling_time" id="second_sampling_time">
         </div>
         <div class="second_concentration">
-            <label class="d_block" for="second_concentration"> Concentration 2 </label>
+            <label class="d_block i18n" data-text="label_Second_concentration_half_life" for="second_concentration"></label>
             <input class="second_paracetamol_concentration" type="number" id="second_concentration" placeholder="Paracetamol conc. (mg/l)">
         </div>
-        <button class="calc_half_life"> calculer </button>
+        <button class="calc_half_life i18n" data-text="calculate_half_life"></button>
         <div class="result_half_life">
             <p class="result_calc_half_life i18n invisible" data-text="result_calc_half_life"> Result </p>
         </div>
     </div>
     <footer> 
+        <div class="contact">
+            <p>Créé en juillet 2021 suite à une discussion entre une biologiste et un développeur, cet outil est gratuit, réalisé de manière bénévole, et peut être incrémenté au gré de vos demandes. </p>
+            <p> <a HREF="mailto:contact@hopitox.com">Nous contacter</a></p>
+        </div>
+        <div class="responsable_container">
+            <p class=" i18n" data-text="resp_scientifique"></p>
+            <p class="i18n" data-text="resp_dev_web"></p>
+        </div>
         <div class="ref_container">
             <p class="title_ref"> Références : </p>
             <p class="ref">White SJ, Rumack BH. The acetaminophen toxicity equations: "solutions" for acetaminophen toxicity based on the Rumack-Matthew nomogram. Ann Emerg Med. 2005 May;45(5):563-4. doi: 10.1016/j.annemergmed.2004.11.033. PMID: 15855961.</p>
@@ -122,10 +130,7 @@
             <p class="ref">Beer C, Pakravan N, Hudson M, Smith LT, Simpson K, Bateman DN, Thomas SH. Liver unit admission following paracetamol overdose with concentrations below current UK treatment thresholds. QJM. 2007 Feb;100(2):93-6. doi: 10.1093/qjmed/hcm003. Epub 2007 Jan 20. PMID: 17237484.</p>
             <p class="ref">Bateman DN. Paracetamol poisoning: beyond the nomogram. Br J Clin Pharmacol. 2015 Jul;80(1):45-50. doi: 10.1111/bcp.12604. Epub 2015 Jun 1. PMID: 26099917; PMCID: PMC4500323.</p>
         </div>
-        <div class="responsable_container">
-            <p class=" i18n" data-text="resp_scientifique"></p>
-            <p class="i18n" data-text="resp_dev_web"></p>
-        </div>
+
         </footer>
         <script type="module" src="../js/nomogramme.js"></script>
         <script type="module" src="../js/half-life.js"></script>

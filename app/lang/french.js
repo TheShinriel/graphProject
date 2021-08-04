@@ -8,15 +8,20 @@ export default {
     "nomogram_title": "Nomogramme dynamique de Rumack-Matthew",
     "calc_dose_title": "Calcul de la dose en mg/kg",
     "title_calc_half_life": "Calcul de la demi-vie",
-
-
+    //label
+    "label_first_sampling_time_half_life": "Date et heure du premier prélèvement",
+    "label_second_sampling_time_half_life": "Date et heure du deuxième prélèvement",
+    "label_first_concentration_half_life": "Première concentration",
+    "label_Second_concentration_half_life": "Deuxième concentration",
+    
     // BUTTONS
     "calculate_toxicity_label": "L'ingestion a eu lieu en prise unique, il y a moins de 24h, et avec un délai connu et fiable donc le nomogramme est utilisable. La co-administration de composés réduisant le transit (ex: opiacés) peut allonger la phase d'absorption.",
+    "calculate_half_life": "Calculer la demi-vie",
     "patient_got_risk_label": "Le patient présente des facteurs de risque de d'hépatotoxicité (alcoolisme, cirrhose), le seuil de traitement est donc abaissé (ne cocher cette case que si le patient est concerné).",
     "got_multiple_sampling_date_label": "Il est possible de faire le même calcul en entrant date et heure d'ingestion ou de prélèvement.",
     "checkboxLabelHalfLife": "J'ai deux prélèvement et souhaite obtenir la demie vie",
     "datePickerLabelFirstSample": "Première date",
-    "datePickerLabelSecondSample": "Deuxiéme date",
+    "datePickerLabelSecondSample": "Deuxième date",
     "calculate_toxicity_btn": "Évaluer le risque",
     "calc_dose_submit_btn": "Calcul de la dose en mg/kg",
 
@@ -28,9 +33,9 @@ export default {
 
 
     // RESULTS
-    "toxicity_result_probable": "Concentration associée à un risque important de toxicité.",
-    "toxicity_result_possible": "Concentration associée à un possible risque de toxicité.",
-    "toxicity_result_ok": "Concentration associée à un risque faible de toxicité.",
+    "toxicity_result_probable": "Concentration à T+ variable h associée à un risque important de toxicité.",
+    "toxicity_result_possible": "Concentration à T+ variable h associée à un possible risque de toxicité.",
+    "toxicity_result_ok": "Concentration à T+ variable h associée à un risque faible de toxicité.",
     "resultHalfLife": "La demi vie est de : ",
     "badCalcul": "Les dates ou les concentrations saisies ne permettent pas le calcul de la demi vie.",
     "calc_dose_result": "La dose ingérée est donc result mg/kg.",
