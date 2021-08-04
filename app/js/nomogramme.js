@@ -3,6 +3,8 @@ import Trads from "../js/classes/Trads.js";
 import french from "../lang/french.js";
 import english from "../lang/english.js";
 import * as Samples from "../js/classes/Sample-nommogramme.js";
+import * as Dom from '../js/classes/Dom.js';
+
 
 let currentLanguage = "french";
 let languages = {"french": french, "english": english};
@@ -141,17 +143,17 @@ btnCalcToxicity.addEventListener("click", () => {
     selectDataToAnalize()
     
     if(isValidTimeAfterIngestion(ingestionTimes)) {
-        hideDiv(divMsgError);
+        Dom.hideDiv(divMsgError);
         calcToxicities();
         patientGotRisks ? compareToxicitiesWithRisk() : compareToxicitiesWithNoRisk();
-        displayDiv(divResult);
+        Dom.displayDiv(divResult);
         resultText.scrollIntoView(true);
         addDataToGraph(graph, coordonates);
     }
     
     if(!isValidTimeAfterIngestion(ingestionTimes)) {
-        hideDiv(divResult);
-        displayDiv(divMsgError);
+        Dom.hideDiv(divResult);
+        Dom.displayDiv(divMsgError);
         clearDataGraph()
     }
 
@@ -159,9 +161,9 @@ btnCalcToxicity.addEventListener("click", () => {
 
 checkBoxAgreement.addEventListener("click", (event) => {
     if(event.target.checked == true) {
-        displayDiv(divCalcToxParacetamol);
+        Dom.displayDiv(divCalcToxParacetamol);
     } else {
-        hideDiv(divCalcToxParacetamol);
+        Dom.hideDiv(divCalcToxParacetamol);
     }
 })
 
@@ -213,16 +215,6 @@ function compareToxicitiesWithRisk() {
     } else if (timeAfterIngestion != false) {
         resultText.textContent = languages[currentLanguage].toxicity_result_ok;
     } 
-}
-
-function hideDiv(htmlElement) {
-    htmlElement.classList.remove("visible");
-    htmlElement.classList.add("invisible");
-}
-
-function  displayDiv(htmlElement) {
-    htmlElement.classList.remove("invisible");
-    htmlElement.classList.add("visible");
 }
 
 function createCoordonates(array1, array2) {

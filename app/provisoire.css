@@ -85,13 +85,6 @@ label {
     color: black;
 }
 
-.invisible {
-    display: none;
-}
-
-.visible {
-    display: block
-}
 
 .ref {
     font-style: italic;

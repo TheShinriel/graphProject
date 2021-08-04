@@ -1,4 +1,5 @@
 import * as Calculs from '../js/classes/Calculs.js';
+import * as Dom from '../js/classes/Dom.js';
 import french from "../lang/french.js";
 import english from "../lang/english.js";
 import Trads from "../js/classes/Trads.js";
@@ -32,9 +33,9 @@ btnTranslation.forEach(btn => {
 
 btnCalcDose.addEventListener("click", () => {
    calcParacetamolDose();
-   removeStyleResult(pResultDose);
    defineStyleResult();
-   addStyleResult(pResultDose)
+   Dom.addStyleResult(pResultDose, styleResult);
+   Dom.displayDiv(pResultDose);
    displayDoseResult(pResultDose);
   })
   
@@ -51,10 +52,3 @@ function defineStyleResult() {
     styleResult = (resultOfCalcDose < DOSE_VALUE_MAX ? 'good' : 'bad');
 }
 
-function removeStyleResult(htmlElement) {
-    htmlElement.classList.remove(styleResult);
-}
-
-function addStyleResult(htmlElement) {
-    htmlElement.classList.add(styleResult)
-}
