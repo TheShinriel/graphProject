@@ -8,11 +8,13 @@ export default {
     "nomogram_title": "Rumack-Matthew dynamic nomogram for acetaminophen overdose",
     "calc_dose_title": "Calculation of the dose in mg/kg",
     "title_calc_half_life": "Half life calculation",
+    "contact": "Contact us",
+
     //label
-    "label_first_sampling_time_half_life": "First sampling time",
-    "label_second_sampling_time_half_life": "Second sampling time",
-    "label_first_concentration_half_life": "First concentration",
-    "label_Second_concentration_half_life": "Second concentration",
+    "label_first_sampling_time_half_life": "First sampling time :",
+    "label_second_sampling_time_half_life": "Second sampling time :",
+    "label_first_concentration_half_life": "First concentration :",
+    "label_Second_concentration_half_life": "Second concentration :",
     
 
 

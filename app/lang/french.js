@@ -9,10 +9,11 @@ export default {
     "calc_dose_title": "Calcul de la dose en mg/kg",
     "title_calc_half_life": "Calcul de la demi-vie",
     //label
-    "label_first_sampling_time_half_life": "Date et heure du premier prélèvement",
-    "label_second_sampling_time_half_life": "Date et heure du deuxième prélèvement",
-    "label_first_concentration_half_life": "Première concentration",
-    "label_Second_concentration_half_life": "Deuxième concentration",
+    "label_first_sampling_time_half_life": "Date et heure du premier prélèvement :",
+    "label_second_sampling_time_half_life": "Date et heure du deuxième prélèvement :",
+    "label_first_concentration_half_life": "Première concentration :",
+    "label_Second_concentration_half_life": "Deuxième concentration :",
+    "contact": "Nous contacter",
     
     // BUTTONS
     "calculate_toxicity_label": "L'ingestion a eu lieu en prise unique, il y a moins de 24h, et avec un délai connu et fiable donc le nomogramme est utilisable. La co-administration de composés réduisant le transit (ex: opiacés) peut allonger la phase d'absorption.",
