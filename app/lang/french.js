@@ -39,8 +39,8 @@ export default {
     "toxicity_result_ok": "Concentration à T+ variable h associée à un risque faible de toxicité.",
     "resultHalfLife": "La demi vie est de : ",
     "badCalcul": "Les dates ou les concentrations saisies ne permettent pas le calcul de la demi vie.",
-    "calc_dose_result": "La dose ingérée est donc result mg/kg.",
-    "result_calc_half_life": "Le résultat est de result h.",
+    "calc_dose_result": "La dose ingérée est donc resultToReplace mg/kg.",
+    "result_calc_half_life": "Le résultat est de resultToReplace h.",
     
     
     //GRAPH

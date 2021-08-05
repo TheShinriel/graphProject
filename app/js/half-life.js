@@ -7,11 +7,10 @@ import Trads from "../js/classes/Trads.js";
 
 let currentLanguage = "french";
 let btnTranslation = document.querySelectorAll('.btn_translation');
-let pResult = document.querySelector('.result_calc_half_life');
-
 let languages = {"french": french, "english": english};
 Trads.changeLanguage("french");
 
+let pResult = document.querySelector('.result_calc_half_life');
 
 let inputParacetamolFirstSample = document.querySelector('.first_paracetamol_concentration');
 let inputParacetamolSecondSample = document.querySelector('.second_paracetamol_concentration');
@@ -46,7 +45,7 @@ btnCalcHalfLife.addEventListener('click', () => {
 
 
 function displayHalfLifeResult(htmlElement) {
-    htmlElement.textContent = languages[currentLanguage].result_calc_half_life.replace("result", halflife);
+    htmlElement.textContent = languages[currentLanguage].result_calc_half_life.replace("resultToReplace", halflife);
 }
 
 function displayErrorResult(htmlElement) {

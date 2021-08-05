@@ -5,10 +5,12 @@ let languages = {"french": french, "english": english};
 export default {
 
     "changeLanguage": function changeLanguage(language) {
+        let regexForResultText = /result/;
         document.querySelectorAll(".i18n").forEach( element => {
-            element.innerText = "";
             let textID = element.dataset.text;
-            if(element.placeholder != null && element.dataset.text != null) {
+            if(regexForResultText.test(element.className)) {
+                element.innerText = "";
+            } else if(element.placeholder != null && element.dataset.text != null) {
                 element.placeholder = languages[language][textID];
             } else if(element.dataset.text != null) {
                 element.innerText = languages[language][textID];

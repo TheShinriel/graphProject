@@ -45,7 +45,7 @@ function calcParacetamolDose() {
 }
 
 function displayDoseResult(htmlElement) {
-    htmlElement.textContent = languages[currentLanguage].calc_dose_result.replace("result", resultOfCalcDose);
+    htmlElement.textContent = languages[currentLanguage].calc_dose_result.replace("resultToReplace", resultOfCalcDose);
 }
 
 function defineStyleResult() {

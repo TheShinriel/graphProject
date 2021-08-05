@@ -42,8 +42,8 @@ export default {
     "toxicity_result_ok": "Concentration at T+ variable h leading to a low risk of hepatic toxicity",
     "resultHalfLife": "The half-life is : ",
     "badCalcul": "Half-life could not be calculated. Please verify the data.",
-    "calc_dose_result": "The ingested dose is result mg/kg.",
-    "result_calc_half_life": "Le résultat est de result h.",
+    "calc_dose_result": "The ingested dose is resultToReplace mg/kg.",
+    "result_calc_half_life": "The result is resultToReplace h.",
 
     
     // GRAPH
