@@ -51,6 +51,7 @@ export default {
     "graph_riskFactor_line": "Ligne de traitement (NAC) si facteur de risque (ligne 100)",
 
     // OTHERS
+    "reference_title": "Références : ",
     "resp_scientifique": "Responsable scientifique : Dr Manon Launay, PharmD, PhD",
     "resp_dev_web": "Developpeurs : Pierre-Henri Laurency, Maxime Rogues",
 }

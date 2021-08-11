@@ -3,8 +3,7 @@ import english from "../../lang/english.js";
 let languages = {"french": french, "english": english};
 
 export default {
-
-    "changeLanguage": function changeLanguage(language) {
+    changeLanguage(language) {
         let regexForResultText = /result/;
         document.querySelectorAll(".i18n").forEach( element => {
             let textID = element.dataset.text;
@@ -17,7 +16,8 @@ export default {
             } 
         })        
     },
-    "changeGraphLanguage": function changeGraphLanguage(graph, currentLanguage) {
+    
+    changeGraphLanguage(graph, currentLanguage) {
         graph.data.datasets.forEach( dataset => {
             if(dataset.labelName !== null && dataset.labelName !== undefined) {
                 dataset.label = languages[currentLanguage][dataset.labelName];
