@@ -1,5 +1,6 @@
 import * as Calculs from '../js/classes/Calculs.js';
 import * as Dom from '../js/classes/Dom.js';
+import languages from '../lang/languages.js'
 
 const DOSE_VALUE_MAX = 150;
 

@@ -1,5 +1,6 @@
 import * as Dom from '../js/classes/Dom.js';
 import * as Calculs from '../js/classes/Calculs.js';
+import languages from '../lang/languages.js';
 
 let pResult = document.querySelector('.result_calc_half_life');
 

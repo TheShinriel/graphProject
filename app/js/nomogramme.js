@@ -1,13 +1,8 @@
 import * as Calculs from '../js/classes/Calculs.js';
 import Trads from "../js/classes/Trads.js";
-import french from "../lang/french.js";
-import english from "../lang/english.js";
+import languages from '../lang/languages.js';
 import * as Samples from "../js/classes/Sample-nommogramme.js";
 import * as Dom from '../js/classes/Dom.js';
-
-
-let currentLanguage = "french";
-let languages = {"french": french, "english": english};
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; // time in hour
