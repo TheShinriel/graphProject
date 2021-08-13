@@ -22,14 +22,19 @@ test("la toxicité pour 5 est de 0.4204482076268572", () => {
 });
 
 test("la demi-vie pour un prélèvement à 150mg/L puis 130mg/L à 4H d'intervalle est de 19,4H", () => {
-    expect(Calcs.calcHalfLife(150, 130, 4)).toBe(19.4);
+    expect(parseFloat(Calcs.calcHalfLife(150, 130, 4))).toBe(19.4);
 });
 
 test("la dose en mg/kg pour un patient de 50kg prélevé à 20g est de 400mg/kg", () => {
     expect(Calcs.calcDoseParacetamol(50, 20)).toBe("400");
 });
 
-test("converti une donnée en µmol/l en mg/l", () => {
-    expect(Calcs.convertMicromolesToMilligrames(2).tobe(302.326));
+test("1 µmol/l vaut 0.1131 mg/l", () => {
+    expect(Calcs.convertMicromolesToMilligrames(1)).toBe(0.1131);
 });
 
+test("le calcul du nombre d'heures entre deux dates fonctionne", () => {
+    let currentDate = new Date(), currentDatePlus1H = new Date()
+    currentDatePlus1H.setHours(currentDatePlus1H.getHours() + 1);
+    expect(Calcs.calcTimeBetweenTwoDatesInHour(currentDate, currentDatePlus1H)).toBe(-1);
+});

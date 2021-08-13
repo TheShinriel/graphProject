@@ -39,3 +39,7 @@ export function calcDoseParacetamol(weight,dose){
 export function calcTimeBetweenTwoDatesInHour(date1, date2) {
     return  (Date.parse(date1) - Date.parse(date2)) / 3_600_000;
 }
+
+export function convertMicromolesToMilligrames(micromoles) {
+    return micromoles * 0.1131;
+}
