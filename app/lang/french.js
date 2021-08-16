@@ -1,5 +1,5 @@
 export default {
-    // TITLE
+    // TITLES
     "need_dose": "Il est possible de calculer la dose en mg/kg",
     "title_page": "Evaluation de la toxicité du paracetamol",
     "title_main": "Toxicité hépatique du paracétamol",
@@ -8,12 +8,13 @@ export default {
     "nomogram_title": "Nomogramme dynamique de Rumack-Matthew",
     "calc_dose_title": "Calcul de la dose en mg/kg",
     "title_calc_half_life": "Calcul de la demi-vie",
-    //label
+    "contact": "Nous contacter",
+
+    //LABELS
     "label_first_sampling_time_half_life": "Date et heure du premier prélèvement :",
     "label_second_sampling_time_half_life": "Date et heure du deuxième prélèvement :",
     "label_first_concentration_half_life": "Première concentration :",
     "label_Second_concentration_half_life": "Deuxième concentration :",
-    "contact": "Nous contacter",
     
     // BUTTONS
     "calculate_toxicity_label": "L'ingestion a eu lieu en prise unique, il y a moins de 24h, et avec un délai connu et fiable donc le nomogramme est utilisable. La co-administration de composés réduisant le transit (ex: opiacés) peut allonger la phase d'absorption.",
@@ -32,7 +33,6 @@ export default {
     "calculate_toxicity_ingestion_time": "Durée post-ingestion (h)",
     "calculate_toxicity_paracetamol_concentration": "Paracetamolémie (mg/L)",
 
-
     // RESULTS
     "toxicity_result_probable": "Concentration à T+ variable h associée à un risque important de toxicité.",
     "toxicity_result_possible": "Concentration à T+ variable h associée à un possible risque de toxicité.",
@@ -41,7 +41,6 @@ export default {
     "badCalcul": "Les dates ou les concentrations saisies ne permettent pas le calcul de la demi vie.",
     "calc_dose_result": "La dose ingérée est donc resultToReplace mg/kg.",
     "result_calc_half_life": "Le résultat est de resultToReplace h.",
-    
     
     //GRAPH
     "graph_title": "Nomogramme de Rumack et Matthew",

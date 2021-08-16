@@ -1,15 +1,11 @@
-.bad {
-    color: red;
+.error {
+  color: red;
 }
 
-.good {
-    color: green;
+.success {
+  color: green;
 }
 
-.invisible {
-    display: none;
-}
-
-.visible {
-    display: block
+.hidden {
+  display: none;
 }

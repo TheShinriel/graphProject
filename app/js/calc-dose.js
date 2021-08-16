@@ -1,37 +1,46 @@
 import * as Calculs from '../js/classes/Calculs.js';
 import * as Dom from '../js/classes/Dom.js';
-import languages from '../lang/languages.js'
+import Trads from "../js/classes/Trads.js";
+import { languages, defaultLanguage } from './available-languages.js'
+
+let currentLanguage = defaultLanguage;
+const btnTranslation = document.querySelectorAll('.btn_translation');
+
+Trads.changeLanguage(currentLanguage);
 
 const DOSE_VALUE_MAX = 150;
 
-let inputHypotheticDose = document.querySelector('.subject_hypothetic_dosis');
-let inputSubjectWeight = document.querySelector('.subject_weight');
+const inputHypotheticDose = document.querySelector('.subject_hypothetic_dosis');
+const inputSubjectWeight = document.querySelector('.subject_weight');
 
-let btnCalcDose = document.querySelector('.calc_dose_paracetamol');
-let pResultDose = document.querySelector('.result_calc_dose_paracetamol');
+const btnCalcDose = document.querySelector('.calc_dose_paracetamol');
+const pResultDose = document.querySelector('.result_calc_dose_paracetamol');
 
-let resultOfCalcDose;
-let styleResult;
-
+btnTranslation.forEach(btn => {
+    btn.addEventListener('click', () => {
+        currentLanguage = btn.dataset.language;
+        Trads.changeLanguage(currentLanguage);
+    })
+})
 
 btnCalcDose.addEventListener("click", () => {
-   calcParacetamolDose();
-   defineStyleResult();
-   Dom.addStyleResult(pResultDose, styleResult);
-   Dom.displayDiv(pResultDose);
-   displayDoseResult(pResultDose);
-  })
-  
+    const result = calcParacetamolDose();
+    const resultClassName = getClassNameAccordingToResult(result);
+    Dom.addClass(pResultDose, resultClassName);
+    Dom.showHtmlElement(pResultDose);
+    displayDoseResult(result);
+})
+
 
 function calcParacetamolDose() {
-    resultOfCalcDose = Calculs.calcDoseParacetamol(inputSubjectWeight.value , inputHypotheticDose.value);
+    return Calculs.calcDoseParacetamol(inputSubjectWeight.value , inputHypotheticDose.value);
 }
 
-function displayDoseResult(htmlElement) {
-    htmlElement.textContent = languages[currentLanguage].calc_dose_result.replace("resultToReplace", resultOfCalcDose);
+function displayDoseResult(result) {
+    pResultDose.textContent = languages[currentLanguage].calc_dose_result.replace("resultToReplace", result);
 }
 
-function defineStyleResult() {
-    styleResult = (resultOfCalcDose < DOSE_VALUE_MAX ? 'good' : 'bad');
+function getClassNameAccordingToResult(result) {
+    return (result < DOSE_VALUE_MAX ? 'success' : 'error');
 }
 

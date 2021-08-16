@@ -1,5 +1,5 @@
 export default {
-    // TITLES
+    // TITLE
     "need_dose": "A tool to calculate the dose in mg/kg is available.",
     "title_page": "Assessment of acetaminophen toxicity using an online dynamic Rumack-Matthew nomogram",
     "title_main": "je ne sais pas ce que je dois écrire",
@@ -10,12 +10,14 @@ export default {
     "title_calc_half_life": "Half life calculation",
     "contact": "Contact us",
 
-    //LABELS
+    //label
     "label_first_sampling_time_half_life": "First sampling time :",
     "label_second_sampling_time_half_life": "Second sampling time :",
     "label_first_concentration_half_life": "First concentration :",
     "label_Second_concentration_half_life": "Second concentration :",
     
+
+
     // BUTTONS
     "calculate_toxicity_label": "Use of the Rumack-Matthew nomogram in management of acetaminophen overdose is only acceptable when the acuity of ingestion is known to be within 24 hours.",
     "calculate_half_life": "Half-life calculation",
@@ -33,15 +35,17 @@ export default {
     "calculate_toxicity_ingestion_time": "Time since ingestion (h)",
     "calculate_toxicity_paracetamol_concentration": "Paracetamolemia (mg/L)",
 
+
     // RESULTS
     "toxicity_result_probable": "Concentration at T+ variable h leading to a probable hepatic toxicity",
     "toxicity_result_possible": "Concentration at T+ variable h leading to a possible hepatic toxicity",
     "toxicity_result_ok": "Concentration at T+ variable h leading to a low risk of hepatic toxicity",
     "resultHalfLife": "The half-life is : ",
     "badCalcul": "Half-life could not be calculated. Please verify the data.",
-    "calc_dose_result": "The ingested dose is resultToReplace mg/kg.",
-    "result_calc_half_life": "The result is resultToReplace h.",
+    "calc_dose_result": "The ingested dose is variable mg/kg.",
+    "result_calc_half_life": "Le résultat est de variable h.",
 
+    
     // GRAPH
     "graph_title": "Rumack and Matthew nomogram",
     "graph_toxicity_line": "Probable toxicity line (200-line)",
@@ -50,7 +54,7 @@ export default {
     "graph_riskFactor_line": "100-line",
 
     // OTHERS 
-    "reference_title": "References : ",
     "resp_scientifique": "Scientific officer : Dr Manon Launay, PharmD, PhD",
     "resp_dev_web": "Developers : Pierre-Henri Laurency, Maxime Rogues",
+
 }

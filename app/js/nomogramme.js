@@ -1,8 +1,11 @@
 import * as Calculs from '../js/classes/Calculs.js';
 import Trads from "../js/classes/Trads.js";
-import languages from '../lang/languages.js';
 import * as Samples from "../js/classes/Sample-nommogramme.js";
 import * as Dom from '../js/classes/Dom.js';
+import { languages, defaultLanguage } from './available-languages.js'
+
+
+let currentLanguage = defaultLanguage;
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; // time in hour
@@ -139,17 +142,17 @@ btnCalcToxicity.addEventListener("click", () => {
     selectDataToAnalize()
     
     if(isValidTimeAfterIngestion(ingestionTimes)) {
-        Dom.hideDiv(divMsgError);
+        Dom.hideHtmlElement(divMsgError);
         calcToxicities();
         patientGotRisks ? compareToxicitiesWithRisk() : compareToxicitiesWithNoRisk();
-        Dom.displayDiv(divResult);
+        Dom.showHtmlElement(divResult);
         resultText.scrollIntoView(true);
         addDataToGraph(graph, coordonates);
     }
     
     if(!isValidTimeAfterIngestion(ingestionTimes)) {
-        Dom.hideDiv(divResult);
-        Dom.displayDiv(divMsgError);
+        Dom.hideHtmlElement(divResult);
+        Dom.showHtmlElement(divMsgError);
         clearDataGraph()
     }
 
@@ -157,9 +160,9 @@ btnCalcToxicity.addEventListener("click", () => {
 
 checkBoxAgreement.addEventListener("click", (event) => {
     if(event.target.checked == true) {
-        Dom.displayDiv(divCalcToxParacetamol);
+        Dom.showHtmlElement(divCalcToxParacetamol);
     } else {
-        Dom.hideDiv(divCalcToxParacetamol);
+        Dom.hideHtmlElement(divCalcToxParacetamol);
     }
 })
 

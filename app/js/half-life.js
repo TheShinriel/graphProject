@@ -1,8 +1,16 @@
 import * as Dom from '../js/classes/Dom.js';
 import * as Calculs from '../js/classes/Calculs.js';
-import languages from '../lang/languages.js';
+import french from "../lang/french.js";
+import english from "../lang/english.js";
+import Trads from "../js/classes/Trads.js";
+import { languages, defaultLanguage } from './available-languages.js'
 
+let currentLanguage = defaultLanguage;
+let btnTranslation = document.querySelectorAll('.btn_translation');
 let pResult = document.querySelector('.result_calc_half_life');
+
+Trads.changeLanguage(currentLanguage)
+
 
 let inputParacetamolFirstSample = document.querySelector('.first_paracetamol_concentration');
 let inputParacetamolSecondSample = document.querySelector('.second_paracetamol_concentration');
@@ -17,14 +25,14 @@ let halflife;
 btnCalcHalfLife.addEventListener('click', () => {
     duree = Calculs.calcTimeBetweenTwoDatesInHour(datePickerSecondSample.value, datePickerFirstSample.value)
     halflife = Calculs.calcHalfLife(inputParacetamolFirstSample.value, inputParacetamolSecondSample.value, duree );
-    Dom.displayDiv(pResult);
     if(dataIsOk()) {
-        Dom.addStyleResult(pResult, 'good')
+        Dom.addClass(pResult, 'success')
         displayHalfLifeResult(pResult);
     } else {
-        Dom.addStyleResult(pResult,'bad')
+        Dom.addClass(pResult,'error')
         displayErrorResult(pResult);
     }
+    Dom.showHtmlElement(pResult);
 })
 
 
@@ -37,7 +45,6 @@ function displayErrorResult(htmlElement) {
 }
 
 function dataIsOk() {
-    console.log(duree > 0 && halflife > 0);
     return duree > 0 && halflife > 0;
 }
 

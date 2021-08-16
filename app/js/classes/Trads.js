@@ -1,6 +1,4 @@
-import french from "../../lang/french.js";
-import english from "../../lang/english.js";
-let languages = {"french": french, "english": english};
+import { languages } from '../available-languages.js'
 
 export default {
     changeLanguage(language) {

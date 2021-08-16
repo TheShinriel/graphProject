@@ -1,22 +1,20 @@
-let styleResults = ['good', 'bad'];
+const resultClassNames = ['success', 'error'];
 
-export function addStyleResult(htmlElement, style) {
-    removeStyleResult(htmlElement)
-    htmlElement.classList.add(style)
+export function addClass(htmlElement, className) {
+    removeClasses(htmlElement)
+    htmlElement.classList.add(className)
 }
 
-export function hideDiv(htmlElement) {
-    htmlElement.classList.remove("visible");
-    htmlElement.classList.add("invisible");
+export function hideHtmlElement(htmlElement) {
+    htmlElement.classList.add("hidden");
 }
 
-export function  displayDiv(htmlElement) {
-    htmlElement.classList.remove("invisible");
-    htmlElement.classList.add("visible");
+export function  showHtmlElement(htmlElement) {
+    htmlElement.classList.remove("hidden");
 }
 
-function removeStyleResult(htmlElement) {
-    styleResults.forEach(element => {
-        htmlElement.classList.remove(element);
+function removeClasses(htmlElement) {
+    resultClassNames.forEach(resultClassName => {
+        htmlElement.classList.remove(resultClassName);
     });
 }

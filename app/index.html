@@ -38,11 +38,11 @@
 </head>
 <body>
     <div id="title">
-         <div class="lang_buttons">
-             <button class="btn_translation" data-language="french">Français</button>
-             <button class="btn_translation" data-language="english">English</button>
+        <div class="lang_buttons">
+            <button class="btn_translation" data-language="fr">Français</button>
+            <button class="btn_translation" data-language="en">English</button>
             </div>
-             <h1 class="main_title"> #HopiTox </h1>
+            <h1 class="main_title"> #HopiTox </h1>
         <svg  data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" height="75%" width="100%"viewBox="0 0 1200 120" preserveAspectRatio="none" ><path  d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" class="shape-fill" fill="#8FE5CC" fill-opacity="1"></path></svg>
     </div>
     <div class="banner_hero">
@@ -60,7 +60,7 @@
         data-text="calc_dose_patient_weight_input" >
         <input class="subject_hypothetic_dosis i18n" type="number" data-text="calc_dose_paracetamol_dose_input" >
         <button class="calc_dose_paracetamol i18n" data-text="calc_dose_submit_btn" type="submit"></button>
-        <p class="result_calc_dose_paracetamol i18n invisible" data-text="calc_dose_result"></p>
+        <p class="result_calc_dose_paracetamol i18n hidden" data-text="calc_dose_result"></p>
 </div>
     
     <h2 class="i18n" data-text="nomogram_title"></h2>
@@ -69,7 +69,7 @@
         <label class="text_agreement i18n" data-text="calculate_toxicity_label" for="accept_agreement">  </label>
     </div>
 
-    <div id="calculate_toxicity_div" class="invisible">
+    <div id="calculate_toxicity_div" class="hidden">
         <div class="no_calc_container">
             <div class="sample_interval_container">
                 <div class="interval">
@@ -104,11 +104,11 @@
         <button class="calculate_toxicity_btn i18n" data-text="calculate_toxicity_btn" type="submit"></button>
     </div>
 
-    <div id="container_result"class="invisible">
+    <div id="container_result"class="hidden">
         <p class="result_text i18n"></p>
     </div>
 
-    <div class="alertBadData invisible">
+    <div class="alertBadData hidden">
         <h3 class="title_warningBadData i18n" data-text="title_warningBadData"> </h3>
     </div>
     <br>
@@ -136,12 +136,12 @@
         </div>
         <button class="calc_half_life i18n" data-text="calculate_half_life"></button>
         <div class="result_half_life">
-            <p class="result_calc_half_life i18n invisible" data-text="result_calc_half_life"> </p>
+            <p class="result_calc_half_life i18n hidden" data-text="result_calc_half_life"> Result </p>
         </div>
     </div>
     <footer> 
         <div class="contact">
-            <p> <a HREF="mailto:contact@hopitox.com" class="i18n" data-text="contact">Nous contacter</a></p>
+            <p> <a HREF="mailto:contact@hopitox.com" class="i18n" data-text="contact"></a></p>
         </div>
         <div class="responsable_container">
             <p class="i18n" data-text="resp_scientifique"></p>
