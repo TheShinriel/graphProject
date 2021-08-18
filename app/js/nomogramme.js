@@ -1,4 +1,4 @@
-import * as Calculs from '../js/classes/Calculs.js';
+import * as Calculs from './classes/Calculs.js';
 import Trads from "../js/classes/Trads.js";
 import * as Samples from "../js/classes/Sample-nommogramme.js";
 import * as Dom from '../js/classes/Dom.js';
@@ -122,8 +122,6 @@ let graph = new Chart(graphCanvas, {
 
 btnTranslation.forEach(btn => {
     btn.addEventListener('click', () => {
-        currentLanguage = btn.dataset.language;
-        Trads.changeLanguage(currentLanguage);
         Trads.changeGraphLanguage(graph, currentLanguage);
     })
 })
@@ -167,9 +165,6 @@ checkBoxAgreement.addEventListener("click", (event) => {
 checkBoxPatientGotRisk.addEventListener("click", () => {
     patientGotRisks = checkBoxPatientGotRisk.checked;
 });
-
-Trads.changeLanguage(currentLanguage);
-
 
 // FUNCTIONS
 function addDataToGraph(chart, coordonates) {

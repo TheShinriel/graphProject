@@ -1,4 +1,4 @@
-import * as Calculs from '../js/classes/Calculs.js';
+import * as Calculs from './classes/Calculs.js';
 import * as Dom from '../js/classes/Dom.js';
 import { languages } from './available-languages.js'
 

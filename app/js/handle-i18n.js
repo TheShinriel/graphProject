@@ -1,5 +1,5 @@
 import Trads from "../js/classes/Trads.js";
-import { languages, defaultLanguage } from './available-languages.js'
+import { defaultLanguage } from './available-languages.js'
 
 window.currentLanguage = defaultLanguage;
 const btnTranslation = document.querySelectorAll('.btn_translation');
