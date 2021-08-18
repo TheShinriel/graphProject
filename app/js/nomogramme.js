@@ -5,7 +5,6 @@ import * as Dom from '../js/classes/Dom.js';
 import { languages } from './available-languages.js'
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
-const OPTIMAL_ELIMINATION_TIME = 4; // time in hour
 
 // variables
 let timeAfterIngestion = 0;

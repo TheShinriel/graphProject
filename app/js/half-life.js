@@ -2,6 +2,8 @@ import * as Dom from '../js/classes/Dom.js';
 import * as Calculs from './classes/Calculs.js';
 import { languages } from './available-languages.js';
 
+const OPTIMAL_ELIMINATION_TIME = 4; // time in hour
+
 const pResult = document.querySelector('.result_calc_half_life');
 
 const inputParacetamolFirstSample = document.querySelector('.first_paracetamol_concentration');
@@ -45,7 +47,7 @@ function checkData(duree, halfLife) {
 }
 
 function checkToxicity(halfLife) {
-    return halfLife > 4
+    return halfLife > OPTIMAL_ELIMINATION_TIME
 }
 
 function getAppropriateClasses (isToxic) {
