@@ -13,6 +13,12 @@ export function  showHtmlElement(htmlElement) {
     htmlElement.classList.remove("hidden");
 }
 
+export function  toggleClassNames(htmlElement, classes) {
+    Object.entries(classes).forEach(([className, toggleValue]) => {
+        htmlElement.classList.toggle(className, toggleValue);
+    })
+}
+
 function removeClasses(htmlElement) {
     resultClassNames.forEach(resultClassName => {
         htmlElement.classList.remove(resultClassName);

@@ -2,10 +2,7 @@ import * as Calculs from '../js/classes/Calculs.js';
 import Trads from "../js/classes/Trads.js";
 import * as Samples from "../js/classes/Sample-nommogramme.js";
 import * as Dom from '../js/classes/Dom.js';
-import { languages, defaultLanguage } from './available-languages.js'
-
-
-let currentLanguage = defaultLanguage;
+import { languages } from './available-languages.js'
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 const OPTIMAL_ELIMINATION_TIME = 4; // time in hour
@@ -21,24 +18,25 @@ let toxicity;
 let toxicityPossible;
 let toxicityProbable;
 let toxicityWithRisk;
-let resultText = document.querySelector('.result_text');
-// divs
-let divCalcToxParacetamol = document.querySelector('#calculate_toxicity_div');
-let divMsgError = document.querySelector('.alertBadData');
-let divResult = document.querySelector('#container_result');
-let divNoCalc = document.querySelector('.no_calc_container')
-// buttons
-let btnTranslation = document.querySelectorAll('.btn_translation');
-let btnCalcToxicity = document.querySelector('.calculate_toxicity_btn');
-let btnAddSample = document.querySelector('.add_sample');
-// interval inputs
-let ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
-let paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
-// checkboxs
-let checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
-let checkBoxAgreement = document.querySelector('#accept_agreement');
 
-let graphCanvas = document.querySelector('#nomogramGraph');
+const resultText = document.querySelector('.result_text');
+// divs
+const divCalcToxParacetamol = document.querySelector('#calculate_toxicity_div');
+const divMsgError = document.querySelector('.alertBadData');
+const divResult = document.querySelector('#container_result');
+const divNoCalc = document.querySelector('.no_calc_container')
+// buttons
+const btnTranslation = document.querySelectorAll('.btn_translation');
+const btnCalcToxicity = document.querySelector('.calculate_toxicity_btn');
+const btnAddSample = document.querySelector('.add_sample');
+// interval inputs
+const ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
+const paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
+// checkboxs
+const checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
+const checkBoxAgreement = document.querySelector('#accept_agreement');
+
+const graphCanvas = document.querySelector('#nomogramGraph');
 let graph = new Chart(graphCanvas, {
     data: 
     {

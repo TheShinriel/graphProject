@@ -1,12 +1,6 @@
 import * as Calculs from '../js/classes/Calculs.js';
 import * as Dom from '../js/classes/Dom.js';
-import Trads from "../js/classes/Trads.js";
-import { languages, defaultLanguage } from './available-languages.js'
-
-let currentLanguage = defaultLanguage;
-const btnTranslation = document.querySelectorAll('.btn_translation');
-
-Trads.changeLanguage(currentLanguage);
+import { languages } from './available-languages.js'
 
 const DOSE_VALUE_MAX = 150;
 
@@ -15,13 +9,6 @@ const inputSubjectWeight = document.querySelector('.subject_weight');
 
 const btnCalcDose = document.querySelector('.calc_dose_paracetamol');
 const pResultDose = document.querySelector('.result_calc_dose_paracetamol');
-
-btnTranslation.forEach(btn => {
-    btn.addEventListener('click', () => {
-        currentLanguage = btn.dataset.language;
-        Trads.changeLanguage(currentLanguage);
-    })
-})
 
 btnCalcDose.addEventListener("click", () => {
     const result = calcParacetamolDose();

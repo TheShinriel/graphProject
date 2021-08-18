@@ -9,3 +9,5 @@ export const languages = {
     [FRENCH]: french,
     [ENGLISH]: english,
 }
+
+window.currentLanguage = defaultLanguage
