@@ -182,14 +182,14 @@ function isValidTimeAfterIngestion(array) {
 }
 
 function calcToxicities() {
-    toxicity =  Calculs.calcToxicity(timeAfterIngestion);
+    toxicity = Calculs.calcToxicity(timeAfterIngestion);
     toxicityPossible = Calculs.calcToxicityPossible(toxicity);
     toxicityProbable = Calculs.calcToxicityProbable(toxicity);
     toxicityWithRisk = Calculs.calcToxicityProbableWithRisk(toxicity);
 }
 
 function compareToxicitiesWithNoRisk() {
-    if(paracetamolConcentration > toxicityProbable) {
+if(paracetamolConcentration > toxicityProbable) {
         resultText.innerText = languages[currentLanguage].toxicity_result_probable.replace('variable', timeAfterIngestion);
     } else if (paracetamolConcentration > toxicityPossible) {
         resultText.innerText = languages[currentLanguage].toxicity_result_possible.replace('variable', timeAfterIngestion);

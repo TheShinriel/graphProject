@@ -28,6 +28,7 @@ btnCalcHalfLife.addEventListener('click', () => {
 
     const isToxic = checkToxicity(halfLife)
     const classNames = getAppropriateClasses(isToxic)
+    
     Dom.toggleClassNames(pResult, classNames)
     displayHalfLifeResult(pResult, halfLife);
     Dom.showHtmlElement(pResult);
