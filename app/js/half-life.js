@@ -18,18 +18,19 @@ btnCalcHalfLife.addEventListener('click', () => {
     const duree = Calculs.calcTimeBetweenTwoDatesInHour(datePickerSecondSample.value, datePickerFirstSample.value)
     const halfLife = Calculs.calcHalfLife(inputParacetamolFirstSample.value, inputParacetamolSecondSample.value, duree );
     const isValidData = checkData(duree, halfLife)
-
+    
     if (!isValidData) {
-        Dom.addClass(pResult,'error')
+        const classNameResult = Dom.getSuccessOrErrorClass(!isValidData);
+        Dom.toggleClassNames(pResult, classNameResult);
         displayErrorResult(pResult);
         Dom.showHtmlElement(pResult);
         return
     }
-
-    const isToxic = checkToxicity(halfLife)
-    const classNames = getAppropriateClasses(isToxic)
     
-    Dom.toggleClassNames(pResult, classNames)
+    const isToxic = checkToxicity(halfLife)
+    const classNameResult = Dom.getSuccessOrErrorClass(isToxic)
+    
+    Dom.toggleClassNames(pResult, classNameResult)
     displayHalfLifeResult(pResult, halfLife);
     Dom.showHtmlElement(pResult);
 })
@@ -49,13 +50,6 @@ function checkData(duree, halfLife) {
 
 function checkToxicity(halfLife) {
     return halfLife > OPTIMAL_ELIMINATION_TIME
-}
-
-function getAppropriateClasses (isToxic) {
-    return {
-        success: !isToxic,
-        error: isToxic,
-    }
 }
 
 

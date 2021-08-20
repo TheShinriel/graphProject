@@ -12,12 +12,13 @@ const pResultDose = document.querySelector('.result_calc_dose_paracetamol');
 
 btnCalcDose.addEventListener("click", () => {
     const result = calcParacetamolDose();
-    const resultClassName = getClassNameAccordingToResult(result);
-    Dom.addClass(pResultDose, resultClassName);
+    const isToxicDose = checkDoseToxicity(result);
+    const classNameResult = Dom.getSuccessOrErrorClass(isToxicDose);
+
+    Dom.toggleClassNames(pResultDose, classNameResult);
     Dom.showHtmlElement(pResultDose);
     displayDoseResult(result);
 })
-
 
 function calcParacetamolDose() {
     return Calculs.calcDoseParacetamol(inputSubjectWeight.value , inputHypotheticDose.value);
@@ -27,7 +28,7 @@ function displayDoseResult(result) {
     pResultDose.textContent = languages[currentLanguage].calc_dose_result.replace("resultToReplace", result);
 }
 
-function getClassNameAccordingToResult(result) {
-    return (result < DOSE_VALUE_MAX ? 'success' : 'error');
+function checkDoseToxicity(result) {
+    return result > DOSE_VALUE_MAX;
 }
 
