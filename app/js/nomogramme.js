@@ -12,8 +12,6 @@ let paracetamolConcentration = 0;
 let ingestionTimes = [];
 let paracetamolConcentrations = [];
 let coordonates = [{}];
-let patientGotRisks = false;
-let toxicity;
 let toxicityPossible;
 let toxicityProbable;
 let toxicityWithRisk;
@@ -139,8 +137,7 @@ btnCalcToxicity.addEventListener("click", () => {
     if(isValidTimeAfterIngestion(ingestionTimes)) {
         Dom.hideHtmlElement(divMsgError);
         calcToxicities();
-        const valeur = patientGotRisks ? toxicityWithRisk : toxicityPossible;
-        compareToxicities(valeur);
+        compareToxicities();
         Dom.showHtmlElement(divResult);
         resultText.scrollIntoView(true);
         addDataToGraph(graph, coordonates);
@@ -162,10 +159,6 @@ checkBoxAgreement.addEventListener("click", (event) => {
     }
 })
 
-checkBoxPatientGotRisk.addEventListener("click", () => {
-    patientGotRisks = checkBoxPatientGotRisk.checked;
-});
-
 // FUNCTIONS
 function addDataToGraph(chart, coordonates) {
     for (let index = 0; index < coordonates.length; index++) {
@@ -178,35 +171,30 @@ function clearDataGraph() {
     graph.data.datasets[4].data = [];
     graph.update();
 }
+
 function isValidTimeAfterIngestion(array) {
      return array.every(num => num >= DIFFUSION_TIME_IN_BLOOD); 
 }
 
 function calcToxicities() {
-    toxicity = Calculs.calcToxicity(timeAfterIngestion);
+    const toxicity = Calculs.calcToxicity(timeAfterIngestion);
     toxicityPossible = Calculs.calcToxicityPossible(toxicity);
     toxicityProbable = Calculs.calcToxicityProbable(toxicity);
     toxicityWithRisk = Calculs.calcToxicityProbableWithRisk(toxicity);
 }
 
 
-function compareToxicities(toxicity) {
+function compareToxicities() {
+    const patientGotRisk = checkBoxPatientGotRisk.checked;
+    const toxicityValue = patientGotRisk ? toxicityWithRisk : toxicityPossible;
+
     if(paracetamolConcentration > toxicityProbable) {
         resultText.textContent = languages[currentLanguage].toxicity_result_probable.replace('variable', timeAfterIngestion);
-    } else if (paracetamolConcentration > toxicity) {
+    } else if (paracetamolConcentration > toxicityValue) {
         resultText.textContent = languages[currentLanguage].toxicity_result_possible.replace('variable', timeAfterIngestion);
     } else if (timeAfterIngestion != false) {
         resultText.textContent = languages[currentLanguage].toxicity_result_ok.replace('variable', timeAfterIngestion);
     } 
-}
-
-function comparaToxiciteisbis() {
-    if(checkParamUnSupParam2(paracetamolConcentration, toxicityProbable)) resultText.textContent = languages[currentLanguage].toxicity_result_probable.replace('variable', timeAfterIngestion);
-
-}
-
-function checkParamUnSupParam2(params1, param2) {
-    return param1 < param2;
 }
 
 function createCoordonates(array1, array2) {
