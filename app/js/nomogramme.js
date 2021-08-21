@@ -9,9 +9,6 @@ const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 // variables
 let timeAfterIngestion = 0;
 let paracetamolConcentration = 0;
-let ingestionTimes = [];
-let paracetamolConcentrations = [];
-let coordonates = [{}];
 let toxicityPossible;
 let toxicityProbable;
 let toxicityWithRisk;
@@ -130,9 +127,11 @@ btnAddSample.addEventListener("click", () => {
 });
 
 btnCalcToxicity.addEventListener("click", () => {
-    
-    prepareDataForGraph()
-    selectDataToAnalize()
+    const ingestionTimes = setNodeModuleInArrayWithoutBlankValue(ingestionIntervals)
+    const paracetamolConcentrations = setNodeModuleInArrayWithoutBlankValue(paracetamolConcentrationIntervals)
+    const dataForGraph = createCoordonates(ingestionTimes, paracetamolConcentrations);
+
+    selectDataToAnalize(dataForGraph)
     
     if(isValidTimeAfterIngestion(ingestionTimes)) {
         Dom.hideHtmlElement(divMsgError);
@@ -140,7 +139,7 @@ btnCalcToxicity.addEventListener("click", () => {
         compareToxicities();
         Dom.showHtmlElement(divResult);
         resultText.scrollIntoView(true);
-        addDataToGraph(graph, coordonates);
+        addDataToGraph(graph, dataForGraph);
     }
     
     if(!isValidTimeAfterIngestion(ingestionTimes)) {
@@ -198,17 +197,13 @@ function compareToxicities() {
 }
 
 function createCoordonates(array1, array2) {
-    coordonates = [];
+    const coordonatesBis = [];
     for (let index = 0; index < array1.length; index++) {
-        coordonates.push({x:array1[index], y: array2[index]});
+        coordonatesBis.push({x:array1[index], y: array2[index]});
     }
+    return coordonatesBis;
 }
 
-function prepareDataForGraph() {
-    ingestionTimes = setNodeModuleInArrayWithoutBlankValue(ingestionIntervals)
-    paracetamolConcentrations = setNodeModuleInArrayWithoutBlankValue(paracetamolConcentrationIntervals)
-    createCoordonates(ingestionTimes, paracetamolConcentrations);
-}
 
 function setNodeModuleInArrayWithoutBlankValue(nodeModule) {
     let array = [];
@@ -218,10 +213,10 @@ function setNodeModuleInArrayWithoutBlankValue(nodeModule) {
     return array;
 }
 
-function selectDataToAnalize() {
-    coordonates = coordonates.sort(compare)
-    paracetamolConcentration = coordonates[coordonates.length-1].y;
-    timeAfterIngestion = coordonates[coordonates.length-1].x;
+function selectDataToAnalize(dataForGraph) {
+    dataForGraph = dataForGraph.sort(compare)
+    paracetamolConcentration = dataForGraph[dataForGraph.length-1].y;
+    timeAfterIngestion = dataForGraph[dataForGraph.length-1].x;
 }
 
 function compare(a, b) {
