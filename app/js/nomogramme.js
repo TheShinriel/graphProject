@@ -139,7 +139,8 @@ btnCalcToxicity.addEventListener("click", () => {
     if(isValidTimeAfterIngestion(ingestionTimes)) {
         Dom.hideHtmlElement(divMsgError);
         calcToxicities();
-        patientGotRisks ? compareToxicitiesWithRisk() : compareToxicitiesWithNoRisk();
+        const valeur = patientGotRisks ? toxicityWithRisk : toxicityPossible;
+        compareToxicities(valeur);
         Dom.showHtmlElement(divResult);
         resultText.scrollIntoView(true);
         addDataToGraph(graph, coordonates);
@@ -188,24 +189,24 @@ function calcToxicities() {
     toxicityWithRisk = Calculs.calcToxicityProbableWithRisk(toxicity);
 }
 
-function compareToxicitiesWithNoRisk() {
-if(paracetamolConcentration > toxicityProbable) {
-        resultText.innerText = languages[currentLanguage].toxicity_result_probable.replace('variable', timeAfterIngestion);
-    } else if (paracetamolConcentration > toxicityPossible) {
-        resultText.innerText = languages[currentLanguage].toxicity_result_possible.replace('variable', timeAfterIngestion);
-    } else if (timeAfterIngestion != false) {
-        resultText.innerText = languages[currentLanguage].toxicity_result_ok.replace('variable', timeAfterIngestion);
-    } 
-}
 
-function compareToxicitiesWithRisk() {
+function compareToxicities(toxicity) {
     if(paracetamolConcentration > toxicityProbable) {
         resultText.textContent = languages[currentLanguage].toxicity_result_probable.replace('variable', timeAfterIngestion);
-    } else if (paracetamolConcentration > toxicityWithRisk) {
+    } else if (paracetamolConcentration > toxicity) {
         resultText.textContent = languages[currentLanguage].toxicity_result_possible.replace('variable', timeAfterIngestion);
     } else if (timeAfterIngestion != false) {
         resultText.textContent = languages[currentLanguage].toxicity_result_ok.replace('variable', timeAfterIngestion);
     } 
+}
+
+function comparaToxiciteisbis() {
+    if(checkParamUnSupParam2(paracetamolConcentration, toxicityProbable)) resultText.textContent = languages[currentLanguage].toxicity_result_probable.replace('variable', timeAfterIngestion);
+
+}
+
+function checkParamUnSupParam2(params1, param2) {
+    return param1 < param2;
 }
 
 function createCoordonates(array1, array2) {

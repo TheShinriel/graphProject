@@ -35,7 +35,6 @@ btnCalcHalfLife.addEventListener('click', () => {
     Dom.showHtmlElement(pResult);
 })
 
-
 function displayHalfLifeResult(htmlElement, halfLife) {
     htmlElement.textContent = languages[currentLanguage].result_calc_half_life.replace("resultToReplace", halfLife);
 }
@@ -51,7 +50,3 @@ function checkData(duree, halfLife) {
 function checkToxicity(halfLife) {
     return halfLife > OPTIMAL_ELIMINATION_TIME
 }
-
-
-
-
