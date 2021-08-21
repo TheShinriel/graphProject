@@ -127,8 +127,8 @@ btnAddSample.addEventListener("click", () => {
 });
 
 btnCalcToxicity.addEventListener("click", () => {
-    const ingestionTimes = setNodeModuleInArrayWithoutBlankValue(ingestionIntervals)
-    const paracetamolConcentrations = setNodeModuleInArrayWithoutBlankValue(paracetamolConcentrationIntervals)
+    const ingestionTimes = setNodeModuleInArrayWithoutBlankValue(ingestionIntervals);
+    const paracetamolConcentrations = setNodeModuleInArrayWithoutBlankValue(paracetamolConcentrationIntervals);
     const dataForGraph = createCoordonates(ingestionTimes, paracetamolConcentrations);
 
     selectDataToAnalize(dataForGraph)
@@ -188,25 +188,25 @@ function compareToxicities() {
     const toxicityValue = patientGotRisk ? toxicityWithRisk : toxicityPossible;
 
     if(paracetamolConcentration > toxicityProbable) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_probable.replace('variable', timeAfterIngestion);
+        resultText.textContent = languages[currentLanguage].toxicity_result_probable.replace('resultToReplace', timeAfterIngestion);
     } else if (paracetamolConcentration > toxicityValue) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_possible.replace('variable', timeAfterIngestion);
+        resultText.textContent = languages[currentLanguage].toxicity_result_possible.replace('resultToReplace', timeAfterIngestion);
     } else if (timeAfterIngestion != false) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_ok.replace('variable', timeAfterIngestion);
+        resultText.textContent = languages[currentLanguage].toxicity_result_ok.replace('resultToReplace', timeAfterIngestion);
     } 
 }
 
 function createCoordonates(array1, array2) {
-    const coordonatesBis = [];
+    const coordonates = [];
     for (let index = 0; index < array1.length; index++) {
-        coordonatesBis.push({x:array1[index], y: array2[index]});
+        coordonates.push({x:array1[index], y: array2[index]});
     }
-    return coordonatesBis;
+    return coordonates;
 }
 
 
 function setNodeModuleInArrayWithoutBlankValue(nodeModule) {
-    let array = [];
+    const array = [];
     nodeModule.forEach(concentration => {
         if (concentration.value !== "") array.push(+concentration.value);
     });
@@ -214,17 +214,17 @@ function setNodeModuleInArrayWithoutBlankValue(nodeModule) {
 }
 
 function selectDataToAnalize(dataForGraph) {
-    dataForGraph = dataForGraph.sort(compare)
+    dataForGraph = dataForGraph.sort(compare);
     paracetamolConcentration = dataForGraph[dataForGraph.length-1].y;
     timeAfterIngestion = dataForGraph[dataForGraph.length-1].x;
 }
 
 function compare(a, b) {
     if (a.x < b.x) {
-        return -1
+        return -1;
     }
     if (a.x > b.x) {
-        return 1
+        return 1;
     }
     return 0;
 }

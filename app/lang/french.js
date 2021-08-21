@@ -34,9 +34,9 @@ export default {
     "calculate_toxicity_paracetamol_concentration": "Paracetamolémie (mg/L)",
 
     // RESULTS
-    "toxicity_result_probable": "Concentration à T+ variable h associée à un risque important de toxicité.",
-    "toxicity_result_possible": "Concentration à T+ variable h associée à un possible risque de toxicité.",
-    "toxicity_result_ok": "Concentration à T+ variable h associée à un risque faible de toxicité.",
+    "toxicity_result_probable": "Concentration à T+ resultToReplace h associée à un risque important de toxicité.",
+    "toxicity_result_possible": "Concentration à T+ resultToReplace h associée à un possible risque de toxicité.",
+    "toxicity_result_ok": "Concentration à T+ resultToReplace h associée à un risque faible de toxicité.",
     "resultHalfLife": "La demi vie est de : ",
     "badCalcul": "Les dates ou les concentrations saisies ne permettent pas le calcul de la demi vie.",
     "calc_dose_result": "La dose ingérée est donc resultToReplace mg/kg.",

@@ -34,9 +34,9 @@ export default {
     "calculate_toxicity_paracetamol_concentration": "Paracetamolemia (mg/L)",
 
     // RESULTS
-    "toxicity_result_probable": "Concentration at T+ variable h leading to a probable hepatic toxicity",
-    "toxicity_result_possible": "Concentration at T+ variable h leading to a possible hepatic toxicity",
-    "toxicity_result_ok": "Concentration at T+ variable h leading to a low risk of hepatic toxicity",
+    "toxicity_result_probable": "Concentration at T+ resultToReplace h leading to a probable hepatic toxicity",
+    "toxicity_result_possible": "Concentration at T+ resultToReplace h leading to a possible hepatic toxicity",
+    "toxicity_result_ok": "Concentration at T+ resultToReplace h leading to a low risk of hepatic toxicity",
     "resultHalfLife": "The half-life is : ",
     "badCalcul": "Half-life could not be calculated. Please verify the data.",
     "calc_dose_result": "The ingested dose is resultToReplace mg/kg.",
