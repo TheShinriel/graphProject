@@ -6,10 +6,6 @@ import { languages } from './available-languages.js'
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 
-// variables
-let timeAfterIngestion = 0;
-let paracetamolConcentration = 0;
-
 let resultText = document.querySelector('.result_text');
 // divs
 const divCalcToxParacetamol = document.querySelector('#calculate_toxicity_div');
@@ -127,13 +123,12 @@ btnCalcToxicity.addEventListener("click", () => {
     const ingestionTimes = setNodeModuleInArrayWithoutBlankValue(ingestionIntervals);
     const paracetamolConcentrations = setNodeModuleInArrayWithoutBlankValue(paracetamolConcentrationIntervals);
     const dataForGraph = createCoordonates(ingestionTimes, paracetamolConcentrations);
-
-    selectDataToAnalize(dataForGraph)
+    const dataToAnalize = selectDataToAnalize(dataForGraph);
     
     if(isValidTimeAfterIngestion(ingestionTimes)) {
         Dom.hideHtmlElement(divMsgError);
-        const toxicities = calcToxicities();
-        compareToxicities(toxicities);
+        const toxicities = calcToxicities(dataToAnalize.timeAfterIngestion);
+        compareToxicities(toxicities, dataToAnalize);
         Dom.showHtmlElement(divResult);
         resultText.scrollIntoView(true);
         addDataToGraph(graph, dataForGraph);
@@ -172,7 +167,7 @@ function isValidTimeAfterIngestion(array) {
      return array.every(num => num >= DIFFUSION_TIME_IN_BLOOD); 
 }
 
-function calcToxicities() {
+function calcToxicities(timeAfterIngestion) {
     const toxicity = Calculs.calcToxicity(timeAfterIngestion);
     const toxicities = {
         "possible": Calculs.calcToxicityPossible(toxicity),
@@ -180,25 +175,24 @@ function calcToxicities() {
         "withRisk": Calculs.calcToxicityProbableWithRisk(toxicity)
     }
     return toxicities
-
 }
 
 
-function compareToxicities(toxicities) {
+function compareToxicities(toxicities, dataToAnalize) {
     const patientGotRisk = checkBoxPatientGotRisk.checked;
     const toxicityValue = patientGotRisk ? toxicities.withRisk : toxicities.possible;
 
-    if(paracetamolConcentration > toxicities.probable) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_probable.replace('resultToReplace', timeAfterIngestion);
-    } else if (paracetamolConcentration > toxicityValue) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_possible.replace('resultToReplace', timeAfterIngestion);
-    } else if (timeAfterIngestion != false) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_ok.replace('resultToReplace', timeAfterIngestion);
+    if(dataToAnalize.paracetamolConcentration > toxicities.probable) {
+        resultText.textContent = languages[currentLanguage].toxicity_result_probable.replace('resultToReplace', dataToAnalize.timeAfterIngestion);
+    } else if (dataToAnalize.paracetamolConcentration > toxicityValue) {
+        resultText.textContent = languages[currentLanguage].toxicity_result_possible.replace('resultToReplace', dataToAnalize.timeAfterIngestion);
+    } else if (dataToAnalize.timeAfterIngestion != false) {
+        resultText.textContent = languages[currentLanguage].toxicity_result_ok.replace('resultToReplace', dataToAnalize.timeAfterIngestion);
     } 
 }
 
 function createCoordonates(array1, array2) {
-    const coordonates = [];
+    const coordonates = [{}];
     for (let index = 0; index < array1.length; index++) {
         coordonates.push({x:array1[index], y: array2[index]});
     }
@@ -216,8 +210,11 @@ function setNodeModuleInArrayWithoutBlankValue(nodeModule) {
 
 function selectDataToAnalize(dataForGraph) {
     dataForGraph = dataForGraph.sort(compare);
-    paracetamolConcentration = dataForGraph[dataForGraph.length-1].y;
-    timeAfterIngestion = dataForGraph[dataForGraph.length-1].x;
+    const dataSelected = {
+        "paracetamolConcentration": dataForGraph[dataForGraph.length-1].y, 
+        "timeAfterIngestion": dataForGraph[dataForGraph.length-1].x 
+    }
+    return dataSelected
 }
 
 function compare(a, b) {
