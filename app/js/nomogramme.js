@@ -9,9 +9,6 @@ const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 // variables
 let timeAfterIngestion = 0;
 let paracetamolConcentration = 0;
-let toxicityPossible;
-let toxicityProbable;
-let toxicityWithRisk;
 
 let resultText = document.querySelector('.result_text');
 // divs
@@ -135,8 +132,8 @@ btnCalcToxicity.addEventListener("click", () => {
     
     if(isValidTimeAfterIngestion(ingestionTimes)) {
         Dom.hideHtmlElement(divMsgError);
-        calcToxicities();
-        compareToxicities();
+        const toxicities = calcToxicities();
+        compareToxicities(toxicities);
         Dom.showHtmlElement(divResult);
         resultText.scrollIntoView(true);
         addDataToGraph(graph, dataForGraph);
@@ -177,17 +174,21 @@ function isValidTimeAfterIngestion(array) {
 
 function calcToxicities() {
     const toxicity = Calculs.calcToxicity(timeAfterIngestion);
-    toxicityPossible = Calculs.calcToxicityPossible(toxicity);
-    toxicityProbable = Calculs.calcToxicityProbable(toxicity);
-    toxicityWithRisk = Calculs.calcToxicityProbableWithRisk(toxicity);
+    const toxicities = {
+        "possible": Calculs.calcToxicityPossible(toxicity),
+        "probable": Calculs.calcToxicityProbable(toxicity),
+        "withRisk": Calculs.calcToxicityProbableWithRisk(toxicity)
+    }
+    return toxicities
+
 }
 
 
-function compareToxicities() {
+function compareToxicities(toxicities) {
     const patientGotRisk = checkBoxPatientGotRisk.checked;
-    const toxicityValue = patientGotRisk ? toxicityWithRisk : toxicityPossible;
+    const toxicityValue = patientGotRisk ? toxicities.withRisk : toxicities.possible;
 
-    if(paracetamolConcentration > toxicityProbable) {
+    if(paracetamolConcentration > toxicities.probable) {
         resultText.textContent = languages[currentLanguage].toxicity_result_probable.replace('resultToReplace', timeAfterIngestion);
     } else if (paracetamolConcentration > toxicityValue) {
         resultText.textContent = languages[currentLanguage].toxicity_result_possible.replace('resultToReplace', timeAfterIngestion);
