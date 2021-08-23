@@ -1,12 +1,17 @@
-import * as Calculs from './classes/Calculs.js';
-import Trads from "../js/classes/Trads.js";
-import { createSample } from "../js/classes/Sample-nommogramme.js";
-import { showHtmlElement, hideHtmlElement } from '../js/classes/Dom.js';
+import {
+    calcToxicity,
+    calcToxicityPossible,
+    calcToxicityProbable,
+    calcToxicityProbableWithRisk,
+} from './utils/Calculs.js';
+import { changeGraphLanguage } from "../js/utils/Trads.js";
+import { createSample } from "../js/utils/Sample-nommogramme.js";
+import { showHtmlElement, hideHtmlElement } from '../js/utils/Dom.js';
 import { languages } from './available-languages.js';
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 
-let resultText = document.querySelector('.result_text');
+const resultText = document.querySelector('.result_text');
 // divs
 const divCalcToxParacetamol = document.querySelector('#calculate_toxicity_div');
 const divMsgError = document.querySelector('.alertBadData');
@@ -112,7 +117,7 @@ const graph = new Chart(graphCanvas, {
 
 btnTranslation.forEach(btn => {
     btn.addEventListener("click", () => {
-        Trads.changeGraphLanguage(graph, currentLanguage);
+        changeGraphLanguage(graph, currentLanguage);
     })
 });
 
@@ -171,11 +176,11 @@ function isValidTimeAfterIngestion(array) {
 }
 
 function calcToxicities(timeAfterIngestion) {
-    const toxicity = Calculs.calcToxicity(timeAfterIngestion);
+    const toxicity = calcToxicity(timeAfterIngestion);
     const toxicities = {
-        possible: Calculs.calcToxicityPossible(toxicity),
-        probable: Calculs.calcToxicityProbable(toxicity),
-        withRisk: Calculs.calcToxicityProbableWithRisk(toxicity)
+        possible: calcToxicityPossible(toxicity),
+        probable: calcToxicityProbable(toxicity),
+        withRisk: calcToxicityProbableWithRisk(toxicity)
     }
     return toxicities;
 }

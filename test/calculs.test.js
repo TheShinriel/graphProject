@@ -1,4 +1,4 @@
-import * as Calcs from '../app/js/classes/Calculs.js';
+import * as Calcs from '../app/js/utils/Calculs.js';
 
 test("l'exposant de 4 est -0.30102999566398125", () => {
     expect(Calcs.defineExposant(4)).toBe(-0.30102999566398125);

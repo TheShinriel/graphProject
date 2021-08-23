@@ -1,5 +1,5 @@
-import * as Dom from '../js/classes/Dom.js';
-import * as Calculs from './classes/Calculs.js';
+import * as Dom from './utils/Dom.js';
+import * as Calculs from './utils/Calculs.js';
 import { languages } from './available-languages.js';
 
 const OPTIMAL_ELIMINATION_TIME = 4; // time in hour

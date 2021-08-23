@@ -1,4 +1,4 @@
-import { createEl } from '../classes/Dom.js'
+import { createEl } from '../utils/Dom.js'
 
 export function createSample() {
     const wrapper = createEl("div", { className: "sample_interval_container" })
