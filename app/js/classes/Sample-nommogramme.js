@@ -1,15 +1,12 @@
-export function addSample(divToAppend) {
-    let div = document.createElement("div");
-    let inputInterval = document.createElement("input");
-    let inputConcentration = document.createElement("input");
+import { createEl } from '../classes/Dom.js'
 
-    div.classList.add("sample_interval_container");
-    inputInterval.classList.add("interval_after_ingestion");
-    inputInterval.type = "number";
-    inputConcentration.classList.add("interval_paracetamol_concentration");
-    inputConcentration.type = "number";
-    div.appendChild(inputInterval);
-    div.appendChild(inputConcentration);
+export function createSample() {
+    const wrapper = createEl("div", { className: "sample_interval_container" })
+    const inputInterval = createEl("input", { className: "interval_after_ingestion", type: "number" });
+    const inputConcentration = createEl("input", { className: "interval_paracetamol_concentration" });
 
-    divToAppend.appendChild(div);
+    wrapper.appendChild(inputInterval);
+    wrapper.appendChild(inputConcentration);
+
+    return wrapper
 }

@@ -1,8 +1,8 @@
 import * as Calculs from './classes/Calculs.js';
 import Trads from "../js/classes/Trads.js";
-import * as Samples from "../js/classes/Sample-nommogramme.js";
-import * as Dom from '../js/classes/Dom.js';
-import { languages } from './available-languages.js'
+import { createSample } from "../js/classes/Sample-nommogramme.js";
+import { showHtmlElement, hideHtmlElement } from '../js/classes/Dom.js';
+import { languages } from './available-languages.js';
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 
@@ -11,14 +11,17 @@ let resultText = document.querySelector('.result_text');
 const divCalcToxParacetamol = document.querySelector('#calculate_toxicity_div');
 const divMsgError = document.querySelector('.alertBadData');
 const divResult = document.querySelector('#container_result');
-const divNoCalc = document.querySelector('.no_calc_container')
+const divNoCalc = document.querySelector('.no_calc_container');
+
 // buttons
 const btnTranslation = document.querySelectorAll('.btn_translation');
 const btnCalcToxicity = document.querySelector('.calculate_toxicity_btn');
 const btnAddSample = document.querySelector('.add_sample');
+
 // interval inputs
 let ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
 let paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
+
 // checkboxs
 const checkBoxPatientGotRisk = document.querySelector('#patient_got_risk');
 const checkBoxAgreement = document.querySelector('#accept_agreement');
@@ -108,45 +111,45 @@ const graph = new Chart(graphCanvas, {
 });
 
 btnTranslation.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener("click", () => {
         Trads.changeGraphLanguage(graph, currentLanguage);
     })
-})
+});
 
 btnAddSample.addEventListener("click", () => {
-    Samples.addSample(divNoCalc);
+    divNoCalc.appendChild(createSample());
     ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
     paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
 });
 
 btnCalcToxicity.addEventListener("click", () => {
-    const ingestionTimes = setNodeModuleInArrayWithoutBlankValue(ingestionIntervals);
-    const paracetamolConcentrations = setNodeModuleInArrayWithoutBlankValue(paracetamolConcentrationIntervals);
-    const dataForGraph = createCoordonates(ingestionTimes, paracetamolConcentrations);
-    const dataToAnalize = selectDataToAnalize(dataForGraph);
+    const ingestionTimes = getNonBlankValues(ingestionIntervals);
+    const paracetamolConcentrations = getNonBlankValues(paracetamolConcentrationIntervals);
+    const dataForGraph = createCoordinates(ingestionTimes, paracetamolConcentrations);
+    const dataToAnalize = selectDataToAnalyze(dataForGraph);
     
     if(isValidTimeAfterIngestion(ingestionTimes)) {
-        Dom.hideHtmlElement(divMsgError);
+        hideHtmlElement(divMsgError);
         const toxicities = calcToxicities(dataToAnalize.timeAfterIngestion);
         compareToxicities(toxicities, dataToAnalize);
-        Dom.showHtmlElement(divResult);
+        showHtmlElement(divResult);
         resultText.scrollIntoView(true);
         addDataToGraph(graph, dataForGraph);
     }
     
     if(!isValidTimeAfterIngestion(ingestionTimes)) {
-        Dom.hideHtmlElement(divResult);
-        Dom.showHtmlElement(divMsgError);
-        clearDataGraph()
+        hideHtmlElement(divResult);
+        showHtmlElement(divMsgError);
+        clearDataGraph();
     }
 
 })
 
 checkBoxAgreement.addEventListener("click", (event) => {
     if(event.target.checked == true) {
-        Dom.showHtmlElement(divCalcToxParacetamol);
+        showHtmlElement(divCalcToxParacetamol);
     } else {
-        Dom.hideHtmlElement(divCalcToxParacetamol);
+        hideHtmlElement(divCalcToxParacetamol);
     }
 })
 
@@ -170,49 +173,53 @@ function isValidTimeAfterIngestion(array) {
 function calcToxicities(timeAfterIngestion) {
     const toxicity = Calculs.calcToxicity(timeAfterIngestion);
     const toxicities = {
-        "possible": Calculs.calcToxicityPossible(toxicity),
-        "probable": Calculs.calcToxicityProbable(toxicity),
-        "withRisk": Calculs.calcToxicityProbableWithRisk(toxicity)
+        possible: Calculs.calcToxicityPossible(toxicity),
+        probable: Calculs.calcToxicityProbable(toxicity),
+        withRisk: Calculs.calcToxicityProbableWithRisk(toxicity)
     }
-    return toxicities
+    return toxicities;
 }
 
 
 function compareToxicities(toxicities, dataToAnalize) {
     const patientGotRisk = checkBoxPatientGotRisk.checked;
     const toxicityValue = patientGotRisk ? toxicities.withRisk : toxicities.possible;
+    let messageId
 
-    if(dataToAnalize.paracetamolConcentration > toxicities.probable) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_probable.replace('resultToReplace', dataToAnalize.timeAfterIngestion);
+    if (dataToAnalize.paracetamolConcentration > toxicities.probable) {
+        messageId = 'toxicity_result_probable'
     } else if (dataToAnalize.paracetamolConcentration > toxicityValue) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_possible.replace('resultToReplace', dataToAnalize.timeAfterIngestion);
+        messageId = 'toxicity_result_possible'
     } else if (dataToAnalize.timeAfterIngestion != false) {
-        resultText.textContent = languages[currentLanguage].toxicity_result_ok.replace('resultToReplace', dataToAnalize.timeAfterIngestion);
-    } 
-}
-
-function createCoordonates(array1, array2) {
-    const coordonates = [{}];
-    for (let index = 0; index < array1.length; index++) {
-        coordonates.push({x:array1[index], y: array2[index]});
+        messageId = 'toxicity_result_ok'
     }
-    return coordonates;
+
+    if (!messageId) {
+        return
+    }
+    resultText.textContent = languages[currentLanguage][messageId].replace('resultToReplace', dataToAnalize.timeAfterIngestion);
+}
+
+function createCoordinates(array1, array2) {
+    const coordinates = [{}];
+    for (let index = 0; index < array1.length; index++) {
+        coordinates.push({x:array1[index], y: array2[index]});
+    }
+    return coordinates;
 }
 
 
-function setNodeModuleInArrayWithoutBlankValue(nodeModule) {
-    const array = [];
-    nodeModule.forEach(concentration => {
-        if (concentration.value !== "") array.push(+concentration.value);
-    });
-    return array;
+function getNonBlankValues(nodeList) {
+    return [...nodeList]
+        .filter(input => input.value !== '')
+        .map(input => +input.value);
 }
 
-function selectDataToAnalize(dataForGraph) {
+function selectDataToAnalyze(dataForGraph) {
     dataForGraph = dataForGraph.sort(compare);
     const dataSelected = {
-        "paracetamolConcentration": dataForGraph[dataForGraph.length-1].y, 
-        "timeAfterIngestion": dataForGraph[dataForGraph.length-1].x 
+        paracetamolConcentration: dataForGraph[dataForGraph.length-1].y, 
+        timeAfterIngestion: dataForGraph[dataForGraph.length-1].x 
     }
     return dataSelected
 }
