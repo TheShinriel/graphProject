@@ -20,11 +20,9 @@ export function calcToxicityProbable (toxicity) {
     return toxicity * 400;
 }
 
-// TODO
 export function calcToxicityProbableWithRisk (toxicity) {
     return toxicity * 200;
 }
-
 
 export function defineExposant(time) {
     return (Math.log10(50) - Math.log10(200)) / 8 * time;
@@ -36,4 +34,12 @@ export function defineToxicity(exposant) {
 
 export function calcDoseParacetamol(weight,dose){
     return (dose * 1000 / weight).toFixed(0);
+}
+
+export function calcTimeBetweenTwoDatesInHour(date1, date2) {
+    return  (Date.parse(date1) - Date.parse(date2)) / 3_600_000;
+}
+
+export function convertMicromolesToMilligrames(micromoles) {
+    return micromoles * 0.1131;
 }
