@@ -43,7 +43,7 @@
             <button class="btn_translation" data-language="en">English</button>
             </div>
             <h1 class="main_title"> #HopiTox </h1>
-        <svg  data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" height="75%" width="100%"viewBox="0 0 1200 120" preserveAspectRatio="none" ><path  d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" class="shape-fill" fill="#8FE5CC" fill-opacity="1"></path></svg>
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" height="75%" width="100%" viewBox="0 0 1200 120" preserveAspectRatio="none" ><path  d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" class="shape-fill" fill="#8FE5CC" fill-opacity="1"></path></svg>
     </div>
     <div class="banner_hero">
         <div class="svg_overdose">
@@ -54,43 +54,46 @@
         </div>
     </div>
     <br>
+
     <h2 class="i18n" data-text="calc_dose_title"></h2>
+
     <div class="container_calc_dose_paracetamol">    
         <input class="subject_weight i18n" type="number" 
         data-text="calc_dose_patient_weight_input" >
         <input class="subject_hypothetic_dosis i18n" type="number" data-text="calc_dose_paracetamol_dose_input" >
         <button class="calc_dose_paracetamol i18n" data-text="calc_dose_submit_btn" type="submit"></button>
         <p class="result_calc_dose_paracetamol i18n hidden" data-text="calc_dose_result"></p>
-</div>
+    </div>
     
+
     <h2 class="i18n" data-text="nomogram_title"></h2>
     <div id="agreement" class="visible">
         <input type="checkbox" data-div="calculate_toxicity_div" name="accept_agreement" id="accept_agreement">
         <label class="text_agreement i18n" data-text="calculate_toxicity_label" for="accept_agreement">  </label>
     </div>
 
+
     <div id="calculate_toxicity_div" class="hidden">
         <div class="no_calc_container">
             <div class="sample_interval_container">
                 <div class="interval">
-
                     <label class="d_block i18n" data-text="calculate_toxicity_ingestion_time" for="interval_after_ingestion">test</label>
                     <input 
-                    id="interval_after_ingestion"
-                    name="interval_after_ingestion" 
-                    class="interval_after_ingestion d_block " 
-                    type="number" 
-                    placeholder="" 
+                        id="interval_after_ingestion"
+                        name="interval_after_ingestion" 
+                        class="interval_after_ingestion d_block " 
+                        type="number" 
+                        placeholder="" 
                     >
                 </div>
                 <div class="concentration">
 
                     <label class="d_block i18n" for="interval_after_ingestion" data-text="calculate_toxicity_paracetamol_concentration"></label>
                     <input 
-                    id="interval_paracetamol_concentration"
-                    name="interval_paracetamol_concentration" 
-                    class="interval_paracetamol_concentration d_block " 
-                    type="number" 
+                        id="interval_paracetamol_concentration"
+                        name="interval_paracetamol_concentration" 
+                        class="interval_paracetamol_concentration d_block " 
+                        type="number" 
                     >
                 </div>
                 <button class="add_sample"> + </button>
@@ -100,14 +103,13 @@
             <input type="checkbox" name="patient_got_risk" id="patient_got_risk">
             <label class="patient_got_risk i18n" data-text="patient_got_risk_label" for="patient_got_risk">  </label>
         </div>
-
         <button class="calculate_toxicity_btn i18n" data-text="calculate_toxicity_btn" type="submit"></button>
     </div>
 
-    <div id="container_result"class="hidden">
+    <div id="container_result" class="hidden">
         <p class="result_text i18n"></p>
     </div>
-
+    
     <div class="alertBadData hidden">
         <h3 class="title_warningBadData i18n" data-text="title_warningBadData"> </h3>
     </div>
@@ -115,6 +117,7 @@
     <div id="nomogramGraphDiv" class="graphDiv" style="width: 100%; height: 65vh;" >
         <canvas class="graph" id="nomogramGraph"></canvas>
     </div>
+
     <div id="container_calc_half_life" class="visible">
         <h2 class="i18n" data-text="title_calc_half_life"></h2>
         <div class="first_date_picker">
@@ -139,6 +142,7 @@
             <p class="result_calc_half_life i18n hidden" data-text="result_calc_half_life"> Result </p>
         </div>
     </div>
+
     <footer> 
         <div class="contact">
             <p> <a HREF="mailto:contact@hopitox.com" class="i18n" data-text="contact"></a></p>
@@ -158,6 +162,6 @@
 
         </footer>
 
-        <script type="module" src="js/index.js"></script>
-    </body>
-    </html>
+    <script type="module" src="/js/index.js"></script>
+</body>
+</html>

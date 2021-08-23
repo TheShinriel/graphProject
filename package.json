@@ -9,7 +9,9 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "dev": "vite"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite serve"
   },
   "repository": {
     "type": "git",
