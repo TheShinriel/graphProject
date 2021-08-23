@@ -22,6 +22,17 @@ const divNoCalc = document.querySelector('.no_calc_container');
 const btnTranslation = document.querySelectorAll('.btn_translation');
 const btnCalcToxicity = document.querySelector('.calculate_toxicity_btn');
 const btnAddSample = document.querySelector('.add_sample');
+btnCalcToxicity.disabled = true
+btnAddSample.disabled = true
+function disableBtnIfNeeded () {
+    const disabled = checkBlankValues()
+    btnAddSample.disabled = disabled
+    btnCalcToxicity.disabled = disabled
+}
+
+const noCalcInputs = [...document.querySelector('.no_calc_container').querySelectorAll('input')]
+noCalcInputs.forEach(input => input.addEventListener('input', disableBtnIfNeeded))
+
 
 // interval inputs
 let ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
@@ -121,8 +132,18 @@ btnTranslation.forEach(btn => {
     })
 });
 
+function checkBlankValues () {
+    const inputs = document.querySelector('.no_calc_container')
+        .querySelectorAll('input')
+    const isWithBlankValues = [...inputs].some(({value}) => value === '')
+    return isWithBlankValues
+}
+
+
 btnAddSample.addEventListener("click", () => {
-    divNoCalc.appendChild(createSample());
+    btnAddSample.disabled = true
+    btnCalcToxicity.disabled = true
+    divNoCalc.appendChild(createSample(disableBtnIfNeeded));
     ingestionIntervals = document.querySelectorAll('.interval_after_ingestion');
     paracetamolConcentrationIntervals = document.querySelectorAll('.interval_paracetamol_concentration');
 });

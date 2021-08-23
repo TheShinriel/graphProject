@@ -1,9 +1,9 @@
 import { createEl } from '../utils/Dom.js'
 
-export function createSample() {
+export function createSample(inputHandler) {
     const wrapper = createEl("div", { className: "sample_interval_container" })
-    const inputInterval = createEl("input", { className: "interval_after_ingestion", type: "number" });
-    const inputConcentration = createEl("input", { className: "interval_paracetamol_concentration" });
+    const inputInterval = createEl("input", { className: "interval_after_ingestion", type: "number", oninput: inputHandler });
+    const inputConcentration = createEl("input", { className: "interval_paracetamol_concentration", oninput: inputHandler });
 
     wrapper.appendChild(inputInterval);
     wrapper.appendChild(inputConcentration);

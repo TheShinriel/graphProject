@@ -10,6 +10,16 @@ const inputSubjectWeight = document.querySelector('.subject_weight');
 const btnCalcDose = document.querySelector('.calc_dose_paracetamol');
 const pResultDose = document.querySelector('.result_calc_dose_paracetamol');
 
+const inputs = [inputHypotheticDose, inputSubjectWeight]
+
+inputs.forEach(input => input.addEventListener('input', () => {
+    const disabled = inputs.some(({value}) => value === '')
+    btnCalcDose.disabled = disabled
+}
+  
+))
+
+btnCalcDose.disabled = true
 btnCalcDose.addEventListener("click", () => {
     const result = calcParacetamolDose();
     const isToxicDose = checkDoseToxicity(result);
