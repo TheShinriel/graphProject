@@ -1,5 +1,5 @@
 import * as Calculs from './utils/Calculs.js';
-import * as Dom from '../js/utils/Dom.js';
+import {toggleClassNames, showHtmlElement, getSuccessOrErrorClass} from '../js/utils/Dom.js';
 import { languages } from './available-languages.js'
 
 const DOSE_VALUE_MAX = 150;
@@ -23,10 +23,10 @@ btnCalcDose.disabled = true
 btnCalcDose.addEventListener("click", () => {
     const result = calcParacetamolDose();
     const isToxicDose = checkDoseToxicity(result);
-    const classNameResult = Dom.getSuccessOrErrorClass(isToxicDose);
+    const classNameResult = getSuccessOrErrorClass(isToxicDose);
 
-    Dom.toggleClassNames(pResultDose, classNameResult);
-    Dom.showHtmlElement(pResultDose);
+    toggleClassNames(pResultDose, classNameResult);
+    showHtmlElement(pResultDose);
     displayDoseResult(result);
 })
 
