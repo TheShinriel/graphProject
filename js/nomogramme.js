@@ -8,6 +8,7 @@ import { changeGraphLanguage } from "../js/utils/Trads.js";
 import { createSample } from "../js/utils/Sample-nommogramme.js";
 import { showHtmlElement, hideHtmlElement } from '../js/utils/Dom.js';
 import { languages } from './available-languages.js';
+import Chart from 'chart.js/auto';
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
 
@@ -133,8 +134,7 @@ btnTranslation.forEach(btn => {
 });
 
 function checkBlankValues () {
-    const inputs = document.querySelector('.no_calc_container')
-        .querySelectorAll('input')
+    const inputs = document.querySelector('.no_calc_container').querySelectorAll('input')
     const isWithBlankValues = [...inputs].some(({value}) => value === '')
     return isWithBlankValues
 }
