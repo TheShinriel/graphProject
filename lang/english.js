@@ -52,5 +52,5 @@ export default {
     // OTHERS 
     "reference_title": "References : ",
     "resp_scientifique": "Scientific officer : Dr Manon Launay, PharmD, PhD",
-    "resp_dev_web": "Developers : Pierre-Henri Laurency, Maxime Rogues",
+    "resp_dev_web": "Developers : Pierre-Henri Laurency, Maxime Rogues, Stanislas Ormières",
 }
