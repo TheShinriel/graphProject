@@ -1,0 +1,64 @@
+.calc-half-life {
+  background-color: $secondary-10;
+  padding: 4rem 5rem;
+  border-radius: 1rem;
+  margin: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  @include phone {
+    padding: 4rem 2.5rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    @include tablet {
+      flex-direction: column;
+    }
+
+    .first_date_picker, .first_concentration, .second_date_picker, .second_concentration {
+      @include tablet {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    input {
+      width: 100%;
+      margin-top: 1.3rem;
+      font-family: $font;
+      font-size: 1.5rem;
+      padding: 1rem;
+      border: none;
+      border-radius: .5rem;
+      @include tablet {
+        width: 90%;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+
+    button {
+      background-color: $primary;
+      color: $white;
+      font-family: $font;
+      font-size: 1.5rem;
+      padding: 1rem 3rem;
+      border: none;
+      border-radius: .5rem;
+      cursor: pointer;
+    }
+  }
+}

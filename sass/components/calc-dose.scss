@@ -1,0 +1,102 @@
+.calc-dose {
+  background-color: $secondary-10;
+  padding: 4rem 5rem;
+  border-radius: 1rem;
+  margin: 4rem 0;
+  @include phone {
+    padding: 4rem 2.5rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  #agreement {
+    margin-bottom: 1.5rem;
+    line-height: 2.5rem;
+  }
+
+  #calculate_toxicity_div {
+    .patient_got_risk_container {
+      margin-bottom: 1.5rem;
+      line-height: 2.5rem;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__input, .sample_interval_container {
+      margin-bottom: 2rem;
+      display: flex;
+      width: 100%;
+      @include tablet {
+        flex-direction: column;
+      }
+
+      input {
+        width: 100%;
+        font-family: $font;
+        font-size: 1.5rem;
+        margin-left: 3rem;
+        padding: 1rem;
+        border: none;
+        border-radius: .5rem;
+        @include tablet {
+          margin-left: 0;
+          width: auto;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+
+  .calculate_toxicity__button {
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    background-color: $primary;
+    color: $white;
+    font-family: $font;
+    font-size: 1.5rem;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+  }
+
+  .result_calc_dose_paracetamol {
+    margin-top: 2rem;
+    text-align: center;
+  }
+}
+
+.sample_interval_container {
+  input {
+    width: 100%;
+    font-family: $font;
+    font-size: 1.5rem;
+    margin-left: 3rem;
+    padding: 1rem;
+    border: none;
+    border-radius: .5rem;
+  }
+}
+
+.calc-dose-result, .alertBadData {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3rem;
+  & > p {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    text-align: center;
+  }
+}
