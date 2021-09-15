@@ -3,16 +3,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const btnBurger = document.getElementById("btn-burger");
     btnBurger.addEventListener('click',function(){
         menu.style.display = (menu.style.display == 'none')? '':'none';
-        console.log('coucou')
     });
     window.onload = function(){
         let ww = window.innerWidth;
-        menu.style.display = ( ww > 768 ) ? '':'none';
-        btnBurger.style.display = ( ww > 768 ) ? 'none':'';
+        menu.style.display = ( ww > 960 ) ? '':'none';
+        btnBurger.style.display = ( ww > 960 ) ? 'none':'';
     };
     window.onresize = function(){
         let ww = window.innerWidth;
-        menu.style.display = ( ww > 768 ) ? '':'none';
-        btnBurger.style.display = ( ww > 768 ) ? 'none':'';
+        menu.style.display = ( ww > 960 ) ? '':'none';
+        btnBurger.style.display = ( ww > 960 ) ? 'none':'';
     };
 });

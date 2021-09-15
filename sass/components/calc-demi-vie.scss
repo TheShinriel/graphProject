@@ -32,16 +32,13 @@
     }
 
     input {
-      width: 100%;
+      width: 90%;
       margin-top: 1.3rem;
       font-family: $font;
       font-size: 1.5rem;
       padding: 1rem;
       border: none;
       border-radius: .5rem;
-      @include tablet {
-        width: 90%;
-      }
     }
   }
 

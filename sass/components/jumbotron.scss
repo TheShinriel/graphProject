@@ -1,5 +1,5 @@
 .jumbotron {
-  padding: 7rem 0;
+  padding: 10rem 0;
   background-color: $secondary-10;
   @include tablet {
     padding: 3rem 0;
@@ -21,6 +21,7 @@
       width: 40rem;
       @include tablet {
         width: 100%;
+        margin-bottom: 3rem;
       }
     }
   }

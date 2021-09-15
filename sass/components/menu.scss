@@ -13,7 +13,7 @@
 }
 
 .navigation{
-  padding: 0 5rem;
+  padding: 3rem 5rem;
   overflow: hidden;
   display: flex;
   justify-content: space-between;
@@ -44,14 +44,6 @@
       margin-right: 0;
       margin-bottom: 2rem;
     }
-    &:first-child {
-      &:hover{
-        border-bottom: transparent 2px solid;
-      }
-      @include tablet {
-        display: none;
-      }
-    }
     &:hover{
       border-bottom: $secondary 2px solid;
     }
@@ -67,5 +59,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 1.5rem 0;
   }
 }

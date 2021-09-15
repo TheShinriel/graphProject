@@ -52,12 +52,12 @@ export default {
 
     // OTHERS 
     "reference_title": "References : ",
+    "contact_title": "Hopitox, who is it ?",
     "resp_scientifique": "Scientific officer : Dr Manon Launay, PharmD, PhD",
-    "resp_dev_web": "Developers : Pierre-Henri Laurency, Maxime Rogues, Stanislas Ormières",
+    "resp_dev_web": "Developers : Pierre-Henri Laurency, Maxime Rogues, Stanislas Ormières, Laurie Villeneuve",
 
     //NAVIGATION
     "item_first": "Dose",
     "item_second": "Nomogram",
     "item_third": "Half-life",
-
 }

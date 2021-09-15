@@ -7,9 +7,10 @@
 @import "components/calc-dose";
 @import "components/calc-demi-vie";
 @import "components/push-contact";
+@import "utilities";
 
 
-/*- 1rem = 10px - but default font size stay unchaged -*/
+/*- 1rem = 10px - but default font size stay unchanged -*/
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;

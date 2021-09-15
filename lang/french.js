@@ -52,8 +52,9 @@ export default {
 
     // OTHERS
     "reference_title": "Références : ",
+    "contact_title": "Hopitox, c'est qui ?",
     "resp_scientifique": "Responsable scientifique : Dr Manon Launay, PharmD, PhD",
-    "resp_dev_web": "Developpeurs : Pierre-Henri Laurency, Maxime Rogues, Stanislas Ormières",
+    "resp_dev_web": "Developpeurs : Pierre-Henri Laurency, Maxime Rogues, Stanislas Ormières, Laurie Villeneuve",
 
     //NAVIGATION
     "item_first": "Dose",
