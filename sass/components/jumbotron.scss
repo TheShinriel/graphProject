@@ -1,0 +1,59 @@
+.jumbotron {
+  padding: 10rem 0;
+  background-color: $secondary-10;
+  @include tablet {
+    padding: 3rem 0;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__image {
+    margin-right: 5rem;
+
+    img {
+      width: 40rem;
+      @include tablet {
+        width: 100%;
+        // TODO activate when slogan is removed
+        // margin-bottom: 3rem; A REMETTRE QUAND SLOGAN ENLEVE 
+      }
+    }
+  }
+  // TODO remove slogan when needed
+  .logo_slogan {
+    margin-top: 1.2rem;
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: bold;
+    @include tablet {
+      margin-bottom: 3rem;
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+  }
+
+  &__text {
+    width: 70rem;
+    @include tablet {
+      width: 100%;
+    }
+
+    &__title {
+      margin-bottom: 2.5rem;
+      font-size: 4rem;
+      font-weight: 600;
+    }
+
+    &__description {
+      line-height: 2.7rem;
+    }
+  }
+}

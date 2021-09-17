@@ -1,0 +1,64 @@
+.translation{
+  display: flex;
+  justify-content: flex-end;
+  padding: .8rem 5rem;
+  background-color: $primary;
+  .btn_translation{
+    font-family: $font;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.navigation{
+  padding: 3rem 5rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+
+  @include tablet {
+    display: block;
+    padding: 0;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+    }
+  }
+
+  &__link{
+    margin-right: 4rem;
+    color: $primary;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2.2rem;
+    border-bottom: transparent 2px solid;
+    @include tablet {
+      margin-right: 0;
+      margin-bottom: 2rem;
+    }
+    &:hover{
+      border-bottom: $secondary 2px solid;
+    }
+    & > img {
+      width: 18rem;
+    }
+  }
+}
+
+.navigation__mobile {
+  display: none;
+  @include tablet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+  }
+}

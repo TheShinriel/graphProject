@@ -3,6 +3,7 @@ export default {
     "need_dose": "A tool to calculate the dose in mg/kg is available.",
     "title_page": "Assessment of acetaminophen toxicity using an online dynamic Rumack-Matthew nomogram",
     "title_main": "je ne sais pas ce que je dois écrire",
+    "title_question": "Hopitox, what is it ?",
     "title_sub_title": "HopiTox is an online dynamic nomogram based on Rumack equation in order to assess the potential risk for hepatotoxicity after acetaminophen acute overdose. Here are tools to calculate dose in mg/kg or acetaminophen half-life when two samples are withdrawn, and a dynamic nomogram in a user-friendly interface. HopiTox is a tool, not a replacement for medical or biological advice.",
     "title_warningBadData": "Acetaminophen concentration at more than 4h post ingestion should be obtained. An other sample should be withdrawn.",
     "nomogram_title": "Rumack-Matthew dynamic nomogram for acetaminophen overdose",
@@ -51,6 +52,16 @@ export default {
 
     // OTHERS 
     "reference_title": "References : ",
+    "contact_title": "Hopitox, who is it ?",
     "resp_scientifique": "Scientific officer : Dr Manon Launay, PharmD, PhD",
-    "resp_dev_web": "Developers : Pierre-Henri Laurency, Maxime Rogues, Stanislas Ormières",
+    "resp_dev_web": "Developers : Pierre-Henri Laurency, Maxime Rogues, Stanislas Ormières, Laurie Villeneuve",
+
+    //NAVIGATION
+    "item_first": "Dose",
+    "item_second": "Nomogram",
+    "item_third": "Half-life",
+
+    //SLOGAN
+    "slogan":"Only design has changed.",
+
 }

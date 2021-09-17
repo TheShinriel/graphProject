@@ -1,0 +1,26 @@
+@import 'variables';
+@import "breakpoints";
+@import "global";
+@import "reset";
+@import "components/menu";
+@import "components/jumbotron";
+@import "components/calc-dose";
+@import "components/calc-demi-vie";
+@import "components/push-contact";
+@import "components/ref";
+@import "utilities";
+
+
+/*- 1rem = 10px - but default font size stay unchanged -*/
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body{
+  font-family: $font;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: $primary;
+}
