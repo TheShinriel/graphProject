@@ -60,4 +60,8 @@ export default {
     "item_first": "Dose",
     "item_second": "Nomogram",
     "item_third": "Half-life",
+
+    //SLOGAN
+    "slogan":"Only design has changed.",
+
 }

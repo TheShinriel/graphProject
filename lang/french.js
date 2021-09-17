@@ -60,4 +60,7 @@ export default {
     "item_first": "Dose",
     "item_second": "Nomogramme",
     "item_third": "Demi-vie",
+
+    //SLOGAN
+    "slogan":"Rien n'a changé, sauf le design.",
 }
