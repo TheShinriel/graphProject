@@ -52,9 +52,10 @@ export default {
 
     // OTHERS 
     "reference_title": "References : ",
-    "contact_title": "Hopitox, who is it ?",
+    "contact_title": "HopiTox, who is it ?",
     "resp_scientifique": "Scientific officer : Dr Manon Launay, PharmD, PhD",
-    "resp_dev_web": "Developers : Pierre-Henri Laurency, Maxime Rogues, Stanislas Ormières, Laurie Villeneuve",
+    "resp_dev_web": "Developers : Pierre-Henri Laurency, Maxime Rogues, Stanislas Ormières, Laurie Villeneuve, Nicolas Dubtchak",
+    "resp_logo": "Logo design : Nicolas Dubtchak",
 
     //NAVIGATION
     "item_first": "Dose",
