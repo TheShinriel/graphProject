@@ -48,6 +48,7 @@
         padding: 1rem;
         border: none;
         border-radius: .5rem;
+        box-shadow: 1px 1px 8px 1px rgba($secondary-10, 0.25);
         @include desktop {
           width: 30rem;
         }
@@ -105,6 +106,7 @@
     padding: 1rem;
     border: none;
     border-radius: .5rem;
+    box-shadow: 1px 1px 8px 1px rgba($secondary-10, 0.25);
   }
 }
 
