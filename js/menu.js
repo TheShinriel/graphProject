@@ -1,13 +1,11 @@
 import { hideHtmlElement, showHtmlElement } from "./utils/Dom";
 
-window.addEventListener("DOMContentLoaded", () => {
-    const btnBurger = document.getElementById("btn-burger");
+const btnBurger = document.getElementById("btn-burger");
 
-    btnBurger.addEventListener('click',function() {
-        const menu = document.getElementById("myNav");
+btnBurger.addEventListener('click',function() {
+    const menu = document.getElementById("myNav");
 
-        (menu.classList.contains('hidden')) ? showHtmlElement(menu) : hideHtmlElement(menu);
-    });
+    (menu.classList.contains('hidden')) ? showHtmlElement(menu) : hideHtmlElement(menu);
 });
 
 window.onload = function() {
@@ -18,7 +16,7 @@ window.onresize = function() {
     getStyleMenu()
 };
 
-function getScreenSize() {
+function isBigScreen() {
     const windowWidth = window.innerWidth;
     return windowWidth > 960;
 };
@@ -30,7 +28,7 @@ function toggleItem(elementToShow, elementTohide) {
 
 function getMenuElements() {
     const menu = {
-        isBigScreen: getScreenSize(),
+        isBigScreen: isBigScreen(),
         navButtons: document.getElementById("myNav"),
         btnBurger: document.getElementById("btn-burger")
     }
