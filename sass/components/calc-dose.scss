@@ -65,14 +65,6 @@
     cursor: pointer;
   }
 
-  button:disabled,
-  button[disabled]{
-    background-color: rgba(239, 239, 239, 0.4);
-    color: rgba(16, 16, 16, 0.4);
-    border: rgba(118, 118, 118, 0.2) 1px solid;
-    cursor: default;
-  }
-
   &__result {
     margin-top: 2rem;
     text-align: center;
