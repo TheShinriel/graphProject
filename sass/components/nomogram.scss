@@ -1,4 +1,4 @@
-.calc-dose {
+.nomogram {
   background-color: $secondary-10;
   padding: 4rem 5rem;
   border-radius: 1rem;
@@ -13,6 +13,17 @@
     margin-bottom: 2rem;
     text-align: center;
   }
+
+  #agreement {
+    margin-bottom: 1.5rem;
+    line-height: 2.5rem;
+  }
+
+  &__risk {
+    margin-bottom: 1.5rem;
+    line-height: 2.5rem;
+  }
+
 
   &__form {
     display: flex;
@@ -37,7 +48,6 @@
       padding: 1rem;
       border: none;
       border-radius: .5rem;
-      box-shadow: 1px 1px 8px 1px rgba($secondary-10, 0.25);
       @include desktop {
         width: 30rem;
       }
@@ -47,6 +57,12 @@
         margin-bottom: 1rem;
       }
     }
+  }
+
+  &__btn-add {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 
   &__button {
@@ -65,16 +81,19 @@
     cursor: pointer;
   }
 
-  button:disabled,
-  button[disabled]{
-    background-color: rgba(239, 239, 239, 0.4);
-    color: rgba(16, 16, 16, 0.4);
-    border: rgba(118, 118, 118, 0.2) 1px solid;
-    cursor: default;
-  }
-
   &__result {
     margin-top: 2rem;
+    text-align: center;
+  }
+}
+
+.nomogram-result, .nomogram-alert {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3rem;
+  & > p {
+    font-size: 2.5rem;
+    line-height: 3rem;
     text-align: center;
   }
 }
