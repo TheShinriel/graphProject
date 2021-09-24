@@ -155,20 +155,19 @@ btnCalcToxicity.addEventListener("click", () => {
     const dataToAnalize = selectDataToAnalyze(dataForGraph);
     
     if(isValidTimeAfterIngestion(ingestionTimes)) {
-        hideHtmlElement(divMsgError);
         const toxicities = calcToxicities(dataToAnalize.timeAfterIngestion);
         compareToxicities(toxicities, dataToAnalize);
-        showHtmlElement(divResult);
-        resultText.scrollIntoView(true);
         addDataToGraph(graph, dataForGraph);
     }
     
-    if(!isValidTimeAfterIngestion(ingestionTimes)) {
-        hideHtmlElement(divResult);
-        showHtmlElement(divMsgError);
+    if(!isValidTimeAfterIngestion(ingestionTimes)) { 
+        resultText.textContent = languages[currentLanguage]['title_warningBadData']
         clearDataGraph();
     }
-
+    
+    showHtmlElement(divResult);
+    resultText.scrollIntoView(true);
+    
 })
 
 checkBoxAgreement.addEventListener("click", (event) => {
