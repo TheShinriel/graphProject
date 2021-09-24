@@ -157,18 +157,17 @@ btnCalcToxicity.addEventListener("click", () => {
     if(isValidTimeAfterIngestion(ingestionTimes)) {
         const toxicities = calcToxicities(dataToAnalize.timeAfterIngestion);
         compareToxicities(toxicities, dataToAnalize);
-        showHtmlElement(divResult);
-        resultText.scrollIntoView(true);
         addDataToGraph(graph, dataForGraph);
     }
     
     if(!isValidTimeAfterIngestion(ingestionTimes)) { 
         resultText.textContent = languages[currentLanguage]['title_warningBadData']
-        showHtmlElement(divResult);
-        resultText.scrollIntoView(true);
         clearDataGraph();
     }
-
+    
+    showHtmlElement(divResult);
+    resultText.scrollIntoView(true);
+    
 })
 
 checkBoxAgreement.addEventListener("click", (event) => {
