@@ -1,5 +1,3 @@
-import { hideHtmlElement, showHtmlElement } from "./utils/Dom";
-
 const btnBurger = document.getElementById("btn-burger");
 
 btnBurger.addEventListener('click',function() {
