@@ -3,7 +3,7 @@ export default {
     "need_dose": "Il est possible de calculer la dose en mg/kg",
     "title_page": "Evaluation de la toxicité du paracetamol",
     "title_main": "Toxicité hépatique du paracétamol",
-    "title_question": "Hopitox, qu'est ce que c'est ?",
+    "title_question": "HopiTox, qu'est ce que c'est ?",
     "title_sub_title": "HopiTox est un outil dynamique reprenant l'équation de Rumack dans une interface intuitive pour évaluer le risque toxique après une prise unique massive de paracetamol. Il permet de réaliser le calcul de la dose ingérée en mg/kg, l'utilisation d'un nomogramme dynamique pour évaluer le risque toxique en fonction de la paracétamolémie, et le calcul de la demi-vie. Il ne se subsitue évidemment pas à l'avis médical ni au dialogue clinico-biologique.",
     "title_warningBadData": "Attention le nomogramme n'est utilisable que si le prélèvement est réalisé au moins 4 heures après ingestion. Reprélever le patient.",
     "nomogram_title": "Nomogramme dynamique de Rumack-Matthew",

@@ -1,29 +1,29 @@
-import { hideHtmlElement, showHtmlElement } from "./utils/Dom";
-
 const btnBurger = document.getElementById("btn-burger");
 
 btnBurger.addEventListener('click',function() {
     const menu = document.getElementById("myNav");
 
-    (menu.classList.contains('hidden')) ? showHtmlElement(menu) : hideHtmlElement(menu);
+    menu.classList.toggle('hidden');
 });
 
 window.onload = function() {
-    getStyleMenu();
+    adaptMenuToScreen();
 };
 
 window.onresize = function() {
-    getStyleMenu()
+    adaptMenuToScreen()
 };
+
+function adaptMenuToScreen() {
+    const menu = getMenuElements();
+
+    menu.btnBurger.classList.toggle('hidden', menu.isBigScreen)
+    menu.navButtons.classList.toggle('hidden', !menu.isBigScreen)
+}
 
 function isBigScreen() {
     const windowWidth = window.innerWidth;
     return windowWidth > 960;
-};
-
-function toggleItem(elementToShow, elementTohide) {
-    showHtmlElement(elementToShow);
-    hideHtmlElement(elementTohide);
 };
 
 function getMenuElements() {
@@ -35,9 +35,4 @@ function getMenuElements() {
     return menu;
 };
 
-function getStyleMenu() {
-    const menu = getMenuElements();
- 
-    (menu.isBigScreen)  ?  toggleItem(menu.navButtons, menu.btnBurger) : toggleItem(menu.btnBurger, menu.navButtons);   
-    
-}
+
