@@ -5,7 +5,7 @@ export default {
     "title_main": "je ne sais pas ce que je dois écrire",
     "title_question": "HopiTox, what is it ?",
     "title_sub_title": "HopiTox is an online dynamic nomogram based on Rumack equation in order to assess the potential risk for hepatotoxicity after acetaminophen acute overdose. Here are tools to calculate dose in mg/kg or acetaminophen half-life when two samples are withdrawn, and a dynamic nomogram in a user-friendly interface. HopiTox is a tool, not a replacement for medical or biological advice.",
-    "title_warningBadData": "Acetaminophen concentration at more than 4h post ingestion should be obtained. An other sample should be withdrawn.",
+    "title_warningBadData": "An acetaminophen concentration at more than 4h post ingestion should be obtained. An other sample should be drawn.",
     "nomogram_title": "Rumack-Matthew dynamic nomogram for acetaminophen overdose",
     "calc_dose_title": "Calculation of the dose in mg/kg",
     "title_calc_half_life": "Half life calculation",
@@ -35,9 +35,9 @@ export default {
     "calculate_toxicity_paracetamol_concentration": "Paracetamolemia (mg/L)",
 
     // RESULTS
-    "toxicity_result_probable": "Concentration at T+ resultToReplace h leading to a probable hepatic toxicity",
-    "toxicity_result_possible": "Concentration at T+ resultToReplace h leading to a possible hepatic toxicity",
-    "toxicity_result_ok": "Concentration at T+ resultToReplace h leading to a low risk of hepatic toxicity",
+    "toxicity_result_probable": "Concentration at T+ resultToReplace h is associate with probable hepatic toxicity",
+    "toxicity_result_possible": "Concentration at T+ resultToReplace h is associate with possible hepatic toxicity",
+    "toxicity_result_ok": "Concentration at T+ resultToReplace h is associate with low risk of hepatic toxicity",
     "resultHalfLife": "The half-life is : ",
     "badCalcul": "Half-life could not be calculated. Please verify the data.",
     "calc_dose_result": "The ingested dose is resultToReplace mg/kg.",
