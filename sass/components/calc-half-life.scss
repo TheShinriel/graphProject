@@ -25,12 +25,6 @@
       flex-direction: column;
     }
 
-    .first_date_picker, .first_concentration, .second_date_picker, .second_concentration {
-      @include tablet {
-        margin-bottom: 1.5rem;
-      }
-    }
-
     input {
       width: 90%;
       margin-top: 1.3rem;
@@ -60,7 +54,13 @@
     }
   }
 
-  .result_calc_half_life {
+  .first-date, .first-concentration, .second-concentration, .second-date {
+    @include tablet {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__result {
     text-align: center;
     line-height: 2rem;
   }
