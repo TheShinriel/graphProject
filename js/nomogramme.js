@@ -11,6 +11,7 @@ import { languages } from './available-languages.js';
 import Chart from 'chart.js/auto';
 
 const DIFFUSION_TIME_IN_BLOOD = 4; // time in hour
+const MAX_TIME_AFTER_INGESTION = 24 // time in hour
 
 const resultText = document.querySelector('.nomogram-result__text');
 // divs
@@ -192,7 +193,7 @@ function clearDataGraph() {
 }
 
 function isValidTimeAfterIngestion(array) {
-     return array.every(num => num >= DIFFUSION_TIME_IN_BLOOD); 
+     return array.every(num => num >= DIFFUSION_TIME_IN_BLOOD && num <= MAX_TIME_AFTER_INGESTION); 
 }
 
 function calcToxicities(timeAfterIngestion) {
