@@ -13,6 +13,7 @@ export default {
   calc_dose_title: "Calculation of the dose in mg/kg",
   title_calc_half_life: "Half life calculation",
   contact: "Contact us",
+  supports_title: "With the scientific support of :",
 
   //LABELS
   label_first_sampling_time_half_life: "First sampling time :",
@@ -71,6 +72,7 @@ export default {
   item_first: "Dose",
   item_second: "Nomogram",
   item_third: "Half-life",
+  item_fourth: "Supports",
 
   //SLOGAN
   slogan: "Only design has changed.",
