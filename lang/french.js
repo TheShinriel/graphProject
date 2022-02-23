@@ -12,6 +12,7 @@ export default {
   calc_dose_title: "Calcul de la dose en mg/kg",
   title_calc_half_life: "Calcul de la demi-vie",
   contact: "Nous contacter",
+  supports_title: "Avec le soutien de : ",
 
   //LABELS
   label_first_sampling_time_half_life: "Date et heure du premier prélèvement :",
@@ -75,6 +76,7 @@ export default {
   item_first: "Dose",
   item_second: "Nomogramme",
   item_third: "Demi-vie",
+  item_fourth: "Soutiens",
 
   //SLOGAN
   slogan: "Rien n'a changé, sauf le design.",
