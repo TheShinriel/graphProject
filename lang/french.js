@@ -29,7 +29,7 @@ export default {
   got_multiple_sampling_date_label:
     "Il est possible de faire le même calcul en entrant date et heure d'ingestion ou de prélèvement.",
   checkboxLabelHalfLife:
-    "J'ai deux prélèvement et souhaite obtenir la demie vie",
+    "J'ai deux prélèvements et souhaite obtenir la demie vie",
   datePickerLabelFirstSample: "Première date",
   datePickerLabelSecondSample: "Deuxième date",
   calculate_toxicity_btn: "Évaluer le risque",
