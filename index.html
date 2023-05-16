@@ -4,20 +4,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-LJ3TK8C09Z"
-    ></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HEJ8Y5PWM2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-
-      gtag("js", new Date());
-      gtag("config", "G-HEJ8Y5PWM2");
+      gtag('config', 'G-HEJ8Y5PWM2');
     </script>
 
     <!-- Primary Meta Tags -->
@@ -360,5 +355,12 @@
       </div>
     </footer>
     <script type="module" src="/js/index.js"></script>
+  <script>
+    document.addEventListener('click', (event) => {
+      if (event.target.localName === 'button' ) {
+        gtag('event', event.target.attributes['data-text'].value)
+      }
+    })
+  </script>
   </body>
 </html>
