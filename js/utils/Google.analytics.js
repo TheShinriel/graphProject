@@ -15,7 +15,6 @@ const datePickerSecondSample = document.querySelector('.second-date__time');
 btnCalcHalfLife.addEventListener('click', (event) => {
 
     if( resultHalfLife.classList.contains('error')) {
-        console.log('error')
         return
     }
 
@@ -52,3 +51,4 @@ btnCalcToxicity.addEventListener('click', (event) => {
         'paracetamolConcentrations': paracetamolConcentrations
     });
 })
+
