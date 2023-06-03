@@ -223,6 +223,7 @@ function compareToxicities(toxicities, dataToAnalize) {
     if (!messageId) {
         return
     }
+    resultText.dataset.result = messageId;
     resultText.textContent = languages[currentLanguage][messageId].replace('resultToReplace', dataToAnalize.timeAfterIngestion);
 }
 
@@ -235,7 +236,7 @@ function createCoordinates(array1, array2) {
 }
 
 
-function getNonBlankValues(nodeList) {
+export function getNonBlankValues(nodeList) {
     return [...nodeList]
         .filter(input => input.value !== '')
         .map(input => +input.value);

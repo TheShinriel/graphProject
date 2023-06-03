@@ -1,3 +1,4 @@
+import { getNonBlankValues } from "../nomogramme.js";
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -31,5 +32,23 @@ btnCalcHalfLife.addEventListener('click', (event) => {
         'secondSample': secondSample,
         'firstDate': firstDate,
         'secondDate': secondDate
+    });
+})
+
+
+const btnCalcToxicity = document.querySelector('.nomogram__submit');
+
+btnCalcToxicity.addEventListener('click', (event) => {
+    const ingestionIntervals = document.querySelectorAll('.nomogram__interval-after-ingestion');
+    const paracetamolConcentrationIntervals = document.querySelectorAll('.nomogram__interval-paracetamol-concentration');
+    const ingestionTimes = getNonBlankValues(ingestionIntervals);
+    const paracetamolConcentrations = getNonBlankValues(paracetamolConcentrationIntervals);
+    const result = document.querySelector('.nomogram-result__text').attributes['data-result'].value;
+    gtag('event', event.target.attributes['data-text'].value, {
+        'event_category': 'button',
+        'event_label': 'calc-toxicity',
+        'value': result,
+        'ingestionTimes': ingestionTimes,
+        'paracetamolConcentrations': paracetamolConcentrations
     });
 })
