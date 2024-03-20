@@ -1,3 +1,3 @@
 interface Window {
-  currentLanguage: string
+  currentLanguage: "fr" | "en"
 }

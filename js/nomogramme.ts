@@ -13,46 +13,80 @@ import Chart from "chart.js/auto"
 const DIFFUSION_TIME_IN_BLOOD = 4 // time in hour
 const MAX_TIME_AFTER_INGESTION = 24 // time in hour
 
-const resultText = document.querySelector(".nomogram-result__text")
+const resultText = document.querySelector<HTMLParagraphElement>(
+  ".nomogram-result__text"
+)
 // divs
-const divCalcToxParacetamol = document.querySelector("#calculate_toxicity_div")
-const divMsgError = document.querySelector(".nomogram-alert")
-const divResult = document.querySelector("#container_result")
-const divNoCalc = document.querySelector(".nomogram__form")
+const divCalcToxParacetamol = document.querySelector<HTMLDivElement>(
+  "#calculate_toxicity_div"
+)
+const divResult = document.querySelector<HTMLDivElement>("#container_result")
+const divNoCalc = document.querySelector<HTMLDivElement>(".nomogram__form")
 
-// buttons
-const btnTranslation = document.querySelectorAll(".translation__btn")
-const btnCalcToxicity = document.querySelector(".nomogram__submit")
-const btnAddSample = document.querySelector(".nomogram__btn-add")
-btnCalcToxicity.disabled = true
-btnAddSample.disabled = true
-function disableBtnIfNeeded() {
-  const disabled = checkBlankValues()
-  btnAddSample.disabled = disabled
-  btnCalcToxicity.disabled = disabled
+if (!resultText || !divCalcToxParacetamol || !divResult || !divNoCalc) {
+  throw new Error("Button not found")
 }
 
-const noCalcInputs = [
-  ...document.querySelector(".nomogram__form").querySelectorAll("input"),
-]
+// buttons
+const btnTranslation =
+  document.querySelectorAll<HTMLButtonElement>(".translation__btn")
+const btnCalcToxicity =
+  document.querySelector<HTMLButtonElement>(".nomogram__submit")
+const btnAddSample =
+  document.querySelector<HTMLButtonElement>(".nomogram__btn-add")
+
+if (!btnTranslation || !btnCalcToxicity || !btnAddSample) {
+  throw new Error("Button not found")
+}
+btnCalcToxicity.disabled = true
+btnAddSample.disabled = true
+
+function disableBtnIfNeeded() {
+  const disabled = checkBlankValues()
+  if (btnAddSample) btnAddSample.disabled = disabled
+  if (btnCalcToxicity) btnCalcToxicity.disabled = disabled
+}
+
+const namogramForm = document.querySelector<HTMLDivElement>(".nomogram__form")
+if (!namogramForm) {
+  throw new Error("Form not found")
+}
+const noCalcInputs = [...namogramForm.querySelectorAll("input")]
 noCalcInputs.forEach((input) =>
   input.addEventListener("input", disableBtnIfNeeded)
 )
 
 // interval inputs
-let ingestionIntervals = document.querySelectorAll(
+let ingestionIntervals = document.querySelectorAll<HTMLInputElement>(
   ".nomogram__interval-after-ingestion"
 )
-let paracetamolConcentrationIntervals = document.querySelectorAll(
-  ".nomogram__interval-paracetamol-concentration"
-)
+let paracetamolConcentrationIntervals =
+  document.querySelectorAll<HTMLInputElement>(
+    ".nomogram__interval-paracetamol-concentration"
+  )
 
 // checkboxs
-const checkBoxPatientGotRisk = document.querySelector("#patient_got_risk")
-const checkBoxAgreement = document.querySelector("#accept_agreement")
+const checkBoxPatientGotRisk =
+  document.querySelector<HTMLInputElement>("#patient_got_risk")
+const checkBoxAgreement =
+  document.querySelector<HTMLInputElement>("#accept_agreement")
 
-const graphCanvas = document.querySelector("#nomogramGraph")
+if (
+  !ingestionIntervals ||
+  !paracetamolConcentrationIntervals ||
+  !checkBoxPatientGotRisk ||
+  !checkBoxAgreement
+) {
+  throw new Error("Button html inputs not found")
+}
+
+const graphCanvas = document.querySelector<HTMLCanvasElement>("#nomogramGraph")
+if (!graphCanvas) {
+  throw new Error("Canvas not found")
+}
+
 const graph = new Chart(graphCanvas, {
+  type: "line",
   data: {
     datasets: [
       {
@@ -67,8 +101,8 @@ const graph = new Chart(graphCanvas, {
       },
       {
         type: "line",
-        label: languages[currentLanguage].graph_toxicity_line,
-        labelName: "graph_toxicity_line",
+        label: languages[window.currentLanguage].graph_toxicity_line,
+        // labelName: "graph_toxicity_line",
         backgroundColor: "white",
         borderDash: [15, 10],
         borderColor: "rgb(243, 17, 41)",
@@ -79,8 +113,8 @@ const graph = new Chart(graphCanvas, {
       },
       {
         type: "line",
-        label: languages[currentLanguage].graph_second_line,
-        labelName: "graph_second_line",
+        label: languages[window.currentLanguage].graph_second_line,
+        // labelName: "graph_second_line",
         backgroundColor: "white",
         borderColor: "rgb(140,56,197)",
         borderDash: [15, 10],
@@ -91,8 +125,8 @@ const graph = new Chart(graphCanvas, {
       },
       {
         type: "line",
-        label: languages[currentLanguage].graph_riskFactor_line,
-        labelName: "graph_riskFactor_line",
+        label: languages[window.currentLanguage].graph_riskFactor_line,
+        // labelName: "graph_riskFactor_line",
         backgroundColor: "white",
         borderDash: [15, 10],
         borderColor: "rgb(53,197,154)",
@@ -103,8 +137,8 @@ const graph = new Chart(graphCanvas, {
       },
       {
         type: "line",
-        label: languages[currentLanguage].graph_patient_saisi,
-        labelName: "graph_patient_saisi",
+        label: languages[window.currentLanguage].graph_patient_saisi,
+        // labelName: "graph_patient_saisi",
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgb(255, 99, 132)",
         data: [],
@@ -118,8 +152,8 @@ const graph = new Chart(graphCanvas, {
     plugins: {
       title: {
         display: true,
-        text: languages[currentLanguage].graph_title,
-        textName: "graph_title",
+        text: languages[window.currentLanguage].graph_title,
+        // textName: "graph_title",
       },
     },
     scales: {
@@ -141,14 +175,17 @@ const graph = new Chart(graphCanvas, {
 
 btnTranslation.forEach((btn) => {
   btn.addEventListener("click", () => {
-    changeGraphLanguage(graph, currentLanguage)
+    changeGraphLanguage(graph, window.currentLanguage)
   })
 })
 
 function checkBlankValues() {
   const inputs = document
-    .querySelector(".nomogram__form")
-    .querySelectorAll("input")
+    .querySelector<HTMLDivElement>(".nomogram__form")
+    ?.querySelectorAll("input")
+
+  if (!inputs) throw new Error("Form not found")
+
   const isWithBlankValues = [...inputs].some(({ value }) => value === "")
   return isWithBlankValues
 }
@@ -157,12 +194,13 @@ btnAddSample.addEventListener("click", () => {
   btnAddSample.disabled = true
   btnCalcToxicity.disabled = true
   divNoCalc.appendChild(createSample(disableBtnIfNeeded))
-  ingestionIntervals = document.querySelectorAll(
+  ingestionIntervals = document.querySelectorAll<HTMLInputElement>(
     ".nomogram__interval-after-ingestion"
   )
-  paracetamolConcentrationIntervals = document.querySelectorAll(
-    ".nomogram__interval-paracetamol-concentration"
-  )
+  paracetamolConcentrationIntervals =
+    document.querySelectorAll<HTMLInputElement>(
+      ".nomogram__interval-paracetamol-concentration"
+    )
 })
 
 btnCalcToxicity.addEventListener("click", () => {
@@ -174,16 +212,17 @@ btnCalcToxicity.addEventListener("click", () => {
     ingestionTimes,
     paracetamolConcentrations
   )
-  const dataToAnalize = selectDataToAnalyze(dataForGraph)
+  const dataToAnalyze = selectDataToAnalyze(dataForGraph)
 
   if (isValidTimeAfterIngestion(ingestionTimes)) {
-    const toxicities = calcToxicities(dataToAnalize.timeAfterIngestion)
-    compareToxicities(toxicities, dataToAnalize)
+    const toxicities = calcToxicities(dataToAnalyze.timeAfterIngestion)
+    compareToxicities(toxicities, dataToAnalyze)
     addDataToGraph(graph, dataForGraph)
   }
 
   if (!isValidTimeAfterIngestion(ingestionTimes)) {
-    resultText.textContent = languages[currentLanguage]["title_warningBadData"]
+    resultText.textContent =
+      languages[window.currentLanguage]["title_warningBadData"]
     clearDataGraph()
   }
 
@@ -192,7 +231,9 @@ btnCalcToxicity.addEventListener("click", () => {
 })
 
 checkBoxAgreement.addEventListener("click", (event) => {
-  if (event.target.checked == true) {
+  if (!event.target) return
+
+  if ((event.target as HTMLInputElement).checked == true) {
     showHtmlElement(divCalcToxParacetamol)
   } else {
     hideHtmlElement(divCalcToxParacetamol)
@@ -200,9 +241,9 @@ checkBoxAgreement.addEventListener("click", (event) => {
 })
 
 // FUNCTIONS
-function addDataToGraph(chart, coordonates) {
-  for (let index = 0; index < coordonates.length; index++) {
-    chart.data.datasets[4].data[index] = coordonates[index]
+function addDataToGraph(chart: Chart, coordinates: Coordinates) {
+  for (let index = 0; index < coordinates.length; index++) {
+    chart.data.datasets[4].data[index] = coordinates[index]
   }
   chart.update()
 }
@@ -212,15 +253,20 @@ function clearDataGraph() {
   graph.update()
 }
 
-function isValidTimeAfterIngestion(array) {
+function isValidTimeAfterIngestion(array: number[]) {
   return array.every(
     (num) => num >= DIFFUSION_TIME_IN_BLOOD && num <= MAX_TIME_AFTER_INGESTION
   )
 }
 
-function calcToxicities(timeAfterIngestion) {
+type Toxicities = {
+  possible: number
+  probable: number
+  withRisk: number
+}
+function calcToxicities(timeAfterIngestion: number) {
   const toxicity = calcToxicity(timeAfterIngestion)
-  const toxicities = {
+  const toxicities: Toxicities = {
     possible: calcToxicityPossible(toxicity),
     probable: calcToxicityProbable(toxicity),
     withRisk: calcToxicityProbableWithRisk(toxicity),
@@ -228,46 +274,61 @@ function calcToxicities(timeAfterIngestion) {
   return toxicities
 }
 
-function compareToxicities(toxicities, dataToAnalize) {
+function compareToxicities(
+  toxicities: Toxicities,
+  dataToAnalyze: DataToAnalyze
+) {
+  if (!checkBoxPatientGotRisk) return
   const patientGotRisk = checkBoxPatientGotRisk.checked
   const toxicityValue = patientGotRisk
     ? toxicities.withRisk
     : toxicities.possible
-  let messageId
+  let messageId: keyof (typeof languages)["fr"] | undefined
 
-  if (dataToAnalize.paracetamolConcentration > toxicities.probable) {
+  if (dataToAnalyze.paracetamolConcentration > toxicities.probable) {
     messageId = "toxicity_result_probable"
-  } else if (dataToAnalize.paracetamolConcentration > toxicityValue) {
+  } else if (dataToAnalyze.paracetamolConcentration > toxicityValue) {
     messageId = "toxicity_result_possible"
-  } else if (dataToAnalize.timeAfterIngestion != false) {
+  } else if (!!dataToAnalyze.timeAfterIngestion) {
     messageId = "toxicity_result_ok"
   }
 
   if (!messageId) {
     return
   }
+
+  if (!resultText) return
   resultText.dataset.result = messageId
-  resultText.textContent = languages[currentLanguage][messageId].replace(
+  resultText.textContent = languages[window.currentLanguage][messageId].replace(
     "resultToReplace",
-    dataToAnalize.timeAfterIngestion
+    dataToAnalyze.timeAfterIngestion.toString()
   )
 }
 
-function createCoordinates(array1, array2) {
-  const coordinates = [{}]
+type Coordinate = {
+  x: number
+  y: number
+}
+type Coordinates = Coordinate[]
+function createCoordinates(array1: number[], array2: number[]) {
+  const coordinates: Coordinates = []
   for (let index = 0; index < array1.length; index++) {
     coordinates.push({ x: array1[index], y: array2[index] })
   }
   return coordinates
 }
 
-export function getNonBlankValues(nodeList) {
+export function getNonBlankValues(nodeList: NodeListOf<HTMLInputElement>) {
   return [...nodeList]
     .filter((input) => input.value !== "")
     .map((input) => +input.value)
 }
 
-function selectDataToAnalyze(dataForGraph) {
+type DataToAnalyze = {
+  paracetamolConcentration: number
+  timeAfterIngestion: number
+}
+function selectDataToAnalyze(dataForGraph: Coordinates): DataToAnalyze {
   dataForGraph = dataForGraph.sort(compare)
   const dataSelected = {
     paracetamolConcentration: dataForGraph[dataForGraph.length - 1].y,
@@ -276,7 +337,7 @@ function selectDataToAnalyze(dataForGraph) {
   return dataSelected
 }
 
-function compare(a, b) {
+function compare(a: Coordinate, b: Coordinate) {
   if (a.x < b.x) {
     return -1
   }
