@@ -3,7 +3,7 @@ import {
   toggleClassNames,
   showHtmlElement,
   getSuccessOrErrorClass,
-} from "../js/utils/Dom"
+} from "./utils/Dom"
 import { languages } from "./available-languages"
 
 const DOSE_VALUE_MAX = 150

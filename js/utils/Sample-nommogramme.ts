@@ -1,4 +1,4 @@
-import { createEl } from "../utils/Dom"
+import { createEl } from "./Dom"
 
 export function createSample(inputHandler) {
   const wrapper = createEl("div", { className: "nomogram__input" })

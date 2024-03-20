@@ -4,9 +4,9 @@ import {
   calcToxicityProbable,
   calcToxicityProbableWithRisk,
 } from "./utils/Calculs"
-import { changeGraphLanguage } from "../js/utils/Trads"
-import { createSample } from "../js/utils/Sample-nommogramme"
-import { showHtmlElement, hideHtmlElement } from "../js/utils/Dom"
+import { changeGraphLanguage } from "./utils/Trads"
+import { createSample } from "./utils/Sample-nommogramme"
+import { showHtmlElement, hideHtmlElement } from "./utils/Dom"
 import { languages } from "./available-languages"
 import Chart from "chart.js/auto"
 
