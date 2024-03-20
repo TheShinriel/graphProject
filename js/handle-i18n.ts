@@ -2,13 +2,14 @@ import { changeLanguage } from "./utils/Trads"
 import { defaultLanguage } from "./available-languages"
 
 window.currentLanguage = defaultLanguage
-const btnTranslation = document.querySelectorAll(".translation__btn")
+const btnTranslation =
+  document.querySelectorAll<HTMLButtonElement>(".translation__btn")
 
-changeLanguage(currentLanguage)
+changeLanguage(window.currentLanguage)
 
 btnTranslation.forEach((btn) => {
   btn.addEventListener("click", () => {
-    window.currentLanguage = btn.dataset.language
-    changeLanguage(currentLanguage)
+    window.currentLanguage = btn.dataset.language || defaultLanguage
+    changeLanguage(window.currentLanguage)
   })
 })
