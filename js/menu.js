@@ -1,38 +1,36 @@
-const btnBurger = document.getElementById("btn-burger");
+const btnBurger = document.getElementById("btn-burger")
 
-btnBurger.addEventListener('click',function() {
-    const menu = document.getElementById("myNav");
+btnBurger.addEventListener("click", function () {
+  const menu = document.getElementById("myNav")
 
-    menu.classList.toggle('hidden');
-});
+  menu.classList.toggle("hidden")
+})
 
-window.onload = function() {
-    adaptMenuToScreen();
-};
+window.onload = function () {
+  adaptMenuToScreen()
+}
 
-window.onresize = function() {
-    adaptMenuToScreen()
-};
+window.onresize = function () {
+  adaptMenuToScreen()
+}
 
 function adaptMenuToScreen() {
-    const menu = getMenuElements();
+  const menu = getMenuElements()
 
-    menu.btnBurger.classList.toggle('hidden', menu.isBigScreen)
-    menu.navButtons.classList.toggle('hidden', !menu.isBigScreen)
+  menu.btnBurger.classList.toggle("hidden", menu.isBigScreen)
+  menu.navButtons.classList.toggle("hidden", !menu.isBigScreen)
 }
 
 function isBigScreen() {
-    const windowWidth = window.innerWidth;
-    return windowWidth > 960;
-};
+  const windowWidth = window.innerWidth
+  return windowWidth > 960
+}
 
 function getMenuElements() {
-    const menu = {
-        isBigScreen: isBigScreen(),
-        navButtons: document.getElementById("myNav"),
-        btnBurger: document.getElementById("btn-burger")
-    }
-    return menu;
-};
-
-
+  const menu = {
+    isBigScreen: isBigScreen(),
+    navButtons: document.getElementById("myNav"),
+    btnBurger: document.getElementById("btn-burger"),
+  }
+  return menu
+}
