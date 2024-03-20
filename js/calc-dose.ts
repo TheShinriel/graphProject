@@ -50,6 +50,6 @@ function displayDoseResult(result) {
   )
 }
 
-function checkDoseToxicity(result) {
+function checkDoseToxicity(result: number) {
   return result > DOSE_VALUE_MAX
 }
