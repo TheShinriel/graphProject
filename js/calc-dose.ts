@@ -8,13 +8,24 @@ import { languages } from "./available-languages"
 
 const DOSE_VALUE_MAX = 150
 
-const inputHypotheticDose = document.querySelector(
+const inputHypotheticDose = document.querySelector<HTMLInputElement>(
   ".calc-dose__hypothetic_dosis"
 )
-const inputSubjectWeight = document.querySelector(".calc-dose__weight")
+const inputSubjectWeight =
+  document.querySelector<HTMLInputElement>(".calc-dose__weight")
 
-const btnCalcDose = document.querySelector(".calc-dose__btn")
-const pResultDose = document.querySelector(".calc-dose__result")
+const btnCalcDose = document.querySelector<HTMLButtonElement>(".calc-dose__btn")
+const pResultDose =
+  document.querySelector<HTMLParagraphElement>(".calc-dose__result")
+
+if (
+  !inputHypotheticDose ||
+  !inputSubjectWeight ||
+  !btnCalcDose ||
+  !pResultDose
+) {
+  throw new Error("One or more elements are missing")
+}
 
 const inputs = [inputHypotheticDose, inputSubjectWeight]
 
@@ -37,19 +48,23 @@ btnCalcDose.addEventListener("click", () => {
 })
 
 function calcParacetamolDose() {
-  return Calculs.calcDoseParacetamol(
-    inputSubjectWeight.value,
-    inputHypotheticDose.value
+  const dose = parseFloat(
+    (inputHypotheticDose && inputHypotheticDose.value) || "0"
   )
+  const weight = parseFloat(
+    (inputSubjectWeight && inputSubjectWeight.value) || "0"
+  )
+
+  return Calculs.calcDoseParacetamol(weight, dose)
 }
 
-function displayDoseResult(result) {
-  pResultDose.textContent = languages[currentLanguage].calc_dose_result.replace(
-    "resultToReplace",
-    result
-  )
+function displayDoseResult(result: string) {
+  if (!pResultDose) return
+  pResultDose.textContent = languages[
+    window.currentLanguage
+  ].calc_dose_result.replace("resultToReplace", result)
 }
 
-function checkDoseToxicity(result: number) {
-  return result > DOSE_VALUE_MAX
+function checkDoseToxicity(result: number | string) {
+  return +result > DOSE_VALUE_MAX
 }

@@ -1,7 +1,7 @@
 import { getNonBlankValues } from "../nomogramme"
 
 window.dataLayer = window.dataLayer || []
-function gtag(...rest: any[]) {
+function gtag(..._: any[]) {
   window.dataLayer.push(arguments)
 }
 gtag("js", new Date())

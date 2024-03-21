@@ -4,31 +4,48 @@ import { languages } from "./available-languages"
 
 const OPTIMAL_ELIMINATION_TIME = 4 // time in hour
 
-const pResult = document.querySelector(".calc-half-life__result")
+const pResult = document.querySelector<HTMLParagraphElement>(
+  ".calc-half-life__result"
+)
 
-const inputParacetamolFirstSample = document.querySelector(
+const inputParacetamolFirstSample = document.querySelector<HTMLInputElement>(
   ".first-concentration__number"
 )
-const inputParacetamolSecondSample = document.querySelector(
+const inputParacetamolSecondSample = document.querySelector<HTMLInputElement>(
   ".second-concentration__number"
 )
 
-const datePickerFirstSample = document.querySelector(".first-date__time")
-const datePickerSecondSample = document.querySelector(".second-date__time")
+const datePickerFirstSample =
+  document.querySelector<HTMLInputElement>(".first-date__time")
+const datePickerSecondSample =
+  document.querySelector<HTMLInputElement>(".second-date__time")
 
-const btnCalcHalfLife = document.querySelector(".calc-half-life__submit")
+const btnCalcHalfLife = document.querySelector<HTMLButtonElement>(
+  ".calc-half-life__submit"
+)
+
+if (
+  !pResult ||
+  !inputParacetamolFirstSample ||
+  !inputParacetamolSecondSample ||
+  !datePickerFirstSample ||
+  !datePickerSecondSample ||
+  !btnCalcHalfLife
+) {
+  throw new Error("One or more elements are missing")
+}
 
 btnCalcHalfLife.addEventListener("click", () => {
-  const duree = Calculs.calcTimeBetweenTwoDatesInHour(
+  const duration = Calculs.calcTimeBetweenTwoDatesInHour(
     datePickerSecondSample.value,
     datePickerFirstSample.value
   )
   const halfLife = Calculs.calcHalfLife(
-    inputParacetamolFirstSample.value,
-    inputParacetamolSecondSample.value,
-    duree
+    +inputParacetamolFirstSample.value,
+    +inputParacetamolSecondSample.value,
+    duration
   )
-  const isValidData = checkData(duree, halfLife)
+  const isValidData = checkData(duration, halfLife)
 
   if (!isValidData) {
     const classNameResult = Dom.getSuccessOrErrorClass(!isValidData)
@@ -46,20 +63,20 @@ btnCalcHalfLife.addEventListener("click", () => {
   Dom.showHtmlElement(pResult)
 })
 
-function displayHalfLifeResult(htmlElement, halfLife) {
+function displayHalfLifeResult(htmlElement: HTMLElement, halfLife: string) {
   htmlElement.textContent = languages[
-    currentLanguage
+    window.currentLanguage
   ].result_calc_half_life.replace("resultToReplace", halfLife)
 }
 
-function displayErrorResult(htmlElement) {
-  htmlElement.textContent = languages[currentLanguage].badCalcul
+function displayErrorResult(htmlElement: HTMLElement) {
+  htmlElement.textContent = languages[window.currentLanguage].badCalcul
 }
 
-function checkData(duree, halfLife) {
-  return duree > 0 && halfLife > 0
+function checkData(duration: number, halfLife: string) {
+  return duration > 0 && +halfLife > 0
 }
 
-function checkToxicity(halfLife) {
-  return halfLife > OPTIMAL_ELIMINATION_TIME
+function checkToxicity(halfLife: string) {
+  return +halfLife > OPTIMAL_ELIMINATION_TIME
 }
