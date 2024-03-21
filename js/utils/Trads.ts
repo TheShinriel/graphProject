@@ -42,8 +42,10 @@ export function changeGraphLanguage(graph: Chart) {
     }
   })
 
-  graph.options.plugins.title.text = getTranslation(
-    graph.options.plugins.title.textName
-  )
+  if (graph.options.plugins && graph.options.plugins.title) {
+    graph.options.plugins.title.text = getTranslation(
+      graph.options.plugins.title.textName
+    )
+  }
   graph.update()
 }

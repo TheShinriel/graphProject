@@ -102,7 +102,7 @@ const graph = new Chart(graphCanvas, {
       {
         type: "line",
         label: languages[window.currentLanguage].graph_toxicity_line,
-        // labelName: "graph_toxicity_line",
+        labelName: "graph_toxicity_line",
         backgroundColor: "white",
         borderDash: [15, 10],
         borderColor: "rgb(243, 17, 41)",
@@ -114,7 +114,7 @@ const graph = new Chart(graphCanvas, {
       {
         type: "line",
         label: languages[window.currentLanguage].graph_second_line,
-        // labelName: "graph_second_line",
+        labelName: "graph_second_line",
         backgroundColor: "white",
         borderColor: "rgb(140,56,197)",
         borderDash: [15, 10],
@@ -126,7 +126,7 @@ const graph = new Chart(graphCanvas, {
       {
         type: "line",
         label: languages[window.currentLanguage].graph_riskFactor_line,
-        // labelName: "graph_riskFactor_line",
+        labelName: "graph_riskFactor_line",
         backgroundColor: "white",
         borderDash: [15, 10],
         borderColor: "rgb(53,197,154)",
@@ -138,7 +138,7 @@ const graph = new Chart(graphCanvas, {
       {
         type: "line",
         label: languages[window.currentLanguage].graph_patient_saisi,
-        // labelName: "graph_patient_saisi",
+        labelName: "graph_patient_saisi",
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgb(255, 99, 132)",
         data: [],
@@ -153,7 +153,7 @@ const graph = new Chart(graphCanvas, {
       title: {
         display: true,
         text: languages[window.currentLanguage].graph_title,
-        // textName: "graph_title",
+        textName: "graph_title",
       },
     },
     scales: {
@@ -175,7 +175,7 @@ const graph = new Chart(graphCanvas, {
 
 btnTranslation.forEach((btn) => {
   btn.addEventListener("click", () => {
-    changeGraphLanguage(graph, window.currentLanguage)
+    changeGraphLanguage(graph)
   })
 })
 
