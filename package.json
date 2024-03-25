@@ -11,7 +11,7 @@
   "description": "aide au diagnostic des surdosage médicamenteux",
   "main": "app.js",
   "scripts": {
-    "test": "tsc && jest && npx playwright test",
+    "test": "tsc && jest --coverage && npx playwright test",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite serve"
