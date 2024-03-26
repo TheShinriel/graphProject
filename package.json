@@ -2,13 +2,16 @@
   "name": "hopitox",
   "jest": {
     "verbose": true,
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/test/**/*.[jt]s?(x)"
+    ]
   },
   "version": "1.0.0",
   "description": "aide au diagnostic des surdosage médicamenteux",
   "main": "app.js",
   "scripts": {
-    "test": "tsc && jest",
+    "test": "tsc && jest --coverage && npx playwright test",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite serve"
@@ -26,7 +29,9 @@
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.8",
+    "@playwright/test": "^1.42.1",
     "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.30",
     "babel-jest": "^27.0.6",
     "jest": "^27.0.6",
     "sass": "^1.39.0",
